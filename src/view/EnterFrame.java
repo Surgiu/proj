@@ -32,21 +32,25 @@ public class EnterFrame extends JFrame {
         enter.add(jb1);
         enter.add(jb2);
 
-        EnterFrame enterFrame =new EnterFrame();
-        enterFrame.setVisible(true);
-
         jb2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
                 mainFrame.setVisible(true);
-//                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
+                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
 //                跳转的界面
 //                jf.dispose();
+                EnterFrame enterFrame =new EnterFrame();
                 enterFrame.setVisible(false);
 //                销毁当前界面
             }
         });
+    }
+
+
+    public static void main(String[] args) {
+        EnterFrame enterFrame =new EnterFrame();
+        enterFrame.setVisible(true);
     }
 }
 
