@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LionComp.java" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="探索">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/listener/GameListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/GameListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ElephantChessComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ElephantComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ElephantComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ElephantComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LionComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LionComp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +42,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/DELL/IdeaProjects/pro",
@@ -79,11 +80,23 @@
       <option name="presentableId" value="Default" />
       <updated>1684555822562</updated>
       <workItem from="1684555824478" duration="1000" />
-      <workItem from="1684555973324" duration="2257000" />
+      <workItem from="1684555973324" duration="3603000" />
     </task>
+    <task id="LOCAL-00001" summary="探索">
+      <created>1684558267937</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684558267937</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="探索" />
+    <option name="LAST_COMMIT_MESSAGE" value="探索" />
   </component>
 </project>

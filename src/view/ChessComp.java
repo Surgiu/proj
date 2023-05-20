@@ -28,8 +28,11 @@ public class ChessComp extends JComponent {
 
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(Graphics g){
 
     }
 
+    public PlayerColor getOwner() {
+        return owner;
+    }
 }

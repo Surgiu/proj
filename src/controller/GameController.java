@@ -7,7 +7,7 @@ import model.PlayerColor;
 import model.Chessboard;
 import model.ChessboardPoint;
 import view.CellComponent;
-import view.ElephantComp;
+import view.ChessComp;
 import view.ChessboardComponent;
 
 /**
@@ -72,7 +72,7 @@ public class GameController implements GameListener {
 
     // click a cell with a chess
     @Override
-    public void onPlayerClickChessPiece(ChessboardPoint point, ElephantComp component) {
+    public void onPlayerClickChessPiece(ChessboardPoint point, ChessComp component) {
         if (selectedPoint == null) {
             if (model.getChessPieceOwner(point).equals(currentPlayer)) {
                 selectedPoint = point;
