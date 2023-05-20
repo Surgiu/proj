@@ -13,7 +13,15 @@ public class ChessPiece {
     }
 
     public boolean canCapture(ChessPiece target) {
-        // TODO: Finish this method!
+        if (!this.getOwner().equals(target.getOwner())) {
+            if (this.name.equals("Rat") && target.getName().equals("Elephant")) {
+                return true;
+            } else if (this.name.equals("Elephant") && target.getName().equals("Rat")) {
+                return false;
+            } else {
+                return this.rank >= target.getRank();
+            }
+        }
         return false;
     }
 

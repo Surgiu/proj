@@ -2,10 +2,7 @@ package controller;
 
 
 import listener.GameListener;
-import model.Constant;
-import model.PlayerColor;
-import model.Chessboard;
-import model.ChessboardPoint;
+import model.*;
 import view.CellComponent;
 import view.ChessComp;
 import view.ChessboardComponent;
@@ -15,8 +12,7 @@ import view.ChessboardComponent;
  * when a Controller receive a request from a view, the Controller
  * analyzes and then hands over to the model for processing
  * [in this demo the request methods are onPlayerClickCell() and onPlayerClickChessPiece()]
- *
-*/
+ */
 public class GameController implements GameListener {
 
 
@@ -52,8 +48,11 @@ public class GameController implements GameListener {
     }
 
     private boolean win() {
-        // TODO: Check the board if there is a winner
-        return false;
+        ChessPiece winnerPiece1 = model.getGrid()[0][3].getPiece();
+        ChessPiece winnerPiece2 = model.getGrid()[8][3].getPiece();
+        boolean case1 = winnerPiece1 != null && winnerPiece1.getOwner().equals(PlayerColor.BLUE);
+        boolean case2 = winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED);
+        return case1 || case2;
     }
 
 
@@ -67,6 +66,7 @@ public class GameController implements GameListener {
             swapColor();
             view.repaint();
             // TODO: if the chess enter Dens or Traps and so on
+
         }
     }
 
@@ -83,7 +83,14 @@ public class GameController implements GameListener {
             selectedPoint = null;
             component.setSelected(false);
             component.repaint();
+        } else {
+            if(model.isValidCapture(selectedPoint,point)) {
+                model.captureChessPiece(selectedPoint,point);
+                ChessComp successive = view.removeChessComponentAtGrid(point);
+                view.removeChessComponentAtGrid(point);
+                view.setChessComponentAtGrid(point,successive);
+            }
         }
-        // TODO: Implement capture function
+
     }
 }

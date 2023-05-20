@@ -94,18 +94,17 @@ public class Chessboard {
         if (!isValidMove(src, dest)) {
             throw new IllegalArgumentException("Illegal chess move!");
         }
-        setChessPiece(dest, removeChessPiece(src));
+        removeChessPiece(dest);
+        setChessPiece(dest,getChessPieceAt(dest));
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
-        ChessPiece predator = getChessPieceAt(src);
-        ChessPiece target = getChessPieceAt(dest);
         if (!isValidCapture(src, dest)) {
             throw new IllegalArgumentException("Illegal chess capture!");
-        }else {
-            target = null;
+        } else {
+            removeChessPiece(dest);
+            moveChessPiece(src, dest);
         }
-
     }
 
     public Cell[][] getGrid() {
@@ -127,10 +126,6 @@ public class Chessboard {
     public boolean isValidCapture(ChessboardPoint src, ChessboardPoint dest) {
         ChessPiece predator = getChessPieceAt(src);
         ChessPiece target = getChessPieceAt(dest);
-        if (predator.getName().equals("Rat") && target.getName().equals("Elephant")) {
-            return isValidMove(src, dest);
-        } else {
-            return predator.getRank() >= target.getRank()&&isValidMove(src, dest);
-        }
+        return predator.canCapture(target);
     }
 }
