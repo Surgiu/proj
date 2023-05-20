@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChessDemo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/Elephant-blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/Elephant-red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/listener/GameListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ChessPiece.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ChessboardPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/PlayerColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/CellComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/ElephantChessComponent.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2Q2dtIAjAPZpY8BCcwrYen1q5CI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.rainbow.brackets",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="" />
+      <created>1684555822562</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684555822562</updated>
+      <workItem from="1684555824478" duration="1000" />
+    </task>
+    <servers />
+  </component>
+</project>
