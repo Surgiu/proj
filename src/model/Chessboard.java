@@ -18,18 +18,25 @@ public class Chessboard {
     private void initGrid() {
         //待优化：用构造器来一个个new，这样能把type final掉
         grid = new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];
-        grid[0][3].setType(3);
-        grid[8][3].setType(3);
-        grid[0][2].setType(2);
-        grid[0][4].setType(2);
-        grid[1][3].setType(2);
-        grid[7][3].setType(2);
-        grid[8][2].setType(2);
-        grid[8][4].setType(2);
-        for (int i = 1; i <= 2; i++) {
-            for (int j = 3; j <= 5; j++) {
-                grid[i][j].setType(1);
-                grid[i][j + 3].setType(1);
+        grid[0][3] = new Cell(3);
+        grid[8][3] = new Cell(3);
+        grid[0][2] = new Cell(2);
+        grid[0][4] = new Cell(2);
+        grid[1][3] = new Cell(2);
+        grid[7][3] = new Cell(2);
+        grid[8][2] = new Cell(2);
+        grid[8][4] = new Cell(2);
+        for (int i = 3; i <= 5; i++) {
+            for (int j = 1; j <= 2; j++) {
+                grid[i][j] = new Cell(1);
+                grid[i][j + 3] = new Cell(1);
+            }
+        }
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == null) {
+                    grid[i][j] = new Cell(0);
+                }
             }
         }
     }
@@ -50,7 +57,7 @@ public class Chessboard {
         grid[7][1].setPiece(new ChessPiece(PlayerColor.BLUE, "Cat", 2));
         grid[7][5].setPiece(new ChessPiece(PlayerColor.BLUE, "Dog", 3));
         grid[8][0].setPiece(new ChessPiece(PlayerColor.BLUE, "Tiger", 7));
-        grid[8][8].setPiece(new ChessPiece(PlayerColor.BLUE, "Lion", 7));
+        grid[8][6].setPiece(new ChessPiece(PlayerColor.BLUE, "Lion", 7));
     }
 
     private ChessPiece getChessPieceAt(ChessboardPoint point) {

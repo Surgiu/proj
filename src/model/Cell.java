@@ -8,8 +8,12 @@ import java.io.Serializable;
 public class Cell implements Serializable {
     // the position for chess
     private ChessPiece piece;
-    private int type = 0;//0:ground,1:river,2:trap,3:dens
+    private final int type;//0:ground,1:river,2:trap,3:dens
+    private int occupy;//0:occupied;1:red;2:blue
 
+    public Cell(int type) {
+        this.type = type;
+    }
 
     public ChessPiece getPiece() {
         return piece;
@@ -27,7 +31,11 @@ public class Cell implements Serializable {
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public int getOccupy() {
+        return occupy;
+    }
+
+    public void setOccupy(int occupy) {
+        this.occupy = occupy;
     }
 }

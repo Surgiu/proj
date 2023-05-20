@@ -7,9 +7,7 @@ import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import static model.Constant.CHESSBOARD_COL_SIZE;
@@ -51,10 +49,7 @@ public class ChessboardComponent extends JComponent {
                 if (grid[i][j].getPiece() != null) {
                     ChessPiece chessPiece = grid[i][j].getPiece();
                     System.out.println(chessPiece.getOwner());
-                    gridComponents[i][j].add(
-                            new ElephantChessComponent(
-                                    chessPiece.getOwner(),
-                                    CHESS_SIZE));
+                    gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE));
                 }
             }
         }
@@ -97,13 +92,13 @@ public class ChessboardComponent extends JComponent {
         this.gameController = gameController;
     }
 
-    public void setChessComponentAtGrid(ChessboardPoint point, ElephantChessComponent chess) {
+    public void setChessComponentAtGrid(ChessboardPoint point, ElephantComp chess) {
         getGridComponentAt(point).add(chess);
     }
 
-    public ElephantChessComponent removeChessComponentAtGrid(ChessboardPoint point) {
+    public ElephantComp removeChessComponentAtGrid(ChessboardPoint point) {
         // Note re-validation is required after remove / removeAll.
-        ElephantChessComponent chess = (ElephantChessComponent) getGridComponentAt(point).getComponents()[0];
+        ElephantComp chess = (ElephantComp) getGridComponentAt(point).getComponents()[0];
         getGridComponentAt(point).removeAll();
         getGridComponentAt(point).revalidate();
         chess.setSelected(false);
@@ -138,7 +133,7 @@ public class ChessboardComponent extends JComponent {
                 gameController.onPlayerClickCell(getChessboardPoint(e.getPoint()), (CellComponent) clickedComponent);
             } else {
                 System.out.print("One chess here and ");
-                gameController.onPlayerClickChessPiece(getChessboardPoint(e.getPoint()), (ElephantChessComponent) clickedComponent.getComponents()[0]);
+                gameController.onPlayerClickChessPiece(getChessboardPoint(e.getPoint()), (ElephantComp) clickedComponent.getComponents()[0]);
             }
         }
     }
