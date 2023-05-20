@@ -101,7 +101,9 @@ public class Chessboard {
     private void clear() {
         for (Cell[] cells : grid) {
             for (Cell cell : cells) {
-                cell.setPiece(null);
+                if (cell != null) {
+                    cell.setPiece(null);
+                }
             }
         }
     }
