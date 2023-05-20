@@ -15,8 +15,7 @@ public class Chessboard {
         initPieces();
     }
 
-    private void initGrid() {
-        //待优化：用构造器来一个个new，这样能把type final掉
+    private void initGrid() {//默认上红下蓝
         grid = new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];
         grid[0][3] = new Cell(3);
         grid[8][3] = new Cell(3);
@@ -36,6 +35,15 @@ public class Chessboard {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == null) {
                     grid[i][j] = new Cell(0);
+                }
+            }
+        }
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (i < 3) {
+                    grid[i][j].setTerrain(10);
+                } else if (i > 5) {
+                    grid[i][j].setTerrain(20);
                 }
             }
         }

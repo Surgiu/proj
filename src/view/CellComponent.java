@@ -21,6 +21,7 @@ public class CellComponent extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponents(g);
+        //加判断方法让不同的地盘拥有不同的颜色
         g.setColor(background);
         g.fillRect(1, 1, this.getWidth()-1, this.getHeight()-1);
     }
