@@ -14,8 +14,8 @@ public class ChessGameFrame extends JFrame {
     private final int HEIGTH;
 
     private final int ONE_CHESS_SIZE;
-
     private ChessboardComponent chessboardComponent;
+
     public ChessGameFrame(int width, int height) {
         setTitle("2023 CS109 Project Demo"); //设置标题
         this.WIDTH = width;
@@ -31,6 +31,7 @@ public class ChessGameFrame extends JFrame {
         addChessboard();
         addLabel();
         addHelloButton();
+
     }
 
     public ChessboardComponent getChessboardComponent() {
@@ -59,6 +60,11 @@ public class ChessGameFrame extends JFrame {
         statusLabel.setSize(200, 60);
         statusLabel.setFont(new Font("Rockwell", Font.BOLD, 20));
         add(statusLabel);
+
+        JLabel chessboard=new JLabel(new ImageIcon("image/chessboard.png"));
+        chessboard.setBounds(102,-48,623,900);
+//        this.getContentPane().add(chessboard);
+        add(chessboard);
     }
 
     /**
