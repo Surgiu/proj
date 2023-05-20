@@ -90,7 +90,8 @@ public class GameController implements GameListener {
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point,successive);
             }
-            System.out.println();
+            int t = 0;
+
         }
 
     }
