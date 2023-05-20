@@ -1,6 +1,4 @@
 package view;
-
-
 import model.PlayerColor;
 
 import java.awt.*;

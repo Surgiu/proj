@@ -6,11 +6,11 @@ package model;
  */
 public class Chessboard {
     private Cell[][] grid;
+    private ChessboardPoint coordinate;
 
     public Chessboard() {
         this.grid =
                 new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];//19X19
-
         initGrid();
         initPieces();
     }
@@ -94,14 +94,17 @@ public class Chessboard {
         if (!isValidMove(src, dest)) {
             throw new IllegalArgumentException("Illegal chess move!");
         }
-        setChessPiece(dest, removeChessPiece(src));
+        removeChessPiece(dest);
+        setChessPiece(dest,getChessPieceAt(dest));
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
-        if (isValidCapture(src, dest)) {
+        if (!isValidCapture(src, dest)) {
             throw new IllegalArgumentException("Illegal chess capture!");
+        } else {
+            removeChessPiece(dest);
+            moveChessPiece(src, dest);
         }
-        // TODO: Finish the method.
     }
 
     public Cell[][] getGrid() {
@@ -121,7 +124,8 @@ public class Chessboard {
 
 
     public boolean isValidCapture(ChessboardPoint src, ChessboardPoint dest) {
-        // TODO:Fix this method
-        return false;
+        ChessPiece predator = getChessPieceAt(src);
+        ChessPiece target = getChessPieceAt(dest);
+        return predator.canCapture(target);
     }
 }
