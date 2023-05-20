@@ -6,10 +6,10 @@ import java.io.Serializable;
  * This class describe the slot for Chess in Chessboard
  */
 public class Cell implements Serializable {
-    // the position for chess
     private ChessPiece piece;
     private final int type;//0:ground,1:river,2:trap,3:dens
-    private int occupy;//0:occupied;1:red;2:blue
+    private int occupy;//0:noOccupation;1:red;2:blue
+    private int terrain = 0;//0:none;10:red;20:blue
 
     public Cell(int type) {
         this.type = type;
@@ -37,5 +37,13 @@ public class Cell implements Serializable {
 
     public void setOccupy(int occupy) {
         this.occupy = occupy;
+    }
+
+    public int getTerrain() {
+        return terrain;
+    }
+
+    public void setTerrain(int terrain) {
+        this.terrain = terrain;
     }
 }

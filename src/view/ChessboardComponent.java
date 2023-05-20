@@ -20,6 +20,9 @@ public class ChessboardComponent extends JComponent {
     private final CellComponent[][] gridComponents = new CellComponent[CHESSBOARD_ROW_SIZE.getNum()][CHESSBOARD_COL_SIZE.getNum()];
     private final int CHESS_SIZE;
     private final Set<ChessboardPoint> riverCell = new HashSet<>();
+    private final Set<ChessboardPoint> densCell= new HashSet<>();
+    private final Set<ChessboardPoint> trapCell= new HashSet<>();
+
 
     private GameController gameController;
 
@@ -50,6 +53,7 @@ public class ChessboardComponent extends JComponent {
                     switch (chessPiece.getName()) {
                         case "Lion" -> gridComponents[i][j].add(new LionComp(chessPiece.getOwner(), CHESS_SIZE));
                         case "Elephant" -> gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE));
+
                     }
                 }
             }
@@ -58,7 +62,7 @@ public class ChessboardComponent extends JComponent {
     }
 
     public void initiateGridComponents() {
-
+        //完善更多类型
         riverCell.add(new ChessboardPoint(3,1));
         riverCell.add(new ChessboardPoint(3,2));
         riverCell.add(new ChessboardPoint(4,1));
@@ -72,6 +76,10 @@ public class ChessboardComponent extends JComponent {
         riverCell.add(new ChessboardPoint(4,5));
         riverCell.add(new ChessboardPoint(5,4));
         riverCell.add(new ChessboardPoint(5,5));
+
+        trapCell.add(new ChessboardPoint(0,2));
+
+
 
         for (int i = 0; i < CHESSBOARD_ROW_SIZE.getNum(); i++) {
             for (int j = 0; j < CHESSBOARD_COL_SIZE.getNum(); j++) {

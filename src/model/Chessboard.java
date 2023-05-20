@@ -6,17 +6,16 @@ package model;
  */
 public class Chessboard {
     private Cell[][] grid;
+    private ChessboardPoint coordinate;
 
     public Chessboard() {
         this.grid =
                 new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];//19X19
-
         initGrid();
         initPieces();
     }
 
-    private void initGrid() {
-        //待优化：用构造器来一个个new，这样能把type final掉
+    private void initGrid() {//默认上红下蓝
         grid = new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];
         grid[0][3] = new Cell(3);
         grid[8][3] = new Cell(3);
@@ -36,6 +35,15 @@ public class Chessboard {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == null) {
                     grid[i][j] = new Cell(0);
+                }
+            }
+        }
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (i < 3) {
+                    grid[i][j].setTerrain(10);
+                } else if (i > 5) {
+                    grid[i][j].setTerrain(20);
                 }
             }
         }
@@ -90,10 +98,14 @@ public class Chessboard {
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
-        if (isValidCapture(src, dest)) {
+        ChessPiece predator = getChessPieceAt(src);
+        ChessPiece target = getChessPieceAt(dest);
+        if (!isValidCapture(src, dest)) {
             throw new IllegalArgumentException("Illegal chess capture!");
+        }else {
+            target = null;
         }
-        // TODO: Finish the method.
+
     }
 
     public Cell[][] getGrid() {
@@ -113,7 +125,12 @@ public class Chessboard {
 
 
     public boolean isValidCapture(ChessboardPoint src, ChessboardPoint dest) {
-        // TODO:Fix this method
-        return false;
+        ChessPiece predator = getChessPieceAt(src);
+        ChessPiece target = getChessPieceAt(dest);
+        if (predator.getName().equals("Rat") && target.getName().equals("Elephant")) {
+            return isValidMove(src, dest);
+        } else {
+            return predator.getRank() >= target.getRank()&&isValidMove(src, dest);
+        }
     }
 }
