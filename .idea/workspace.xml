@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="细化2">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="吃子功能实现">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ChessPiece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +20,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
