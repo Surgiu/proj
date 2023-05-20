@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashSet;
+import java.util.TreeSet;
+
 /**
  * This class store the real chess information.
  * The Chessboard has 9*7 cells, and each cell has a position for chess
@@ -7,30 +10,38 @@ package model;
 public class Chessboard {
     private Cell[][] grid;
     private ChessboardPoint coordinate;
+    private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
+    private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
+    private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
 
     public Chessboard() {
         this.grid =
                 new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];//19X19
         initGrid();
         initPieces();
+        initCoordinates();
     }
 
     private void initGrid() {//默认上红下蓝
         grid = new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];
+        //dens
         grid[0][3] = new Cell(3);
         grid[8][3] = new Cell(3);
+        //trap
         grid[0][2] = new Cell(2);
         grid[0][4] = new Cell(2);
         grid[1][3] = new Cell(2);
         grid[7][3] = new Cell(2);
         grid[8][2] = new Cell(2);
         grid[8][4] = new Cell(2);
+        //river
         for (int i = 3; i <= 5; i++) {
             for (int j = 1; j <= 2; j++) {
                 grid[i][j] = new Cell(1);
                 grid[i][j + 3] = new Cell(1);
             }
         }
+        //ground
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == null) {
@@ -38,6 +49,7 @@ public class Chessboard {
                 }
             }
         }
+        //terrain
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (i < 3) {
@@ -68,6 +80,30 @@ public class Chessboard {
         grid[8][6].setPiece(new ChessPiece(PlayerColor.BLUE, "Lion", 7));
     }
 
+    private void initCoordinates() {
+        densCoordinates.add(new ChessboardPoint(0, 3));
+        densCoordinates.add(new ChessboardPoint(8, 3));
+        trapCoordinates.add(new ChessboardPoint(0, 2));
+        trapCoordinates.add(new ChessboardPoint(0, 4));
+        trapCoordinates.add(new ChessboardPoint(1, 3));
+        trapCoordinates.add(new ChessboardPoint(7, 3));
+        trapCoordinates.add(new ChessboardPoint(8, 2));
+        trapCoordinates.add(new ChessboardPoint(8, 4));
+        for (int i = 3; i <= 5; i++) {
+            for (int j = 1; j <= 2; j++) {
+                riverCoordinates.add(new ChessboardPoint(i, j));
+                riverCoordinates.add(new ChessboardPoint(i, j + 3));
+            }
+        }
+    }
+
+    private void clear() {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+            }
+        }
+    }
+
     private ChessPiece getChessPieceAt(ChessboardPoint point) {
         return getGridAt(point).getPiece();
     }
@@ -87,7 +123,7 @@ public class Chessboard {
     }
 
     private void setChessPiece(ChessboardPoint point, ChessPiece chessPiece) {
-        getGridAt(point).setPiece(chessPiece);
+        getGridAt(point).setPiece(chessPiece);//把指定的棋子放到指定坐标
     }
 
     public void moveChessPiece(ChessboardPoint src, ChessboardPoint dest) {
@@ -95,7 +131,7 @@ public class Chessboard {
             throw new IllegalArgumentException("Illegal chess move!");
         }
         removeChessPiece(dest);
-        setChessPiece(dest,getChessPieceAt(dest));
+        setChessPiece(dest, removeChessPiece(dest));
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
@@ -104,6 +140,9 @@ public class Chessboard {
         } else {
             removeChessPiece(dest);
             moveChessPiece(src, dest);
+            if(getChessPieceAt(src).getOwner().equals(PlayerColor.RED)) {
+
+            }
         }
     }
 
@@ -116,16 +155,86 @@ public class Chessboard {
     }
 
     public boolean isValidMove(ChessboardPoint src, ChessboardPoint dest) {
-        if (getChessPieceAt(src) == null || getChessPieceAt(dest) != null) {
+        ChessPiece piece = getChessPieceAt(src);
+        if (piece == null || getChessPieceAt(dest) != null) {
             return false;
         }
-        return calculateDistance(src, dest) == 1;
+        if (piece.getName().equals("Tiger") || piece.getName().equals("Lion")) {
+            if (src.getCol() == dest.getCol() || src.getRow() == dest.getRow()) {
+                if (pureRiver(src, dest)) {
+                    return getGridAt(dest).getType() == 0;
+                }
+            }
+        }
+        if (piece.getName().equals("Rat")) {
+            return calculateDistance(src, dest) == 1;
+        }
+        if (getGridAt(dest).getType() != 1) {
+            return calculateDistance(src, dest) == 1;
+        }
+        return false;
+    }
+
+    private boolean pureRiver(ChessboardPoint start, ChessboardPoint end) {
+        if (start.getRow() == end.getRow()) {
+            int lower = Math.min(start.getCol(), end.getCol()) + 1;
+            int upper = Math.max(start.getCol(), end.getCol()) - 1;
+            int count = -1;
+            for (int i = lower; i <= upper; i++) {
+                if (grid[start.getRow()][i].getType() == 1) {
+                    count++;
+                }
+                if (count == -1 && noColBarrier(start.getRow(), lower, upper)) {
+                    return true;
+                }
+            }
+        } else if (start.getCol() == end.getCol()) {
+            int left = Math.min(start.getRow(), end.getRow()) + 1;
+            int right = Math.max(start.getRow(), end.getRow()) - 1;
+            int count = -1;
+            for (int i = left; i <= right; i++) {
+                if (grid[start.getCol()][i].getType() != 1) {
+                    count++;
+                }
+                if (count == -1 && noRowBarrier(start.getCol(), left, right)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean noColBarrier(int row, int s, int e) {
+        int count = -1;
+        for (int i = s; i <= e; i++) {
+            if (getChessPieceAt(new ChessboardPoint(row, i)) != null) {
+                count++;
+            }
+        }
+        return count == -1;
+    }
+
+    private boolean noRowBarrier(int col, int s, int e) {
+        int count = -1;
+        for (int i = s; i <= e; i++) {
+            if (getChessPieceAt(new ChessboardPoint(i, col)) != null) {
+                count++;
+            }
+        }
+        return count == -1;
     }
 
 
     public boolean isValidCapture(ChessboardPoint src, ChessboardPoint dest) {
         ChessPiece predator = getChessPieceAt(src);
         ChessPiece target = getChessPieceAt(dest);
-        return predator.canCapture(target);
+        if (predator != null && dest != null) {
+            switch (predator.getName()) {
+                case "Lion":
+                case "Tiger":
+            }
+            return predator.canCapture(target);
+        }
+        return false;
     }
 }

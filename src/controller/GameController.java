@@ -15,7 +15,6 @@ import view.ChessboardComponent;
  */
 public class GameController implements GameListener {
 
-
     private Chessboard model;
     private ChessboardComponent view;
     private PlayerColor currentPlayer;
@@ -84,15 +83,12 @@ public class GameController implements GameListener {
             component.setSelected(false);
             component.repaint();
         } else {
-            if(model.isValidCapture(selectedPoint,point)) {
-                model.captureChessPiece(selectedPoint,point);
+            if (model.isValidCapture(selectedPoint, point)) {
+                model.captureChessPiece(selectedPoint, point);
                 ChessComp successive = view.removeChessComponentAtGrid(point);
                 view.removeChessComponentAtGrid(point);
-                view.setChessComponentAtGrid(point,successive);
+                view.setChessComponentAtGrid(point, successive);
             }
-            int t = 0;
-
         }
-
     }
 }
