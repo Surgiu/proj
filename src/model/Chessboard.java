@@ -17,6 +17,7 @@ public class Chessboard {
     public Chessboard() {
         this.grid =
                 new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];//19X19
+        clear();
         initGrid();
         initPieces();
         initCoordinates();
@@ -98,8 +99,9 @@ public class Chessboard {
     }
 
     private void clear() {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
+        for (Cell[] cells : grid) {
+            for (Cell cell : cells) {
+                cell.setPiece(null);
             }
         }
     }
@@ -130,8 +132,13 @@ public class Chessboard {
         if (!isValidMove(src, dest)) {
             throw new IllegalArgumentException("Illegal chess move!");
         }
-        removeChessPiece(dest);
-        setChessPiece(dest, removeChessPiece(dest));
+        removeChessPiece(src);
+        setChessPiece(dest, removeChessPiece(src));
+        if (removeChessPiece(src).getOwner().equals(PlayerColor.BLUE)) {
+            getGridAt(dest).setOccupy(2);
+        } else {
+            getGridAt(dest).setOccupy(1);
+        }
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
@@ -140,8 +147,10 @@ public class Chessboard {
         } else {
             removeChessPiece(dest);
             moveChessPiece(src, dest);
-            if(getChessPieceAt(src).getOwner().equals(PlayerColor.RED)) {
-
+            if (removeChessPiece(src).getOwner().equals(PlayerColor.BLUE)) {
+                getGridAt(dest).setOccupy(2);
+            } else {
+                getGridAt(dest).setOccupy(1);
             }
         }
     }
@@ -171,6 +180,13 @@ public class Chessboard {
         }
         if (getGridAt(dest).getType() != 1) {
             return calculateDistance(src, dest) == 1;
+        }
+        //不能走到自己方的兽穴里
+        if ((!getChessPieceAt(src).getOwner().equals(PlayerColor.BLUE)
+                || getGridAt(dest).getType() != 3 || getGridAt(dest).getTerrain() != 20)) {
+            if (getChessPieceAt(src).getOwner().equals(PlayerColor.RED) && getGridAt(dest).getType() == 3) {
+                getGridAt(dest);
+            }
         }
         return false;
     }
@@ -228,13 +244,42 @@ public class Chessboard {
     public boolean isValidCapture(ChessboardPoint src, ChessboardPoint dest) {
         ChessPiece predator = getChessPieceAt(src);
         ChessPiece target = getChessPieceAt(dest);
-        if (predator != null && dest != null) {
+        if (predator != null && dest != null
+                && getGridAt(src).getOccupy() != getGridAt(dest).getOccupy()) {
             switch (predator.getName()) {
-                case "Lion":
-                case "Tiger":
+                case "Lion", "Tiger" -> {//lion or tiger near the river
+                    if (src.getCol() == dest.getCol() || src.getRow() == dest.getRow()) {
+                        if (pureRiver(src, dest) && getGridAt(dest).getType() == 0) {
+                            return predator.getRank() >= target.getRank();
+                        }
+                    }
+                }
+                case "Rat" -> {//rat in the river
+                    if (getGridAt(src).getType() == 1) {
+                        return false;
+                    }
+                    if (getGridAt(dest).getType() == 0) {
+                        return false;
+                    }
+                }
+                default -> {
+                    return predator.canCapture(target)
+                            && calculateDistance(src, dest) == 1
+                            && getGridAt(dest).getType() == 0;
+                }
             }
-            return predator.canCapture(target);
         }
         return false;
+    }
+
+    public void inTrap(ChessboardPoint chessboardPoint) {
+        if (getChessPieceAt(chessboardPoint) != null) {
+            if ((getChessPieceAt(chessboardPoint).getOwner().equals(PlayerColor.BLUE) && getGridAt(chessboardPoint).getTerrain() == 10)
+                    || (getChessPieceAt(chessboardPoint).getOwner().equals(PlayerColor.RED) && getGridAt(chessboardPoint).getTerrain() == 20)) {
+                if (getGridAt(chessboardPoint).getType() == 2) {
+                    getChessPieceAt(chessboardPoint).setRank(0);
+                }
+            }
+        }
     }
 }
