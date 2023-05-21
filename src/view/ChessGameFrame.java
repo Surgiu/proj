@@ -64,7 +64,9 @@ public class ChessGameFrame extends JFrame {
         statusLabel.setSize(200, 60);
         statusLabel.setFont(new Font("Rockwell", Font.BOLD, 20));
         add(statusLabel);
+    }
 
+    public void addBaseLabel(){
         JLabel chessboard=new JLabel(new ImageIcon("image/chessboard.png"));
         chessboard.setBounds(102,-48,623,900);
 //        this.getContentPane().add(chessboard);

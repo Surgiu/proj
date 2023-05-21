@@ -10,9 +10,9 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             ChessGameFrame mainFrame = new ChessGameFrame(1100,810);
             GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
-//            EnterFrame enter = new EnterFrame();
-            mainFrame.setVisible(true);
-//            enter.setVisible(true);
+            EnterFrame enter = new EnterFrame();
+//            mainFrame.setVisible(true);
+            enter.setVisible(true);
         });
     }
 }
