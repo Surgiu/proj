@@ -93,4 +93,12 @@ public class GameController implements GameListener {
         }
     }
 
+    public void restart() {
+        model.initialize();
+        view.initiateGridComponents();
+        view.initiateChessComponent(model);
+        view.repaint();
+        currentPlayer = PlayerColor.BLUE;
+        selectedPoint = null;
+    }
 }
