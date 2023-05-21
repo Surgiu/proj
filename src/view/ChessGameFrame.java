@@ -34,7 +34,8 @@ public class ChessGameFrame extends JFrame {
 
         addChessboard();
         addLabel();
-        addHelloButton();
+        addBaseLabel();
+        addButton();
 
     }
 
@@ -77,13 +78,48 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中增加一个按钮，如果按下的话就会显示Hello, world!
      */
 
-    private void addHelloButton() {
-        JButton button = new JButton("Show Hello Here");
-        button.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
-        button.setLocation(HEIGTH, HEIGTH / 10 + 120);
-        button.setSize(200, 60);
-        button.setFont(new Font("Rockwell", Font.BOLD, 20));
-        add(button);
+    private void addButton() {
+        JButton jb1 = new JButton("设置");
+        JButton jb2 = new JButton("悔棋");
+        JButton jb3 = new JButton("认输");
+        JButton jb4 = new JButton("再来一局");
+        JButton jb5 = new JButton("返回主页");
+//        jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
+        jb2.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);
+        jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
+        jb4.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
+        jb5.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
+
+        JMenuBar bar=new JMenuBar();
+        bar.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
+        JMenu menu=new JMenu("菜单1");
+        JMenuItem item1 = new JMenuItem("⼆级菜单1");
+        JMenuItem item2 = new JMenuItem("⼆级菜单2");
+        JMenuItem item3 = new JMenuItem("⼆级菜单3");
+        menu.add(item1);
+        menu.add(item2);
+        menu.add(item3);
+        jb1.add(menu);
+
+//        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
+
+        jb5.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
+//                mainFrame.dispose();
+                mainFrame.setVisible(false);
+                EnterFrame enterFrame =new EnterFrame();
+                enterFrame.setVisible(true);
+            }
+        });
+
+//        jb1.setFont(new Font("Rockwell", Font.BOLD, 20));
+        add(jb1);
+        add(jb2);
+        add(jb3);
+        add(jb4);
+        add(jb5);
     }
 
 //    private void addLoadButton() {
