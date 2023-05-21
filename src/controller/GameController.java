@@ -90,6 +90,9 @@ public class GameController implements GameListener {
                 ChessComp successive = view.removeChessComponentAtGrid(point);
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, successive);
+            }else if(!model.isValidCapture(selectedPoint,point)) {
+                System.err.println("Illegal");
+                return;
             }
         }
     }
