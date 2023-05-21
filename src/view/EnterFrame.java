@@ -7,12 +7,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EnterFrame extends JFrame implements ActionListener {
+public class EnterFrame extends JFrame {
     private static JLabel enter;
-    JButton jb1;
-    JButton jb2;
-    JButton jb3;
-    JButton jb4;
+    private JButton jb1;
+    private JButton jb2;
+    private JButton jb3;
+    private JButton jb4;
+
 
     public EnterFrame() {
         this.setBounds(485, 210, 740, 550);
@@ -43,38 +44,41 @@ public class EnterFrame extends JFrame implements ActionListener {
         enter.add(jb2);
         enter.add(jb3);
         enter.add(jb4);
+    }
 
-//        jb2.addActionListener(new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//
-//                ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
-//                mainFrame.setVisible(true);
-//                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
-//                跳转的界面
-//
+    public void addListener() {
+
+        jb2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
+                mainFrame.setVisible(true);
+                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
+                //跳转的界面
+
 //                EnterFrame enterFrame = new EnterFrame();
 //                enterFrame.setVisible(false);
 //                enterFrame.dispose();
-//                销毁当前界面
-//            }
-//        });
-//    }
+                //销毁当前界面
+            }
+        });
+    }
 
 
 //    public static void main(String[] args) {
 //        EnterFrame enterFrame = new EnterFrame();
 //        enterFrame.setVisible(true);
-    }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jb2) {
-            this.dispose();
-            ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
-            GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
-            mainFrame.setVisible(true);
-        }
-    }
+
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        if (e.getSource() == jb2) {
+//            this.dispose();
+//            ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
+//            GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
+//            mainFrame.setVisible(true);
+//        }
+//    }
 }
+
