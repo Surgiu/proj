@@ -134,27 +134,29 @@ public class Chessboard {
         if (!isValidMove(src, dest)) {
             throw new IllegalArgumentException("Illegal chess move!");
         }
-        setChessPiece(dest, removeChessPiece(src));
-        if (removeChessPiece(src) != null) {
-            if (removeChessPiece(src).getOwner().equals(PlayerColor.BLUE)) {
+        ChessPiece piece = removeChessPiece(src);
+        if (piece != null) {
+            if (piece.getOwner().equals(PlayerColor.BLUE)) {
                 getGridAt(dest).setOccupy(2);
             } else {
                 getGridAt(dest).setOccupy(1);
             }
         }
+        setChessPiece(dest, piece);
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
         if (!isValidCapture(src, dest)) {
             throw new IllegalArgumentException("Illegal chess capture!");
         } else {
+            ChessPiece predator = getChessPieceAt(src);
             removeChessPiece(dest);
-            moveChessPiece(src, dest);
-            if (removeChessPiece(src).getOwner().equals(PlayerColor.BLUE)) {
+            if (predator.getOwner().equals(PlayerColor.BLUE)) {
                 getGridAt(dest).setOccupy(2);
             } else {
                 getGridAt(dest).setOccupy(1);
             }
+            moveChessPiece(src, dest);
         }
     }
 

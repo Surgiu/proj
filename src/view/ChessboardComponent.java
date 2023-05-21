@@ -47,7 +47,6 @@ public class ChessboardComponent extends JComponent {
         Cell[][] grid = chessboard.getGrid();
         for (int i = 0; i < CHESSBOARD_ROW_SIZE.getNum(); i++) {
             for (int j = 0; j < CHESSBOARD_COL_SIZE.getNum(); j++) {
-                // TODO: Implement the initialization checkerboard
                 if (grid[i][j].getPiece() != null) {
                     ChessPiece chessPiece = grid[i][j].getPiece();
                     switch (chessPiece.getName()) {
@@ -67,7 +66,6 @@ public class ChessboardComponent extends JComponent {
     }
 
     public void initiateGridComponents() {
-        //完善更多类型
         riverCell.add(new ChessboardPoint(3,1));
         riverCell.add(new ChessboardPoint(3,2));
         riverCell.add(new ChessboardPoint(4,1));
@@ -92,7 +90,7 @@ public class ChessboardComponent extends JComponent {
         densCell.add(new ChessboardPoint(0,3));
         densCell.add(new ChessboardPoint(8,3));
 
-        for (int i = 3; i < 6; i++) {
+        for (int i = 3; i < 6; i++) {//river area
             for (int j = 0; j < CHESSBOARD_COL_SIZE.getNum(); j++) {
                 ChessboardPoint temp = new ChessboardPoint(i, j);
                 CellComponent cell;
@@ -107,7 +105,7 @@ public class ChessboardComponent extends JComponent {
             }
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {//red terrain
             for (int j = 0; j < CHESSBOARD_COL_SIZE.getNum(); j++) {
                 ChessboardPoint temp = new ChessboardPoint(i, j);
                 CellComponent cell;
