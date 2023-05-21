@@ -156,7 +156,7 @@ public class Chessboard {
             } else {
                 getGridAt(dest).setOccupy(1);
             }
-            moveChessPiece(src, dest);
+            setChessPiece(dest,predator);
         }
     }
 

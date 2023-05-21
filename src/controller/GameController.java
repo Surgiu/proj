@@ -60,9 +60,9 @@ public class GameController implements GameListener {
         if (selectedPoint != null && model.isValidMove(selectedPoint, point)) {
             model.moveChessPiece(selectedPoint, point);
             model.inTrap(point);
-            model.escapeTrap(selectedPoint,point);
+            model.escapeTrap(selectedPoint, point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
-            if(model.inDens(point)) {
+            if (model.inDens(point)) {
                 return;
             }
             selectedPoint = null;
@@ -87,9 +87,12 @@ public class GameController implements GameListener {
         } else {
             if (model.isValidCapture(selectedPoint, point)) {
                 model.captureChessPiece(selectedPoint, point);
-                ChessComp successive = view.removeChessComponentAtGrid(point);
                 view.removeChessComponentAtGrid(point);
-                view.setChessComponentAtGrid(point, successive);
+                view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
+                selectedPoint = null;
+                view.repaint();
+            } else if (!model.isValidCapture(selectedPoint, point)) {
+                System.err.println("Illegal");
             }
         }
     }
