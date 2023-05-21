@@ -33,6 +33,7 @@ public class ChessGameFrame extends JFrame {
 
 
         addChessboard();
+        addBaseLabel();
         addLabel();
         addHelloButton();
 
