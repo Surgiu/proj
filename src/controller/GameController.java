@@ -25,19 +25,13 @@ public class GameController implements GameListener {
         this.view = view;
         this.model = model;
         this.currentPlayer = PlayerColor.BLUE;
-
         view.registerController(this);
         initialize();
-        view.initiateChessComponent(model);
         view.repaint();
     }
 
     private void initialize() {
-        for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
-            for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
-
-            }
-        }
+        view.initiateChessComponent(model);
     }
 
     // after a valid move swap the player
@@ -90,10 +84,11 @@ public class GameController implements GameListener {
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
                 selectedPoint = null;
-                view.repaint();
             } else if (!model.isValidCapture(selectedPoint, point)) {
-                System.err.println("Illegal");
+                System.err.println("Illegal capture");
             }
+            swapColor();
+            view.repaint();
         }
     }
 }
