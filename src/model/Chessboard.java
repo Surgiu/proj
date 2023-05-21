@@ -134,15 +134,16 @@ public class Chessboard {
         if (!isValidMove(src, dest)) {
             throw new IllegalArgumentException("Illegal chess move!");
         }
-        ChessPiece piece = removeChessPiece(src);
-        if (piece != null) {
-            if (piece.getOwner().equals(PlayerColor.BLUE)) {
+        ChessPiece piece0 = getChessPieceAt(src);
+        if (piece0 != null) {
+            if (piece0.getOwner().equals(PlayerColor.BLUE)) {
                 getGridAt(dest).setOccupy(2);
             } else {
                 getGridAt(dest).setOccupy(1);
             }
+            getGridAt(src).setOccupy(0);
+            setChessPiece(dest, removeChessPiece(src));
         }
-        setChessPiece(dest, piece);
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
@@ -150,13 +151,13 @@ public class Chessboard {
             throw new IllegalArgumentException("Illegal chess capture!");
         } else {
             ChessPiece predator = getChessPieceAt(src);
-            removeChessPiece(dest);
             if (predator.getOwner().equals(PlayerColor.BLUE)) {
                 getGridAt(dest).setOccupy(2);
             } else {
                 getGridAt(dest).setOccupy(1);
             }
-            setChessPiece(dest,predator);
+            getGridAt(src).setOccupy(0);
+            setChessPiece(dest, removeChessPiece(dest));
         }
     }
 
@@ -174,50 +175,59 @@ public class Chessboard {
             return false;
         }
         if (piece.getName().equals("Tiger") || piece.getName().equals("Lion")) {
-            if (src.getCol() == dest.getCol() || src.getRow() == dest.getRow()) {
-                if (pureRiver(src, dest)) {
-                    return getGridAt(dest).getType() == 0;
+            if (calculateDistance(src, dest) > 1) {//cross river
+                if (src.getCol() == dest.getCol() || src.getRow() == dest.getRow()) {
+                    if (pureRiver(src, dest)) {
+                        return getGridAt(dest).getType() == 0 && dens(src, dest);
+                    }
                 }
+            } else if (calculateDistance(src, dest) == 1) {//other cases
+                return getGridAt(dest).getType() != 1 && dens(src, dest);
             }
         }
         if (piece.getName().equals("Rat")) {
-            return calculateDistance(src, dest) == 1;
+            return calculateDistance(src, dest) == 1 && dens(src, dest);
         }
         if (getGridAt(dest).getType() != 1) {
-            return calculateDistance(src, dest) == 1;
-        }
-        //不能走到自己方的兽穴里
-        if ((!getChessPieceAt(src).getOwner().equals(PlayerColor.BLUE)
-                || getGridAt(dest).getType() != 3 || getGridAt(dest).getTerrain() != 20)) {
-            if (getChessPieceAt(src).getOwner().equals(PlayerColor.RED) && getGridAt(dest).getType() == 3) {
-                getGridAt(dest);
-            }
+            return calculateDistance(src, dest) == 1 && dens(src, dest);
         }
         return false;
+    }
+
+    private boolean dens(ChessboardPoint src, ChessboardPoint dest) {//不能走到自己方的兽穴里
+        if (getGridAt(dest).getType() == 3) {
+            if ((getChessPieceAt(src).getOwner().equals(PlayerColor.BLUE)
+                    && getGridAt(dest).getTerrain() == 10)
+                    || (getChessPieceAt(src).getOwner().equals(PlayerColor.RED)
+                    && getGridAt(dest).getTerrain() == 20)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean pureRiver(ChessboardPoint start, ChessboardPoint end) {
-        if (start.getRow() == end.getRow()) {
-            int lower = Math.min(start.getCol(), end.getCol()) + 1;
-            int upper = Math.max(start.getCol(), end.getCol()) - 1;
+        if (start.getRow() == end.getRow()) {//横跳
+            int left = Math.min(start.getCol(), end.getCol()) + 1;
+            int right = Math.max(start.getCol(), end.getCol()) - 1;
             int count = -1;
-            for (int i = lower; i <= upper; i++) {
+            for (int i = left; i <= right; i++) {
                 if (grid[start.getRow()][i].getType() == 1) {
                     count++;
                 }
-                if (count == -1 && noColBarrier(start.getRow(), lower, upper)) {
+                if (count == -1 && noRowBarrier(start.getRow(), left, right)) {
                     return true;
                 }
             }
-        } else if (start.getCol() == end.getCol()) {
-            int left = Math.min(start.getRow(), end.getRow()) + 1;
-            int right = Math.max(start.getRow(), end.getRow()) - 1;
+        } else if (start.getCol() == end.getCol()) {//纵跳
+            int upper = Math.min(start.getRow(), end.getRow()) + 1;
+            int lower = Math.max(start.getRow(), end.getRow()) - 1;
             int count = -1;
-            for (int i = left; i <= right; i++) {
-                if (grid[start.getCol()][i].getType() != 1) {
+            for (int i = upper; i <= lower; i++) {
+                if (grid[i][start.getCol()].getType() != 1) {
                     count++;
                 }
-                if (count == -1 && noRowBarrier(start.getCol(), left, right)) {
+                if (count == -1 && noColBarrier(start.getCol(), upper, lower)) {
                     return true;
                 }
             }
@@ -225,7 +235,7 @@ public class Chessboard {
         return false;
     }
 
-    private boolean noColBarrier(int row, int s, int e) {
+    private boolean noRowBarrier(int row, int s, int e) {
         int count = -1;
         for (int i = s; i <= e; i++) {
             if (getChessPieceAt(new ChessboardPoint(row, i)) != null) {
@@ -235,7 +245,7 @@ public class Chessboard {
         return count == -1;
     }
 
-    private boolean noRowBarrier(int col, int s, int e) {
+    private boolean noColBarrier(int col, int s, int e) {
         int count = -1;
         for (int i = s; i <= e; i++) {
             if (getChessPieceAt(new ChessboardPoint(i, col)) != null) {
@@ -252,25 +262,28 @@ public class Chessboard {
         if (predator != null && dest != null
                 && getGridAt(src).getOccupy() != getGridAt(dest).getOccupy()) {
             switch (predator.getName()) {
-                case "Lion", "Tiger" -> {//lion or tiger near the river
-                    if (src.getCol() == dest.getCol() || src.getRow() == dest.getRow()) {
-                        if (pureRiver(src, dest) && getGridAt(dest).getType() == 0) {
-                            return predator.getRank() >= target.getRank();
+                case "Lion", "Tiger" -> {
+                    if (calculateDistance(src, dest) > 1) {//lion or tiger near the river
+                        if (src.getCol() == dest.getCol() || src.getRow() == dest.getRow()) {
+                            if (pureRiver(src, dest) && getGridAt(dest).getType() == 0) {
+                                return predator.canCapture(target);
+                            }
                         }
+                    } else {//lion or tiger on the ground
+                        return predator.canCapture(target);
                     }
                 }
-                case "Rat" -> {//rat in the river
-                    if (getGridAt(src).getType() == 1) {
+                case "Rat" -> {
+                    if (getGridAt(src).getType() == 1) {//rat in the river
                         return false;
-                    }
-                    if (getGridAt(dest).getType() == 0) {
-                        return false;
+                    } else {//rat on the ground
+                        return predator.canCapture(target);
                     }
                 }
                 default -> {
                     return predator.canCapture(target)
                             && calculateDistance(src, dest) == 1
-                            && getGridAt(dest).getType() == 0;
+                            && getGridAt(dest).getType() != 1;
                 }
             }
         }

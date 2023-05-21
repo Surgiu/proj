@@ -5,8 +5,8 @@ public class User {
     private String psd;
 
     public User(String name, String psd) {
-        this.name = name;
-        this.psd = psd;
+        this.name = "";
+        this.psd = "";
     }
 
     public String getName() {
