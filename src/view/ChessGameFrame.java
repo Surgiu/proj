@@ -1,10 +1,12 @@
 package view;
 
 import controller.GameController;
+import model.Chessboard;
 
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+//zhushi
 /**
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
@@ -15,6 +17,8 @@ public class ChessGameFrame extends JFrame {
 
     private final int ONE_CHESS_SIZE;
     private ChessboardComponent chessboardComponent;
+    private static JFrame enterFrame;
+    private static JLabel enter;
 
     public ChessGameFrame(int width, int height) {
         setTitle("2023 CS109 Project Demo"); //设置标题
