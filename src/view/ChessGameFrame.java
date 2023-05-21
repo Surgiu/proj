@@ -85,42 +85,41 @@ public class ChessGameFrame extends JFrame {
         JButton jb3 = new JButton("认输");
         JButton jb4 = new JButton("再来一局");
         JButton jb5 = new JButton("返回主页");
-//        jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
+
+        jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
         jb2.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);
         jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
         jb4.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
         jb5.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
 
-        JMenuBar bar=new JMenuBar();
-        bar.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
-        JMenu menu=new JMenu("菜单1");
-        JMenuItem item1 = new JMenuItem("⼆级菜单1");
-        JMenuItem item2 = new JMenuItem("⼆级菜单2");
-        JMenuItem item3 = new JMenuItem("⼆级菜单3");
-        menu.add(item1);
-        menu.add(item2);
-        menu.add(item3);
-        jb1.add(menu);
+        add(jb1);
+        add(jb2);
+        add(jb3);
+        add(jb4);
+        add(jb5);
 
+        jb1.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SettingGameFrame settingGameFrame=new SettingGameFrame();
+                settingGameFrame.setVisible(true);
+            }
+        });
 //        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
 
         jb5.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
+//                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
 //                mainFrame.dispose();
-                mainFrame.setVisible(false);
+                ChessGameFrame.this.setVisible(false);
                 EnterFrame enterFrame =new EnterFrame();
                 enterFrame.setVisible(true);
             }
         });
 
 //        jb1.setFont(new Font("Rockwell", Font.BOLD, 20));
-        add(jb1);
-        add(jb2);
-        add(jb3);
-        add(jb4);
-        add(jb5);
+
     }
 
 //    private void addLoadButton() {

@@ -58,6 +58,16 @@ public class EnterFrame extends JFrame  {
 //                销毁当前界面
             }
         });
+
+        jb3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SettingGameFrame settingGameFrame=new SettingGameFrame();
+                settingGameFrame.setVisible(true);
+            }
+        });
+
+        jb4.addActionListener(e -> System.exit(0));
 //    }
 
 
