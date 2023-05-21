@@ -1,6 +1,5 @@
 package controller;
 
-
 import listener.GameListener;
 import model.*;
 import view.CellComponent;
@@ -43,7 +42,7 @@ public class GameController implements GameListener {
 
     // after a valid move swap the player
     private void swapColor() {
-        currentPlayer = currentPlayer == PlayerColor.BLUE ? PlayerColor.RED : PlayerColor.BLUE;
+        currentPlayer = (currentPlayer == PlayerColor.BLUE) ? PlayerColor.RED : PlayerColor.BLUE;
     }
 
     private boolean win() {
@@ -60,12 +59,15 @@ public class GameController implements GameListener {
     public void onPlayerClickCell(ChessboardPoint point, CellComponent component) {
         if (selectedPoint != null && model.isValidMove(selectedPoint, point)) {
             model.moveChessPiece(selectedPoint, point);
+            model.inTrap(point);
+            model.escapeTrap(selectedPoint,point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
+            if(model.inDens(point)) {
+                return;
+            }
             selectedPoint = null;
             swapColor();
             view.repaint();
-            // TODO: if the chess enter Dens or Traps and so on
-
         }
     }
 

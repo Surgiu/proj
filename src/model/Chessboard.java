@@ -284,4 +284,32 @@ public class Chessboard {
             }
         }
     }
+
+    public void escapeTrap(ChessboardPoint s, ChessboardPoint e) {
+        ChessPiece piece = getGridAt(s).getPiece();
+        if (getGridAt(s).getType() == 2 && getGridAt(e).getType() != 2) {
+            int rank = switch (piece.getName()) {
+                case "Elephant" -> 8;
+                case "Lion" -> 7;
+                case "Tiger" -> 6;
+                case "Leopard" -> 5;
+                case "Wolf" -> 4;
+                case "Dog" -> 3;
+                case "Cat" -> 2;
+                case "Rat" -> 1;
+                default -> 0;
+            };
+            piece.setRank(rank);
+        }
+    }
+
+    public boolean inDens(ChessboardPoint chessboardPoint) {
+        if (getChessPieceAt(chessboardPoint) != null) {
+            if (((getChessPieceAt(chessboardPoint).getOwner().equals(PlayerColor.BLUE) && getGridAt(chessboardPoint).getTerrain() == 10)
+                    || (getChessPieceAt(chessboardPoint).getOwner().equals(PlayerColor.RED) && getGridAt(chessboardPoint).getTerrain() == 20))) {
+                return getGridAt(chessboardPoint).getType() == 3;
+            }
+        }
+        return false;
+    }
 }
