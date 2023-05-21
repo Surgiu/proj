@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EnterFrame extends JFrame implements ActionListener {
+public class EnterFrame extends JFrame  {
     private static JLabel enter;
     JButton jb1;
     JButton jb2;
@@ -44,22 +44,20 @@ public class EnterFrame extends JFrame implements ActionListener {
         enter.add(jb3);
         enter.add(jb4);
 
-//        jb2.addActionListener(new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//
-//                ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
-//                mainFrame.setVisible(true);
-//                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
+        jb2.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
+                mainFrame.setVisible(true);
+                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
 //                跳转的界面
-//
+
 //                EnterFrame enterFrame = new EnterFrame();
-//                enterFrame.setVisible(false);
+                EnterFrame.this.setVisible(false);
 //                enterFrame.dispose();
 //                销毁当前界面
-//            }
-//        });
+            }
+        });
 //    }
 
 
@@ -68,13 +66,23 @@ public class EnterFrame extends JFrame implements ActionListener {
 //        enterFrame.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jb2) {
-            this.dispose();
-            ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
-            GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
-            mainFrame.setVisible(true);
-        }
-    }
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        if (e.getSource() == jb2) {
+//            this.dispose();
+//            ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
+//            GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
+//            mainFrame.setVisible(true);
+//        }
+//    }
+
+//     jb2.addActionListener(e -> {
+//        SwingUtilities.invokeLater(() -> {
+//            dispose();
+//            ChessGameFrame ChessGameFrame = new ChessGameFrame(800, 1000, server, user);
+//            GameController gameController = new GameController(ChessGameFrame.getChessboardComponent(), new Chessboard(), GameMode.AI_2);
+//            ChessGameFrame.setVisible(true);
+//            this.dispose();
+//        });
+//    });
 }
