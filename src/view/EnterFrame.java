@@ -13,6 +13,7 @@ public class EnterFrame extends JFrame  {
     JButton jb2;
     JButton jb3;
     JButton jb4;
+    JButton jb5;
 
     public EnterFrame() {
         this.setBounds(485, 210, 740, 550);
@@ -32,10 +33,12 @@ public class EnterFrame extends JFrame  {
         jb2 = new JButton("双人模式");
         jb3 = new JButton("设置");
         jb4 = new JButton("退出");
+        jb5 = new JButton("登录");
         jb1.setBounds(55, 40, 160, 60);
         jb2.setBounds(55, 130, 160, 60);
         jb3.setBounds(650, 30, 60, 30);
-        jb4.setBounds(650, 80, 60, 30);
+        jb5.setBounds(650, 80, 60, 30);
+        jb4.setBounds(650, 130, 60, 30);
 //        jb2.setEnabled(true);
 //        jb2.setBorderPainted(true);
 //        这两句不写感觉没区别
@@ -43,6 +46,7 @@ public class EnterFrame extends JFrame  {
         enter.add(jb2);
         enter.add(jb3);
         enter.add(jb4);
+        enter.add(jb5);
 
         jb2.addActionListener(new AbstractAction() {
             @Override
@@ -68,7 +72,14 @@ public class EnterFrame extends JFrame  {
         });
 
         jb4.addActionListener(e -> System.exit(0));
-//    }
+
+        jb5.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LogInFrame logInFrame=new LogInFrame();
+                logInFrame.setVisible(true);
+            }
+        });
 
 
 //    public static void main(String[] args) {
