@@ -1,7 +1,10 @@
 package view;
 
+import listener.MusicTool;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class LogInFrame extends JFrame {
     public LogInFrame(){
@@ -34,8 +37,28 @@ public class LogInFrame extends JFrame {
         jp.add(jb1);
         jp.add(jb2);
         jp.add(jb3);
+
+        jb1.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+            }
+        });
+
+        jb2.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+            }
+        });
+
+        jb3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LogInFrame.this.dispose();
+            }
+        });
     }
-
-
-
 }

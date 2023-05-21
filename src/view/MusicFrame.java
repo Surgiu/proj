@@ -50,7 +50,6 @@ public class MusicFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 MusicTool musicTool=new MusicTool();
-
                 musicTool.loopBgm2();
             }
         });

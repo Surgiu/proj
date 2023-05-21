@@ -20,6 +20,7 @@ public class ChessGameFrame extends JFrame {
     private ChessboardComponent chessboardComponent;
     private static JFrame enterFrame;
     private static JLabel enter;
+    private static JLabel picture;
 
     public ChessGameFrame(int width, int height) {
         setTitle("2023 CS109 Project Demo"); //设置标题
@@ -31,7 +32,6 @@ public class ChessGameFrame extends JFrame {
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //设置程序关闭按键，如果点击右上方的叉就游戏全部关闭了
         setLayout(null);
-
 
         addChessboard();
         addBaseLabel();
@@ -64,7 +64,7 @@ public class ChessGameFrame extends JFrame {
     private void addLabel() {
         JLabel statusLabel = new JLabel("Sample label");
         statusLabel.setLocation(HEIGTH, HEIGTH / 10);
-        statusLabel.setSize(200, 60);
+        statusLabel.setSize(200, 0);
         statusLabel.setFont(new Font("Rockwell", Font.BOLD, 20));
         add(statusLabel);
     }
@@ -74,6 +74,9 @@ public class ChessGameFrame extends JFrame {
         chessboard.setBounds(102,-48,623,900);
 //        this.getContentPane().add(chessboard);
         add(chessboard);
+        picture=new JLabel(new ImageIcon("image/picture1.png"));
+        picture.setBounds(0,0,1100,810);
+        add(picture);
     }
 
     /**
@@ -83,22 +86,21 @@ public class ChessGameFrame extends JFrame {
     private void addButton() {
         JButton jb1 = new JButton("设置");
         JButton jb2 = new JButton("悔棋");
-        JButton jb3 = new JButton("认输");
+//        JButton jb3 = new JButton("认输");
         JButton jb4 = new JButton("再来一局");
         JButton jb5 = new JButton("返回主页");
 
         jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
         jb2.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);
-        jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
-        jb4.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
-        jb5.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
+//        jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
+        jb4.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
+        jb5.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
 
-        add(jb1);
-        add(jb2);
-        add(jb3);
-        add(jb4);
-        add(jb5);
-
+        picture.add(jb1);
+        picture.add(jb2);
+//        picture.add(jb3);
+        picture.add(jb4);
+        picture.add(jb5);
         jb1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -107,7 +109,6 @@ public class ChessGameFrame extends JFrame {
             }
         });
 //        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
-
         jb5.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
