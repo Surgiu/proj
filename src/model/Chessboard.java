@@ -134,12 +134,13 @@ public class Chessboard {
         if (!isValidMove(src, dest)) {
             throw new IllegalArgumentException("Illegal chess move!");
         }
-        removeChessPiece(src);
         setChessPiece(dest, removeChessPiece(src));
-        if (removeChessPiece(src).getOwner().equals(PlayerColor.BLUE)) {
-            getGridAt(dest).setOccupy(2);
-        } else {
-            getGridAt(dest).setOccupy(1);
+        if (removeChessPiece(src) != null) {
+            if (removeChessPiece(src).getOwner().equals(PlayerColor.BLUE)) {
+                getGridAt(dest).setOccupy(2);
+            } else {
+                getGridAt(dest).setOccupy(1);
+            }
         }
     }
 
