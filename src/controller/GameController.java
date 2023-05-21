@@ -95,6 +95,7 @@ public class GameController implements GameListener {
 
     public void restart() {
         model.initialize();
+        view.clear();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
         view.repaint();

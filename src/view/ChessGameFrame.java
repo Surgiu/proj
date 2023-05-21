@@ -32,7 +32,6 @@ public class ChessGameFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //设置程序关闭按键，如果点击右上方的叉就游戏全部关闭了
         setLayout(null);
 
-
         addChessboard();
         addBaseLabel();
         addLabel();
@@ -118,6 +117,13 @@ public class ChessGameFrame extends JFrame {
                 enterFrame.setVisible(true);
             }
         });
+        jb4.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chessboardComponent.getGameController().restart();
+            }
+        });
+
 
 //        jb1.setFont(new Font("Rockwell", Font.BOLD, 20));
 

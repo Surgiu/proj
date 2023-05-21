@@ -2,9 +2,10 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class LogInFrame extends JFrame {
-    public LogInFrame(){
+    public LogInFrame() {
         this.setBounds(720, 410, 220, 180);
         this.setTitle("登录");
         //清空默认局部方式
@@ -35,7 +36,7 @@ public class LogInFrame extends JFrame {
         jp.add(jb2);
         jp.add(jb3);
     }
+    public void click(MouseEvent e) {
 
-
-
+    }
 }

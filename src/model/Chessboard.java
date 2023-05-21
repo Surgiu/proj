@@ -18,13 +18,16 @@ public class Chessboard {
     public Chessboard() {
         this.grid =
                 new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];//19X19
+        initialize();
+    }
+    public void initialize() {
         clear();
         initGrid();
         initPieces();
         initCoordinates();
     }
 
-    private void initGrid() {//默认上红下蓝
+    public void initGrid() {//默认上红下蓝
         grid = new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];
         //dens
         grid[0][3] = new Cell(3);
@@ -63,7 +66,7 @@ public class Chessboard {
         }
     }
 
-    private void initPieces() {
+    public void initPieces() {
         grid[0][0].setPiece(new ChessPiece(PlayerColor.RED, "Lion", 7));
         grid[0][6].setPiece(new ChessPiece(PlayerColor.RED, "Tiger", 7));
         grid[1][1].setPiece(new ChessPiece(PlayerColor.RED, "Dog", 3));
@@ -82,7 +85,7 @@ public class Chessboard {
         grid[8][6].setPiece(new ChessPiece(PlayerColor.BLUE, "Lion", 7));
     }
 
-    private void initCoordinates() {
+    public void initCoordinates() {
         densCoordinates.add(new ChessboardPoint(0, 3));
         densCoordinates.add(new ChessboardPoint(8, 3));
         trapCoordinates.add(new ChessboardPoint(0, 2));
@@ -99,7 +102,7 @@ public class Chessboard {
         }
     }
 
-    private void clear() {
+    public void clear() {
         for (Cell[] cells : grid) {
             for (Cell cell : cells) {
                 if (cell != null) {
