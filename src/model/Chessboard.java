@@ -13,6 +13,7 @@ public class Chessboard {
     private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
+    private HashSet<ChessboardPoint> canMove = new HashSet<>();
 
     public Chessboard() {
         this.grid =
@@ -327,5 +328,12 @@ public class Chessboard {
             }
         }
         return false;
+    }
+
+    public void highlight(ChessboardPoint chessboardPoint) {
+        ChessPiece chessPiece = getChessPieceAt(chessboardPoint);
+        if (chessPiece != null) {//可优化：方向数组
+
+        }
     }
 }
