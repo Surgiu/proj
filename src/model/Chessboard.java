@@ -3,19 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.TreeSet;
-
 /**
  * This class store the real chess information.
  * The Chessboard has 9*7 cells, and each cell has a position for chess
  */
 public class Chessboard {
     private Cell[][] grid;
-    private ChessboardPoint coordinate;
     private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
-    private static int num;
+    private int num;
 
     public Chessboard() {
         this.grid =
@@ -162,6 +159,7 @@ public class Chessboard {
             getGridAt(src).setOccupy(0);
             setChessPiece(dest, removeChessPiece(src));
             num++;
+            System.out.println(num);
         }
     }
 
@@ -178,6 +176,7 @@ public class Chessboard {
             getGridAt(src).setOccupy(0);
             setChessPiece(dest, removeChessPiece(src));
             num++;
+            System.out.println(num);
         }
     }
 
