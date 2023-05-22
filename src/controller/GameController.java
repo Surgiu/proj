@@ -62,7 +62,8 @@ public class GameController implements GameListener {
             model.moveChessPiece(selectedPoint, point);
             model.inTrap(point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
-            if (model.inDens(point)) {
+            if (isWin()) {
+                view.showWin(winner);
                 return;
             }
             selectedPoint = null;
