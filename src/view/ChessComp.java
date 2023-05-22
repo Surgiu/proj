@@ -40,8 +40,11 @@ public class ChessComp extends JComponent {
         // FIXME: Use library to find the correct offset.
         g2.drawOval(0, 0, getWidth(), getHeight());
         if (isSelected()) { // Highlights the model if selected.
-            g.setColor(Color.cyan);
-            g.drawOval(0, 0, getWidth(), getHeight());
+            BasicStroke circle = new BasicStroke(120.0f);
+            Graphics2D graphics2D= (Graphics2D)g;
+            graphics2D.setStroke(circle);
+            graphics2D.setColor(Color.cyan);
+            graphics2D.drawOval(0, 0, getWidth(), getHeight());
         }
     }
 

@@ -59,10 +59,12 @@ public class GameController implements GameListener {
     public void onPlayerClickCell(ChessboardPoint point, CellComponent component) {
         if (selectedPoint != null) {
             model.escapeTrap(selectedPoint, point);
+            highlightOff(selectedPoint);
             model.moveChessPiece(selectedPoint, point);
             model.inTrap(point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
-            if (model.inDens(point)) {
+            if (isWin()) {
+                view.showWin(winner);
                 return;
             }
             selectedPoint = null;
@@ -77,13 +79,14 @@ public class GameController implements GameListener {
         if (selectedPoint == null) {//如果还没被选中，那么就让它被选中
             if (model.getChessPieceOwner(point).equals(currentPlayer)) {
                 selectedPoint = point;
+                highlightOn(selectedPoint);
                 component.setSelected(true);
-                //highlight(point);
                 component.repaint();
             }
         } else if (selectedPoint.equals(point)) {//如果放到自己的位置，就放弃选中
             selectedPoint = null;
             component.setSelected(false);
+            highlightOff(point);
             component.repaint();
         } else {
             if (model.isValidCapture(selectedPoint, point)) {//如果是有效动作，进行相应操作
@@ -96,6 +99,7 @@ public class GameController implements GameListener {
                 selectedPoint = null;
                 System.err.println("Illegal capture");
             }
+            highlightOff(point);
             view.repaint();
             //test();
         }
@@ -127,10 +131,12 @@ public class GameController implements GameListener {
             System.out.println();
         }
     }
-    public void highlight(ChessboardPoint point) {
-        model.highlight(point);
-        view.drawHighlight(model);
+    public void highlightOn(ChessboardPoint point) {
+        view.drawHighlight(model.highlight(point));
         view.repaint();
     }
-
+    public void highlightOff (ChessboardPoint point) {
+        view.drawHighlightOff(model.highlight(point));
+        view.repaint();
+    }
 }

@@ -15,7 +15,7 @@ public class Chessboard {
     private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
-    private List<Cell> canMove = new ArrayList<>();
+    private static int num;
 
     public Chessboard() {
         this.grid =
@@ -150,6 +150,7 @@ public class Chessboard {
             }
             getGridAt(src).setOccupy(0);
             setChessPiece(dest, removeChessPiece(src));
+            num++;
         }
     }
 
@@ -165,6 +166,7 @@ public class Chessboard {
             }
             getGridAt(src).setOccupy(0);
             setChessPiece(dest, removeChessPiece(src));
+            num++;
         }
     }
 
@@ -178,7 +180,6 @@ public class Chessboard {
 
     public boolean isValidMove(ChessboardPoint src, ChessboardPoint dest) {
         ChessPiece piece = getChessPieceAt(src);
-//        ChessPiece piece1= getChessPieceAt(dest);
         if (piece == null || getChessPieceAt(dest) != null) {
             return false;
         }
@@ -337,24 +338,22 @@ public class Chessboard {
         return false;
     }
 
-    public void highlight(ChessboardPoint here) {
+    public ArrayList<ChessboardPoint> highlight(ChessboardPoint here) {
         //if current player in controller
         if (getChessPieceAt(here) == null) {
-            return;
+            return null;
         }
+        ArrayList<ChessboardPoint>chessboardPoints = new ArrayList<>();
         for (int i = here.getRow() - 1; i <= here.getRow() + 1; i++) {
             for (int j = here.getCol() - 1; j <= here.getCol() + 1; j++) {
                 if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
                         && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
-                    if (isValidMove(here, grid[i][j].getCoordinate())) {
-                        canMove.add(grid[i][j]);
+                    if (isValidMove(here, new ChessboardPoint(i, j))) {
+                        chessboardPoints.add(new ChessboardPoint(i, j));
                     }
                 }
             }
         }
-    }
-
-    public List<Cell> getCanMove() {
-        return canMove;
+        return chessboardPoints;
     }
 }

@@ -127,12 +127,12 @@ public class ChessGameFrame extends JFrame {
         });
 
 
-
 //        jb1.setFont(new Font("Rockwell", Font.BOLD, 20));
 
     }
+
     public void gameOver() {
-        //游戏结束的提示
+        new JDialog();
     }
 
 //    private void addLoadButton() {

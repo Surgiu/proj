@@ -24,5 +24,6 @@ public class CellComponent extends JPanel {
 //        super.paintComponents(g);
 //        g.setColor(background);
 //        g.fillRect(1, 1, this.getWidth()-1, this.getHeight()-1);
+//        this.setOpaque(false);
 //    }
 }
