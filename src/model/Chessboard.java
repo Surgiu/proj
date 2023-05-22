@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -13,13 +15,14 @@ public class Chessboard {
     private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
-    private HashSet<ChessboardPoint> canMove = new HashSet<>();
+    private List<Cell> canMove = new ArrayList<>();
 
     public Chessboard() {
         this.grid =
                 new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];//19X19
         initialize();
     }
+
     public void initialize() {
         clear();
         initGrid();
@@ -334,10 +337,24 @@ public class Chessboard {
         return false;
     }
 
-    public void highlight(ChessboardPoint chessboardPoint) {
-        ChessPiece chessPiece = getChessPieceAt(chessboardPoint);
-        if (chessPiece != null) {//可优化：方向数组
-
+    public void highlight(ChessboardPoint here) {
+        //if current player in controller
+        if (getChessPieceAt(here) == null) {
+            return;
         }
+        for (int i = here.getRow() - 1; i <= here.getRow() + 1; i++) {
+            for (int j = here.getCol() - 1; j <= here.getCol() + 1; j++) {
+                if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
+                        && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
+                    if (isValidMove(here, grid[i][j].getCoordinate())) {
+                        canMove.add(grid[i][j]);
+                    }
+                }
+            }
+        }
+    }
+
+    public ArrayList<Cell> getCanMove() {
+        return (ArrayList<Cell>) canMove;
     }
 }

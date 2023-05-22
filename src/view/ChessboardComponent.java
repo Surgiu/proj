@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static model.Constant.CHESSBOARD_COL_SIZE;
@@ -204,6 +205,11 @@ public class ChessboardComponent extends JComponent {
                 System.out.print("One chess here and ");
                 gameController.onPlayerClickChessPiece(getChessboardPoint(e.getPoint()), (ChessComp) clickedComponent.getComponents()[0]);
             }
+        }
+    }
+    public void drawHighlight(List<ChessboardPoint> points) {
+        for (int i = 0; i < points.size(); i++) {
+            //gridComponents[points.get(i).getRow()][points.get(i).getCol()].paintComponent();
         }
     }
 
