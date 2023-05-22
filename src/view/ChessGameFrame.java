@@ -86,19 +86,19 @@ public class ChessGameFrame extends JFrame {
     private void addButton() {
         JButton jb1 = new JButton("设置");
         JButton jb2 = new JButton("悔棋");
-//        JButton jb3 = new JButton("认输");
+        JButton jb3 = new JButton("更换棋子");
         JButton jb4 = new JButton("再来一局");
         JButton jb5 = new JButton("返回主页");
 
         jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
-        jb2.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);
-//        jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
-        jb4.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
-        jb5.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
+        jb2.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
+        jb3.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);
+        jb4.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
+        jb5.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
 
         picture.add(jb1);
         picture.add(jb2);
-//        picture.add(jb3);
+        picture.add(jb3);
         picture.add(jb4);
         picture.add(jb5);
         jb1.addActionListener(new AbstractAction() {
@@ -106,6 +106,13 @@ public class ChessGameFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 SettingGameFrame settingGameFrame=new SettingGameFrame();
                 settingGameFrame.setVisible(true);
+            }
+        });
+
+        jb3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
 //        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
