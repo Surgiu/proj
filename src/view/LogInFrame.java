@@ -12,7 +12,7 @@ public class LogInFrame extends JFrame {
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         //不能改变窗口大小
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
 

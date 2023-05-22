@@ -106,13 +106,24 @@ public class Chessboard {
     }
 
     public void clear() {
-        for (Cell[] cells : grid) {
+        /*for (Cell[] cells : grid) {
             for (Cell cell : cells) {
                 if (cell != null) {
                     cell.setPiece(null);
                 }
             }
         }
+//zyq
+         */
+        for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
+            for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
+                if (grid[i][j] != null){
+                    System.out.println("here");
+                    grid[i][j].setPiece(null);
+                }
+            }
+        }
+
     }
 
     private ChessPiece getChessPieceAt(ChessboardPoint point) {

@@ -1,9 +1,5 @@
 package view;
 
-import controller.GameController;
-import listener.MusicTool;
-import model.Chessboard;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -19,7 +15,7 @@ public class SettingGameFrame extends JFrame {
         this.setBounds(715,200,290,620);
         this.setLayout(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
         background =new JLabel(new ImageIcon("image/background.png")) ;
