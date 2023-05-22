@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="现在关于游戏运行的大部分bug都无了">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="高亮初步">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/CellComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CellComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +89,7 @@
       <workItem from="1684729074644" duration="2230000" />
       <workItem from="1684737444377" duration="5032000" />
       <workItem from="1684743575055" duration="317000" />
-      <workItem from="1684752915386" duration="3518000" />
+      <workItem from="1684752915386" duration="5766000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -219,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684742510701</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="高亮初步">
+      <created>1684756582676</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1684756582676</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +253,7 @@
     <MESSAGE value="找到初始化的bug" />
     <MESSAGE value="吃子的bug终于解决了，呜呜呜" />
     <MESSAGE value="现在关于游戏运行的大部分bug都无了" />
-    <option name="LAST_COMMIT_MESSAGE" value="现在关于游戏运行的大部分bug都无了" />
+    <MESSAGE value="高亮初步" />
+    <option name="LAST_COMMIT_MESSAGE" value="高亮初步" />
   </component>
 </project>

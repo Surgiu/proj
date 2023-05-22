@@ -78,7 +78,7 @@ public class GameController implements GameListener {
             if (model.getChessPieceOwner(point).equals(currentPlayer)) {
                 selectedPoint = point;
                 component.setSelected(true);
-                highlight(point);
+                //highlight(point);
                 component.repaint();
             }
         } else if (selectedPoint.equals(point)) {//如果放到自己的位置，就放弃选中
@@ -129,6 +129,8 @@ public class GameController implements GameListener {
     }
     public void highlight(ChessboardPoint point) {
         model.highlight(point);
-
+        view.drawHighlight(model);
+        view.repaint();
     }
+
 }

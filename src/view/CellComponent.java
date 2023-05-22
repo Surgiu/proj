@@ -16,12 +16,13 @@ public class CellComponent extends JPanel {
         setLocation(location);
         setSize(size, size);
         this.background = background;
+        this.setOpaque(false);
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponents(g);
-        g.setColor(background);
-        g.fillRect(1, 1, this.getWidth()-1, this.getHeight()-1);
-    }
+//    @Override
+//    protected void paintComponent(Graphics g) {
+//        super.paintComponents(g);
+//        g.setColor(background);
+//        g.fillRect(1, 1, this.getWidth()-1, this.getHeight()-1);
+//    }
 }

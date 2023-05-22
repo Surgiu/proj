@@ -354,7 +354,7 @@ public class Chessboard {
         }
     }
 
-    public ArrayList<Cell> getCanMove() {
-        return (ArrayList<Cell>) canMove;
+    public List<Cell> getCanMove() {
+        return canMove;
     }
 }
