@@ -1,13 +1,15 @@
 package view;
 
+
 import controller.GameController;
 import model.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static model.Constant.CHESSBOARD_COL_SIZE;
 import static model.Constant.CHESSBOARD_ROW_SIZE;
@@ -48,7 +50,6 @@ public class ChessboardComponent extends JComponent {
             }
         }
     }
-
     public void clear2() {
         for (CellComponent[] gridComponent : gridComponents) {
             for (CellComponent cellComponent : gridComponent) {
@@ -57,6 +58,8 @@ public class ChessboardComponent extends JComponent {
             }
         }
     }
+
+
     /**
      * This method represents how to initiate ChessComponent
      * according to Chessboard information
@@ -69,16 +72,14 @@ public class ChessboardComponent extends JComponent {
                     ChessPiece chessPiece = grid[i][j].getPiece();
                     switch (chessPiece.getName()) {
                         case "Elephant" ->
-                                gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE, "象"));
-                        case "Lion" -> gridComponents[i][j].add(new LionComp(chessPiece.getOwner(), CHESS_SIZE, "狮"));
-                        case "Tiger" ->
-                                gridComponents[i][j].add(new TigerComp(chessPiece.getOwner(), CHESS_SIZE, "虎"));
-                        case "Leopard" ->
-                                gridComponents[i][j].add(new LeopardComp(chessPiece.getOwner(), CHESS_SIZE, "豹"));
-                        case "Wolf" -> gridComponents[i][j].add(new WolfComp(chessPiece.getOwner(), CHESS_SIZE, "狼"));
-                        case "Dog" -> gridComponents[i][j].add(new DogComp(chessPiece.getOwner(), CHESS_SIZE, "狗"));
-                        case "Cat" -> gridComponents[i][j].add(new CatComp(chessPiece.getOwner(), CHESS_SIZE, "猫"));
-                        case "Rat" -> gridComponents[i][j].add(new RatComp(chessPiece.getOwner(), CHESS_SIZE, "鼠"));
+                                gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE,"象"));
+                        case "Lion" -> gridComponents[i][j].add(new LionComp(chessPiece.getOwner(), CHESS_SIZE,"狮"));
+                        case "Tiger" -> gridComponents[i][j].add(new TigerComp(chessPiece.getOwner(), CHESS_SIZE,"虎"));
+                        case "Leopard" -> gridComponents[i][j].add(new LeopardComp(chessPiece.getOwner(), CHESS_SIZE,"豹"));
+                        case "Wolf" -> gridComponents[i][j].add(new WolfComp(chessPiece.getOwner(), CHESS_SIZE,"狼"));
+                        case "Dog" -> gridComponents[i][j].add(new DogComp(chessPiece.getOwner(), CHESS_SIZE,"狗"));
+                        case "Cat" -> gridComponents[i][j].add(new CatComp(chessPiece.getOwner(), CHESS_SIZE,"猫"));
+                        case "Rat" -> gridComponents[i][j].add(new RatComp(chessPiece.getOwner(), CHESS_SIZE,"鼠"));
                     }
                 }
             }
@@ -214,25 +215,10 @@ public class ChessboardComponent extends JComponent {
             }
         }
     }
-
-    public void drawHighlight(ArrayList<ChessboardPoint>points) {
-        for (int i = 0; i < points.size(); i++) {
-            gridComponents[points.get(i).getRow()][points.get(i).getCol()].setOpaque(true);
+    public void drawHighlight(Chessboard chessboard) {
+        for (int i = 0; i < chessboard.getCanMove().size(); i++) {
+            //gridComponents[points.get(i).getRow()][points.get(i).getCol()].paintComponent();
         }
-    }
-    public void drawHighlightOff(ArrayList<ChessboardPoint>points) {
-        for (int i = 0; i < points.size(); i++) {
-            gridComponents[points.get(i).getRow()][points.get(i).getCol()].setOpaque(false);
-        }
-    }
-
-    public void showWin(PlayerColor playerColor) {
-        String winner = "";
-        switch (playerColor) {
-            case BLUE -> winner = "游戏结束，蓝胜！";
-            case RED -> winner = "游戏结束，红胜！";
-        }
-        JOptionPane.showMessageDialog(this, winner);
     }
 
     public GameController getGameController() {

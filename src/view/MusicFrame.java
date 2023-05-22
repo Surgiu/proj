@@ -1,12 +1,12 @@
 package view;
 
-import listener.MusicTool;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class MusicFrame extends JFrame{
-    private static JLabel music;
+    private JLabel music;
+    private boolean Bgm1Play = false;
+    private boolean Bgm2Play = false;
     JButton jb1;
     JButton jb2;
     JButton jb3;
@@ -16,7 +16,7 @@ public class MusicFrame extends JFrame{
         this.setBounds(715,360,290,340);
         this.setLayout(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
         music =new JLabel(new ImageIcon("image/music.png")) ;
@@ -42,22 +42,58 @@ public class MusicFrame extends JFrame{
         jb1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MusicTool musicTool=new MusicTool();
-                musicTool.MusicTool1();
+                //MusicTool musicTool=new MusicTool();
+                //musicTool.MusicTool1();
+                Bgm1Play = true;
+                Bgm2Play = false;
+                if (Bgm1Play) {
+                    MusicTool musicTool=new MusicTool();
+                    musicTool.MusicTool1();
+                    }
+                if (!Bgm1Play){
+                    musicTool.stop1();
+                }
+                if (Bgm2Play) {
+                    MusicTool musicTool=new MusicTool();
+                    musicTool.MusicTool2();
+                }
+                if (!Bgm2Play){
+                    musicTool.stop2();
+                }
             }
         });
         jb2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MusicTool musicTool=new MusicTool();
-                musicTool.MusicTool2();
+                //MusicTool musicTool=new MusicTool();
+                //musicTool.MusicTool2();
+                Bgm2Play = true;
+                Bgm1Play = false;
+                if (Bgm2Play) {
+                    MusicTool musicTool=new MusicTool();
+                    musicTool.MusicTool2();
+                }else{
+                    musicTool.stop2();
+                }
+                if (Bgm1Play) {
+                    MusicTool musicTool=new MusicTool();
+                    musicTool.MusicTool1();
+                }else{
+                    musicTool.stop1();
+                }
+//                if (!Bgm1Play){
+
+//                }
             }
         });
         jb3.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Bgm1Play = false;
+                Bgm2Play = false;
                 MusicTool musicTool=new MusicTool();
-                musicTool.stop();
+                musicTool.stop1();
+                musicTool.stop2();
             }
         });
 
@@ -67,7 +103,6 @@ public class MusicFrame extends JFrame{
                 MusicFrame.this.dispose();
             }
         });
-
     }
     MusicTool musicTool=new MusicTool();
 

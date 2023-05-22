@@ -1,9 +1,5 @@
 package view;
 
-import controller.GameController;
-import listener.MusicTool;
-import model.Chessboard;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,8 +33,9 @@ public class ChessGameFrame extends JFrame {
         addChessboard();
         addBaseLabel();
         addLabel();
-        addBaseLabel();
         addButton();
+        addBaseLabel();
+        //addButton();
     }
 
     public ChessboardComponent getChessboardComponent() {
