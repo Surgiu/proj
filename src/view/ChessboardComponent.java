@@ -6,9 +6,8 @@ import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.HashSet;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 import static model.Constant.CHESSBOARD_COL_SIZE;
 import static model.Constant.CHESSBOARD_ROW_SIZE;
@@ -58,8 +57,6 @@ public class ChessboardComponent extends JComponent {
             }
         }
     }
-
-
     /**
      * This method represents how to initiate ChessComponent
      * according to Chessboard information
@@ -218,9 +215,14 @@ public class ChessboardComponent extends JComponent {
         }
     }
 
-    public void drawHighlight(Chessboard chessboard) {
-        for (int i = 0; i < chessboard.getCanMove().size(); i++) {
-            //gridComponents[points.get(i).getRow()][points.get(i).getCol()].paintComponent();
+    public void drawHighlight(ArrayList<ChessboardPoint>points) {
+        for (int i = 0; i < points.size(); i++) {
+            gridComponents[points.get(i).getRow()][points.get(i).getCol()].setOpaque(true);
+        }
+    }
+    public void drawHighlightOff(ArrayList<ChessboardPoint>points) {
+        for (int i = 0; i < points.size(); i++) {
+            gridComponents[points.get(i).getRow()][points.get(i).getCol()].setOpaque(false);
         }
     }
 
