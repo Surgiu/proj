@@ -202,9 +202,9 @@ public class Chessboard {
     private boolean dens(ChessboardPoint src, ChessboardPoint dest) {//不能走到自己方的兽穴里
         if (getGridAt(dest).getType() == 3) {
             if ((getChessPieceAt(src).getOwner().equals(PlayerColor.BLUE)
-                    && getGridAt(dest).getTerrain() == 10)
+                    && getGridAt(dest).getTerrain() == 20)
                     || (getChessPieceAt(src).getOwner().equals(PlayerColor.RED)
-                    && getGridAt(dest).getTerrain() == 20)) {
+                    && getGridAt(dest).getTerrain() == 10)) {
                 return false;
             }
         }
@@ -217,7 +217,7 @@ public class Chessboard {
             int right = Math.max(start.getCol(), end.getCol()) - 1;
             int count = -1;
             for (int i = left; i <= right; i++) {
-                if (grid[start.getRow()][i].getType() == 1) {
+                if (grid[start.getRow()][i].getType() != 1) {
                     count++;
                 }
                 if (count == -1 && noRowBarrier(start.getRow(), left, right)) {
