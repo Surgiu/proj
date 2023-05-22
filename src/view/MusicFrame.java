@@ -43,14 +43,14 @@ public class MusicFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 MusicTool musicTool=new MusicTool();
-                musicTool.loopBgm1();
+                musicTool.MusicTool1();
             }
         });
         jb2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MusicTool musicTool=new MusicTool();
-                musicTool.loopBgm2();
+                musicTool.MusicTool2();
             }
         });
         jb3.addActionListener(new AbstractAction() {

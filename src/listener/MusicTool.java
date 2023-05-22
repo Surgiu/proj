@@ -1,43 +1,67 @@
 package listener;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import java.io.File;
 import java.net.MalformedURLException;
-
 public class MusicTool {
-    private File fileBgm1;
-    private File fileBgm2;
-//    private File fileBgm3;
-    private AudioClip acBgm1;
-    private AudioClip acBgm2;
-//    private AudioClip acBgm3;
-    public MusicTool(){
-        fileBgm1=new File("music/hug.wav");
-        fileBgm2=new File("music/earth.wav");
-//        fileBgm3=new File("music/happy.wav");
+    private static File fileBgm1;
+    private static File fileBgm2;
+    private static Clip acBgm1;
+    private static Clip acBgm2;
+    private static AudioInputStream audioInput1;
+    private static AudioInputStream audioInput2;
+    public static void MusicTool1(){
         try {
-            acBgm1= Applet.newAudioClip(fileBgm1.toURI().toURL());
-            acBgm2= Applet.newAudioClip(fileBgm2.toURI().toURL());
-//            acBgm3= Applet.newAudioClip(fileBgm3.toURI().toURL());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+            if(fileBgm1.exists()){
+                fileBgm1=new File("D:\\JAVA\\code\\project\\music\\hug.wav");
+                acBgm1= AudioSystem.getClip();
+                audioInput1=AudioSystem.getAudioInputStream(fileBgm1);
+                acBgm1.open(audioInput1);
+                acBgm1.start();;
+                acBgm1.loop(Clip.LOOP_CONTINUOUSLY);
+            }else{}
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+//        public static void MusicTool1(){
+//        try {
+//            fileBgm1=new File("music/hug.wav");
+//            acBgm1= AudioSystem.getClip();
+//            audioInput1=AudioSystem.getAudioInputStream(fileBgm1);
+//            acBgm1.open(audioInput1);
+//            acBgm1.start();;
+//            acBgm1.loop(Clip.LOOP_CONTINUOUSLY);
+//        }catch (Exception ex){
+//            ex.printStackTrace();
+//        }
+
+    }public static void MusicTool2(){
+        try {
+            fileBgm2=new File("music/earth.wav");
+            acBgm2= AudioSystem.getClip();
+            audioInput2=AudioSystem.getAudioInputStream(fileBgm2);
+            acBgm2.open(audioInput2);
+            acBgm2.start();;
+            acBgm2.loop(Clip.LOOP_CONTINUOUSLY);
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
     }
 
-    public void loopBgm1(){
-        acBgm1.loop();
-    }
-    public void loopBgm2(){
-        acBgm2.loop();
-    }
-//    public void loopBgm3(){
-//        acBgm3.loop();
+
+//    public void loopBgm1(){
+//        acBgm1.loop();
+//    }
+//    public void loopBgm2(){
+//        acBgm2.loop();
 //    }
     public void stop(){
         acBgm1.stop();
         acBgm2.stop();
-//        acBgm3.stop();
     }
 }
 
