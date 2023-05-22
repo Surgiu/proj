@@ -1,0 +1,212 @@
+Index: src/view/LogInFrame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\n\r\npublic class LogInFrame extends JFrame {\r\n    public LogInFrame(){\r\n        this.setBounds(720, 410, 220, 180);\r\n        this.setTitle(\"登录\");\r\n        //清空默认局部方式\r\n        this.setLayout(new FlowLayout(FlowLayout.LEFT));\r\n        //不能改变窗口大小\r\n        this.setResizable(false);\r\n        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        this.setVisible(true);\r\n\r\n\r\n        JLabel jl1 = new JLabel(\"账号:\");\r\n        JTextField username = new JTextField(\"\", 21);\r\n        JLabel jl2 = new JLabel(\"密码:\");\r\n        JTextField password = new JTextField(\"\", 21);\r\n        JPanel jp = new JPanel();\r\n        JButton jb1 = new JButton(\"登陆\");\r\n//        jb1.setBounds(0,200,70, 20);\r\n        JButton jb2 = new JButton(\"注册\");\r\n//        jb2.setBounds(90,200,70, 20);\r\n        JButton jb3 = new JButton(\"取消\");\r\n//        jb3.setBounds(180,200,70, 20);\r\n        add(jl1);\r\n        add(username);\r\n        add(jl2);\r\n        add(password);\r\n        add(jp);\r\n        jp.add(jb1);\r\n        jp.add(jb2);\r\n        jp.add(jb3);\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/LogInFrame.java b/src/view/LogInFrame.java
+--- a/src/view/LogInFrame.java	(revision 03eaaa4ffa2f166834052c1ea6aebd3e21f04800)
++++ b/src/view/LogInFrame.java	(date 1684684942030)
+@@ -1,7 +1,10 @@
+ package view;
+ 
++import listener.MusicTool;
++
+ import javax.swing.*;
+ import java.awt.*;
++import java.awt.event.ActionEvent;
+ 
+ public class LogInFrame extends JFrame {
+     public LogInFrame(){
+@@ -34,8 +37,28 @@
+         jp.add(jb1);
+         jp.add(jb2);
+         jp.add(jb3);
+-    }
++
++        jb1.addActionListener(new AbstractAction() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++
++
++            }
++        });
+ 
++        jb2.addActionListener(new AbstractAction() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
+ 
+ 
++            }
++        });
++
++        jb3.addActionListener(new AbstractAction() {
++            @Override
++            public void actionPerformed(ActionEvent e) {
++                LogInFrame.this.dispose();
++            }
++        });
++    }
+ }
+Index: src/view/ChessGameFrame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\r\n\r\nimport controller.GameController;\r\nimport listener.MusicTool;\r\nimport model.Chessboard;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\n//zhushi\r\n/**\r\n * 这个类表示游戏过程中的整个游戏界面，是一切的载体\r\n */\r\npublic class ChessGameFrame extends JFrame {\r\n    //    public final Dimension FRAME_SIZE ;\r\n    private final int WIDTH;\r\n    private final int HEIGTH;\r\n\r\n    private final int ONE_CHESS_SIZE;\r\n    private ChessboardComponent chessboardComponent;\r\n    private static JFrame enterFrame;\r\n    private static JLabel enter;\r\n\r\n    public ChessGameFrame(int width, int height) {\r\n        setTitle(\"2023 CS109 Project Demo\"); //设置标题\r\n        this.WIDTH = width;\r\n        this.HEIGTH = height;\r\n        this.ONE_CHESS_SIZE = (HEIGTH * 4 / 5) / 9;\r\n\r\n        setSize(WIDTH, HEIGTH);\r\n        setLocationRelativeTo(null); // Center the window.\r\n        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //设置程序关闭按键，如果点击右上方的叉就游戏全部关闭了\r\n        setLayout(null);\r\n\r\n\r\n        addChessboard();\r\n        addBaseLabel();\r\n        addLabel();\r\n        addBaseLabel();\r\n        addButton();\r\n\r\n    }\r\n\r\n    public ChessboardComponent getChessboardComponent() {\r\n        return chessboardComponent;\r\n    }\r\n\r\n    public void setChessboardComponent(ChessboardComponent chessboardComponent) {\r\n        this.chessboardComponent = chessboardComponent;\r\n    }\r\n\r\n    /**\r\n     * 在游戏面板中添加棋盘\r\n     */\r\n    private void addChessboard() {\r\n        chessboardComponent = new ChessboardComponent(ONE_CHESS_SIZE);\r\n        chessboardComponent.setLocation(HEIGTH / 5, HEIGTH / 10);\r\n        add(chessboardComponent);\r\n    }\r\n\r\n    /**\r\n     * 在游戏面板中添加标签\r\n     */\r\n    private void addLabel() {\r\n        JLabel statusLabel = new JLabel(\"Sample label\");\r\n        statusLabel.setLocation(HEIGTH, HEIGTH / 10);\r\n        statusLabel.setSize(200, 60);\r\n        statusLabel.setFont(new Font(\"Rockwell\", Font.BOLD, 20));\r\n        add(statusLabel);\r\n    }\r\n\r\n    public void addBaseLabel(){\r\n        JLabel chessboard=new JLabel(new ImageIcon(\"image/chessboard.png\"));\r\n        chessboard.setBounds(102,-48,623,900);\r\n//        this.getContentPane().add(chessboard);\r\n        add(chessboard);\r\n    }\r\n\r\n    /**\r\n     * 在游戏面板中增加一个按钮，如果按下的话就会显示Hello, world!\r\n     */\r\n\r\n    private void addButton() {\r\n        JButton jb1 = new JButton(\"设置\");\r\n        JButton jb2 = new JButton(\"悔棋\");\r\n        JButton jb3 = new JButton(\"认输\");\r\n        JButton jb4 = new JButton(\"再来一局\");\r\n        JButton jb5 = new JButton(\"返回主页\");\r\n\r\n        jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);\r\n        jb2.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);\r\n        jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);\r\n        jb4.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);\r\n        jb5.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);\r\n\r\n        add(jb1);\r\n        add(jb2);\r\n        add(jb3);\r\n        add(jb4);\r\n        add(jb5);\r\n\r\n        jb1.addActionListener(new AbstractAction() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                SettingGameFrame settingGameFrame=new SettingGameFrame();\r\n                settingGameFrame.setVisible(true);\r\n            }\r\n        });\r\n//        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, \"Hello, world!\"));\r\n\r\n        jb5.addActionListener(new AbstractAction() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n//                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);\r\n//                mainFrame.dispose();\r\n                ChessGameFrame.this.setVisible(false);\r\n                EnterFrame enterFrame =new EnterFrame();\r\n                enterFrame.setVisible(true);\r\n            }\r\n        });\r\n\r\n//        jb1.setFont(new Font(\"Rockwell\", Font.BOLD, 20));\r\n\r\n    }\r\n\r\n//    private void addLoadButton() {\r\n//        JButton button = new JButton(\"Load\");\r\n//        button.setLocation(HEIGTH, HEIGTH / 10 + 240);\r\n//        button.setSize(200, 60);\r\n//        button.setFont(new Font(\"Rockwell\", Font.BOLD, 20));\r\n//        add(button);\r\n//\r\n//        button.addActionListener(e -> {\r\n//            System.out.println(\"Click load\");\r\n//            String path = JOptionPane.showInputDialog(this,\"Input Path here\");\r\n//            gameController.loadGameFromFile(path);\r\n//        });\r\n//    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/ChessGameFrame.java b/src/view/ChessGameFrame.java
+--- a/src/view/ChessGameFrame.java	(revision 03eaaa4ffa2f166834052c1ea6aebd3e21f04800)
++++ b/src/view/ChessGameFrame.java	(date 1684680064498)
+@@ -20,6 +20,7 @@
+     private ChessboardComponent chessboardComponent;
+     private static JFrame enterFrame;
+     private static JLabel enter;
++    private static JLabel picture;
+ 
+     public ChessGameFrame(int width, int height) {
+         setTitle("2023 CS109 Project Demo"); //设置标题
+@@ -74,6 +75,9 @@
+         chessboard.setBounds(102,-48,623,900);
+ //        this.getContentPane().add(chessboard);
+         add(chessboard);
++        picture=new JLabel(new ImageIcon("image/picture1.png"));
++        picture.setBounds(0,0,1100,810);
++        add(picture);
+     }
+ 
+     /**
+@@ -93,12 +97,11 @@
+         jb4.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
+         jb5.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
+ 
+-        add(jb1);
+-        add(jb2);
+-        add(jb3);
+-        add(jb4);
+-        add(jb5);
+-
++        picture.add(jb1);
++        picture.add(jb2);
++        picture.add(jb3);
++        picture.add(jb4);
++        picture.add(jb5);
+         jb1.addActionListener(new AbstractAction() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"381747b6-88a9-4dd7-bfa2-e69267740b4b\" name=\"Changes\" comment=\"controller吃子bug fix\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/controller/GameController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/controller/GameController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/model/Chessboard.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/Chessboard.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Merge.Settings\">\r\n    <option name=\"BRANCH\" value=\"origin/master\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitToolBoxStore\">\r\n    <option name=\"projectConfigVersion\" value=\"5\" />\r\n  </component>\r\n  <component name=\"ProjectCodeStyleSettingsMigration\">\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Q2dtIAjAPZpY8BCcwrYen1q5CI\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/IdeaProjects/pro&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.rainbow.brackets&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"pro\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"381747b6-88a9-4dd7-bfa2-e69267740b4b\" name=\"Changes\" comment=\"\" />\r\n      <created>1684555822562</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1684555822562</updated>\r\n      <workItem from=\"1684555824478\" duration=\"1000\" />\r\n      <workItem from=\"1684555973324\" duration=\"3803000\" />\r\n      <workItem from=\"1684561676427\" duration=\"10383000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"探索\">\r\n      <created>1684558267937</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684558267937</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"细化1\">\r\n      <created>1684559723607</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684559723607</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"细化2\">\r\n      <created>1684570128349</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684570128349</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"controller完善\">\r\n      <created>1684648047049</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684648047049</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"model吃子bug fix\">\r\n      <created>1684650720617</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684650720617</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"model吃子bug fix\">\r\n      <created>1684650822607</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684650822607</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"model吃子bug fix\">\r\n      <created>1684653798589</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684653798589</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"model吃子bug fix\">\r\n      <created>1684655941762</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684655941762</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"model吃子bug fix\">\r\n      <created>1684657900150</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684657900150</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"model吃子bug fix\">\r\n      <created>1684661607816</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684661607816</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"controller吃子bug fix\">\r\n      <created>1684669644692</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1684669644692</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"探索\" />\r\n    <MESSAGE value=\"细化1\" />\r\n    <MESSAGE value=\"细化2\" />\r\n    <MESSAGE value=\"controller完善\" />\r\n    <MESSAGE value=\"model吃子bug fix\" />\r\n    <MESSAGE value=\"controller吃子bug fix\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"controller吃子bug fix\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 03eaaa4ffa2f166834052c1ea6aebd3e21f04800)
++++ b/.idea/workspace.xml	(date 1684684942078)
+@@ -4,10 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="controller吃子bug fix">
++    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="model吃子bug fix">
++      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_13__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -41,22 +43,22 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/IdeaProjects/pro&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.rainbow.brackets&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "git-widget-placeholder": "master",
++    "last_opened_file_path": "D:/JAVA/作业/assignment3",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "settings.editor.selected.configurable": "preferences.rainbow.brackets",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RunManager">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Main" />
+@@ -146,21 +148,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1684657900150</updated>
+     </task>
+-    <task id="LOCAL-00010" summary="model吃子bug fix">
+-      <created>1684661607816</created>
+-      <option name="number" value="00010" />
+-      <option name="presentableId" value="LOCAL-00010" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1684661607816</updated>
+-    </task>
+-    <task id="LOCAL-00011" summary="controller吃子bug fix">
+-      <created>1684669644692</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1684669644692</updated>
+-    </task>
+-    <option name="localTasksCounter" value="12" />
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -183,7 +171,7 @@
+     <MESSAGE value="细化2" />
+     <MESSAGE value="controller完善" />
+     <MESSAGE value="model吃子bug fix" />
+-    <MESSAGE value="controller吃子bug fix" />
+-    <option name="LAST_COMMIT_MESSAGE" value="controller吃子bug fix" />
++    <MESSAGE value="吃子功能实现" />
++    <option name="LAST_COMMIT_MESSAGE" value="吃子功能实现" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+--- /dev/null	(date 1684677279538)
++++ b/.idea/inspectionProfiles/Project_Default.xml	(date 1684677279538)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="MarkedForRemoval" enabled="false" level="ERROR" enabled_by_default="false" />
++  </profile>
++</component>
+\ No newline at end of file
