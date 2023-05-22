@@ -39,7 +39,6 @@ public class ChessGameFrame extends JFrame {
         addLabel();
         addBaseLabel();
         addButton();
-
     }
 
     public ChessboardComponent getChessboardComponent() {

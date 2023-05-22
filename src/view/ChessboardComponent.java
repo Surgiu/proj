@@ -36,14 +36,15 @@ public class ChessboardComponent extends JComponent {
         System.out.printf("chessboard width, height = [%d : %d], chess size = %d\n", width, height, CHESS_SIZE);
 
         initiateGridComponents();
-        //clear();
+
     }
 
     public void clear() {
-        for (int i = 0; i < gridComponents.length; i++) {
-            for (int j = 0; j < gridComponents[i].length; j++) {
-                if (gridComponents[i][j] != null) {
-
+        for (CellComponent[] gridComponent : gridComponents) {
+            for (CellComponent cellComponent : gridComponent) {
+                if (cellComponent != null) {
+                    cellComponent.removeAll();
+                    this.repaint();
                 }
             }
         }
@@ -74,7 +75,7 @@ public class ChessboardComponent extends JComponent {
                 }
             }
         }
-
+        this.repaint();
     }
 
     public void initiateGridComponents() {
@@ -208,5 +209,9 @@ public class ChessboardComponent extends JComponent {
 
     public GameController getGameController() {
         return gameController;
+    }
+
+    public CellComponent[][] getGridComponents() {
+        return gridComponents;
     }
 }

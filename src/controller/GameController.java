@@ -90,16 +90,34 @@ public class GameController implements GameListener {
                 System.err.println("Illegal capture");
             }
             view.repaint();
+            //test();
         }
     }
 
     public void restart() {
-        model.initialize();
         view.clear();
+        model.initialize();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
         view.repaint();
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
+    }
+
+    private void test() {
+        int[][] test = new int[9][7];
+        for (int i = 0; i < model.getGrid().length; i++) {
+            for (int j = 0; j < model.getGrid()[i].length; j++) {
+                if (view.getGridComponents()[i][j] != null) {
+                    test[i][j] = 1;
+                }
+            }
+        }
+        for (int[] ints : test) {
+            for (int anInt : ints) {
+                System.out.print(anInt);
+            }
+            System.out.println();
+        }
     }
 }

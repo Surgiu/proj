@@ -161,7 +161,7 @@ public class Chessboard {
                 getGridAt(dest).setOccupy(1);
             }
             getGridAt(src).setOccupy(0);
-            setChessPiece(dest, removeChessPiece(dest));
+            setChessPiece(dest, removeChessPiece(src));
         }
     }
 
@@ -175,6 +175,7 @@ public class Chessboard {
 
     public boolean isValidMove(ChessboardPoint src, ChessboardPoint dest) {
         ChessPiece piece = getChessPieceAt(src);
+//        ChessPiece piece1= getChessPieceAt(dest);
         if (piece == null || getChessPieceAt(dest) != null) {
             return false;
         }
