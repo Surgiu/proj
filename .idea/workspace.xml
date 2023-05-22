@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="“内鬼”问题未解决">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="重开">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CatComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CatComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CellComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CellComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/EnterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/EnterFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/DogComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DogComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ElephantComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ElephantComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LeopardComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LeopardComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LionComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LionComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RatComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/RatComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TigerComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TigerComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/WolfComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/WolfComp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +92,9 @@
       <workItem from="1684555824478" duration="1000" />
       <workItem from="1684555973324" duration="3803000" />
       <workItem from="1684561676427" duration="10383000" />
+      <workItem from="1684723437775" duration="420000" />
+      <workItem from="1684723968016" duration="282000" />
+      <workItem from="1684729074644" duration="2112000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -185,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684688258587</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="重开">
+      <created>1684688831833</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684688831833</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +226,7 @@
     <MESSAGE value="model吃子bug fix" />
     <MESSAGE value="controller吃子bug fix" />
     <MESSAGE value="“内鬼”问题未解决" />
-    <option name="LAST_COMMIT_MESSAGE" value="“内鬼”问题未解决" />
+    <MESSAGE value="重开" />
+    <option name="LAST_COMMIT_MESSAGE" value="重开" />
   </component>
 </project>

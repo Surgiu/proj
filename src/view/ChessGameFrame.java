@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 //zhushi
+
 /**
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
@@ -69,13 +70,13 @@ public class ChessGameFrame extends JFrame {
         add(statusLabel);
     }
 
-    public void addBaseLabel(){
-        JLabel chessboard=new JLabel(new ImageIcon("image/chessboard.png"));
-        chessboard.setBounds(102,-48,623,900);
+    public void addBaseLabel() {
+        JLabel chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
+        chessboard.setBounds(102, -48, 623, 900);
 //        this.getContentPane().add(chessboard);
         add(chessboard);
-        picture=new JLabel(new ImageIcon("image/picture1.png"));
-        picture.setBounds(0,0,1100,810);
+        picture = new JLabel(new ImageIcon("image/picture1.png"));
+        picture.setBounds(0, 0, 1100, 810);
         add(picture);
     }
 
@@ -90,11 +91,11 @@ public class ChessGameFrame extends JFrame {
         JButton jb4 = new JButton("再来一局");
         JButton jb5 = new JButton("返回主页");
 
-        jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
-        jb2.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);
+        jb1.setBounds(HEIGTH, HEIGTH / 10, 200, 60);
+        jb2.setBounds(HEIGTH, HEIGTH / 10 + 100, 200, 60);
 //        jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
-        jb4.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
-        jb5.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
+        jb4.setBounds(HEIGTH, HEIGTH / 10 + 200, 200, 60);
+        jb5.setBounds(HEIGTH, HEIGTH / 10 + 300, 200, 60);
 
         picture.add(jb1);
         picture.add(jb2);
@@ -104,7 +105,7 @@ public class ChessGameFrame extends JFrame {
         jb1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SettingGameFrame settingGameFrame=new SettingGameFrame();
+                SettingGameFrame settingGameFrame = new SettingGameFrame();
                 settingGameFrame.setVisible(true);
             }
         });
@@ -115,7 +116,7 @@ public class ChessGameFrame extends JFrame {
 //                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
 //                mainFrame.dispose();
                 ChessGameFrame.this.setVisible(false);
-                EnterFrame enterFrame =new EnterFrame();
+                EnterFrame enterFrame = new EnterFrame();
                 enterFrame.setVisible(true);
             }
         });

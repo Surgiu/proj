@@ -34,15 +34,16 @@ public class ChessboardComponent extends JComponent {
         setLayout(null); // Use absolute layout.
         setSize(width, height);
         System.out.printf("chessboard width, height = [%d : %d], chess size = %d\n", width, height, CHESS_SIZE);
-        clear();
+
         initiateGridComponents();
+        //clear();
     }
 
     public void clear() {
         for (int i = 0; i < gridComponents.length; i++) {
             for (int j = 0; j < gridComponents[i].length; j++) {
                 if (gridComponents[i][j] != null) {
-                    gridComponents[i][j] = null;
+
                 }
             }
         }
@@ -61,14 +62,14 @@ public class ChessboardComponent extends JComponent {
                     ChessPiece chessPiece = grid[i][j].getPiece();
                     switch (chessPiece.getName()) {
                         case "Elephant" ->
-                                gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Lion" -> gridComponents[i][j].add(new LionComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Tiger" -> gridComponents[i][j].add(new TigerComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Leopard" -> gridComponents[i][j].add(new LeopardComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Wolf" -> gridComponents[i][j].add(new WolfComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Dog" -> gridComponents[i][j].add(new DogComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Cat" -> gridComponents[i][j].add(new CatComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Rat" -> gridComponents[i][j].add(new RatComp(chessPiece.getOwner(), CHESS_SIZE));
+                                gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE,"象"));
+                        case "Lion" -> gridComponents[i][j].add(new LionComp(chessPiece.getOwner(), CHESS_SIZE,"狮"));
+                        case "Tiger" -> gridComponents[i][j].add(new TigerComp(chessPiece.getOwner(), CHESS_SIZE,"虎"));
+                        case "Leopard" -> gridComponents[i][j].add(new LeopardComp(chessPiece.getOwner(), CHESS_SIZE,"豹"));
+                        case "Wolf" -> gridComponents[i][j].add(new WolfComp(chessPiece.getOwner(), CHESS_SIZE,"狼"));
+                        case "Dog" -> gridComponents[i][j].add(new DogComp(chessPiece.getOwner(), CHESS_SIZE,"狗"));
+                        case "Cat" -> gridComponents[i][j].add(new CatComp(chessPiece.getOwner(), CHESS_SIZE,"猫"));
+                        case "Rat" -> gridComponents[i][j].add(new RatComp(chessPiece.getOwner(), CHESS_SIZE,"鼠"));
                     }
                 }
             }
@@ -152,6 +153,7 @@ public class ChessboardComponent extends JComponent {
             }
         }
     }
+
 
     public void registerController(GameController gameController) {
         this.gameController = gameController;
