@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -13,18 +15,22 @@ public class Chessboard {
     private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
-    private HashSet<ChessboardPoint> canMove = new HashSet<>();
+    private List<Cell> canMove = new ArrayList<>();
 
     public Chessboard() {
         this.grid =
                 new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];//19X19
+        initialize();
+    }
+
+    public void initialize() {
         clear();
         initGrid();
         initPieces();
         initCoordinates();
     }
 
-    private void initGrid() {//默认上红下蓝
+    public void initGrid() {//默认上红下蓝
         grid = new Cell[Constant.CHESSBOARD_ROW_SIZE.getNum()][Constant.CHESSBOARD_COL_SIZE.getNum()];
         //dens
         grid[0][3] = new Cell(3);
@@ -63,7 +69,7 @@ public class Chessboard {
         }
     }
 
-    private void initPieces() {
+    public void initPieces() {
         grid[0][0].setPiece(new ChessPiece(PlayerColor.RED, "Lion", 7));
         grid[0][6].setPiece(new ChessPiece(PlayerColor.RED, "Tiger", 7));
         grid[1][1].setPiece(new ChessPiece(PlayerColor.RED, "Dog", 3));
@@ -82,7 +88,7 @@ public class Chessboard {
         grid[8][6].setPiece(new ChessPiece(PlayerColor.BLUE, "Lion", 7));
     }
 
-    private void initCoordinates() {
+    public void initCoordinates() {
         densCoordinates.add(new ChessboardPoint(0, 3));
         densCoordinates.add(new ChessboardPoint(8, 3));
         trapCoordinates.add(new ChessboardPoint(0, 2));
@@ -99,7 +105,7 @@ public class Chessboard {
         }
     }
 
-    private void clear() {
+    public void clear() {
         for (Cell[] cells : grid) {
             for (Cell cell : cells) {
                 if (cell != null) {
@@ -158,7 +164,7 @@ public class Chessboard {
                 getGridAt(dest).setOccupy(1);
             }
             getGridAt(src).setOccupy(0);
-            setChessPiece(dest, removeChessPiece(dest));
+            setChessPiece(dest, removeChessPiece(src));
         }
     }
 
@@ -172,6 +178,7 @@ public class Chessboard {
 
     public boolean isValidMove(ChessboardPoint src, ChessboardPoint dest) {
         ChessPiece piece = getChessPieceAt(src);
+//        ChessPiece piece1= getChessPieceAt(dest);
         if (piece == null || getChessPieceAt(dest) != null) {
             return false;
         }
@@ -198,9 +205,9 @@ public class Chessboard {
     private boolean dens(ChessboardPoint src, ChessboardPoint dest) {//不能走到自己方的兽穴里
         if (getGridAt(dest).getType() == 3) {
             if ((getChessPieceAt(src).getOwner().equals(PlayerColor.BLUE)
-                    && getGridAt(dest).getTerrain() == 10)
+                    && getGridAt(dest).getTerrain() == 20)
                     || (getChessPieceAt(src).getOwner().equals(PlayerColor.RED)
-                    && getGridAt(dest).getTerrain() == 20)) {
+                    && getGridAt(dest).getTerrain() == 10)) {
                 return false;
             }
         }
@@ -213,7 +220,7 @@ public class Chessboard {
             int right = Math.max(start.getCol(), end.getCol()) - 1;
             int count = -1;
             for (int i = left; i <= right; i++) {
-                if (grid[start.getRow()][i].getType() == 1) {
+                if (grid[start.getRow()][i].getType() != 1) {
                     count++;
                 }
                 if (count == -1 && noRowBarrier(start.getRow(), left, right)) {
@@ -330,10 +337,24 @@ public class Chessboard {
         return false;
     }
 
-    public void highlight(ChessboardPoint chessboardPoint) {
-        ChessPiece chessPiece = getChessPieceAt(chessboardPoint);
-        if (chessPiece != null) {//可优化：方向数组
-
+    public void highlight(ChessboardPoint here) {
+        //if current player in controller
+        if (getChessPieceAt(here) == null) {
+            return;
         }
+        for (int i = here.getRow() - 1; i <= here.getRow() + 1; i++) {
+            for (int j = here.getCol() - 1; j <= here.getCol() + 1; j++) {
+                if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
+                        && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
+                    if (isValidMove(here, grid[i][j].getCoordinate())) {
+                        canMove.add(grid[i][j]);
+                    }
+                }
+            }
+        }
+    }
+
+    public List<Cell> getCanMove() {
+        return canMove;
     }
 }

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 //zhushi
+
 /**
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
@@ -38,7 +39,6 @@ public class ChessGameFrame extends JFrame {
         addLabel();
         addBaseLabel();
         addButton();
-
     }
 
     public ChessboardComponent getChessboardComponent() {
@@ -69,13 +69,13 @@ public class ChessGameFrame extends JFrame {
         add(statusLabel);
     }
 
-    public void addBaseLabel(){
-        JLabel chessboard=new JLabel(new ImageIcon("image/chessboard.png"));
-        chessboard.setBounds(102,-48,623,900);
+    public void addBaseLabel() {
+        JLabel chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
+        chessboard.setBounds(102, -48, 623, 900);
 //        this.getContentPane().add(chessboard);
         add(chessboard);
-        picture=new JLabel(new ImageIcon("image/picture1.png"));
-        picture.setBounds(0,0,1100,810);
+        picture = new JLabel(new ImageIcon("image/picture1.png"));
+        picture.setBounds(0, 0, 1100, 810);
         add(picture);
     }
 
@@ -86,33 +86,26 @@ public class ChessGameFrame extends JFrame {
     private void addButton() {
         JButton jb1 = new JButton("设置");
         JButton jb2 = new JButton("悔棋");
-        JButton jb3 = new JButton("更换棋子");
+//        JButton jb3 = new JButton("认输");
         JButton jb4 = new JButton("再来一局");
         JButton jb5 = new JButton("返回主页");
 
-        jb1.setBounds(HEIGTH, HEIGTH / 10 ,200, 60);
-        jb2.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
-        jb3.setBounds(HEIGTH, HEIGTH / 10 + 100,200, 60);
-        jb4.setBounds(HEIGTH, HEIGTH / 10 + 300,200, 60);
-        jb5.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
+        jb1.setBounds(HEIGTH, HEIGTH / 10, 200, 60);
+        jb2.setBounds(HEIGTH, HEIGTH / 10 + 100, 200, 60);
+//        jb3.setBounds(HEIGTH, HEIGTH / 10 + 200,200, 60);
+        jb4.setBounds(HEIGTH, HEIGTH / 10 + 200, 200, 60);
+        jb5.setBounds(HEIGTH, HEIGTH / 10 + 300, 200, 60);
 
         picture.add(jb1);
         picture.add(jb2);
-        picture.add(jb3);
+//        picture.add(jb3);
         picture.add(jb4);
         picture.add(jb5);
         jb1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SettingGameFrame settingGameFrame=new SettingGameFrame();
+                SettingGameFrame settingGameFrame = new SettingGameFrame();
                 settingGameFrame.setVisible(true);
-            }
-        });
-
-        jb3.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
 //        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
@@ -122,13 +115,24 @@ public class ChessGameFrame extends JFrame {
 //                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
 //                mainFrame.dispose();
                 ChessGameFrame.this.setVisible(false);
-                EnterFrame enterFrame =new EnterFrame();
+                EnterFrame enterFrame = new EnterFrame();
                 enterFrame.setVisible(true);
             }
         });
+        jb4.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chessboardComponent.getGameController().restart();
+            }
+        });
+
+
 
 //        jb1.setFont(new Font("Rockwell", Font.BOLD, 20));
 
+    }
+    public void gameOver() {
+        //游戏结束的提示
     }
 
 //    private void addLoadButton() {

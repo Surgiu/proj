@@ -20,6 +20,7 @@ public class GameController implements GameListener {
 
     // Record whether there is a selected piece before
     private ChessboardPoint selectedPoint;
+    private PlayerColor winner;
 
     public GameController(ChessboardComponent view, Chessboard model) {
         this.view = view;
@@ -39,11 +40,16 @@ public class GameController implements GameListener {
         currentPlayer = (currentPlayer == PlayerColor.BLUE) ? PlayerColor.RED : PlayerColor.BLUE;
     }
 
-    private boolean win() {
+    private boolean isWin() {
         ChessPiece winnerPiece1 = model.getGrid()[0][3].getPiece();
         ChessPiece winnerPiece2 = model.getGrid()[8][3].getPiece();
         boolean case1 = winnerPiece1 != null && winnerPiece1.getOwner().equals(PlayerColor.BLUE);
         boolean case2 = winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED);
+        if (case1) {
+            winner = PlayerColor.BLUE;
+        } else if (case2) {
+            winner = PlayerColor.RED;
+        }
         return case1 || case2;
     }
 
@@ -72,6 +78,7 @@ public class GameController implements GameListener {
             if (model.getChessPieceOwner(point).equals(currentPlayer)) {
                 selectedPoint = point;
                 component.setSelected(true);
+                //highlight(point);
                 component.repaint();
             }
         } else if (selectedPoint.equals(point)) {//如果放到自己的位置，就放弃选中
@@ -90,15 +97,40 @@ public class GameController implements GameListener {
                 System.err.println("Illegal capture");
             }
             view.repaint();
+            //test();
         }
     }
 
     public void restart() {
-//        model.initialize();
+        view.clear();
+        model.initialize();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
         view.repaint();
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
     }
+
+    private void test() {
+        int[][] test = new int[9][7];
+        for (int i = 0; i < model.getGrid().length; i++) {
+            for (int j = 0; j < model.getGrid()[i].length; j++) {
+                if (view.getGridComponents()[i][j] != null) {
+                    test[i][j] = 1;
+                }
+            }
+        }
+        for (int[] ints : test) {
+            for (int anInt : ints) {
+                System.out.print(anInt);
+            }
+            System.out.println();
+        }
+    }
+    public void highlight(ChessboardPoint point) {
+        model.highlight(point);
+        view.drawHighlight(model);
+        view.repaint();
+    }
+
 }

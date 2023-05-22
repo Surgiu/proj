@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="吃子功能实现">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_13__Changes_.xml" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="高亮初步">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listener/MusicTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/MusicTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MusicFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MusicFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CellComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CellComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,22 +43,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/JAVA/code/jungle/src/chess5.18",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.rainbow.brackets",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/IdeaProjects/pro&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.rainbow.brackets&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -85,6 +84,12 @@
       <workItem from="1684555824478" duration="1000" />
       <workItem from="1684555973324" duration="3803000" />
       <workItem from="1684561676427" duration="10383000" />
+      <workItem from="1684723437775" duration="420000" />
+      <workItem from="1684723968016" duration="282000" />
+      <workItem from="1684729074644" duration="2230000" />
+      <workItem from="1684737444377" duration="5032000" />
+      <workItem from="1684743575055" duration="317000" />
+      <workItem from="1684752915386" duration="5766000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -163,14 +168,63 @@
       <option name="project" value="LOCAL" />
       <updated>1684669644692</updated>
     </task>
-    <task id="LOCAL-00012" summary="吃子功能实现">
-      <created>1684688720280</created>
+    <task id="LOCAL-00012" summary="“内鬼”问题未解决">
+      <created>1684676244679</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1684688720280</updated>
+      <updated>1684676244679</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="“内鬼”问题未解决">
+      <created>1684680361236</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684680361236</updated>
+    </task>
+    <task id="LOCAL-00014" summary="“内鬼”问题未解决">
+      <created>1684688258587</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684688258587</updated>
+    </task>
+    <task id="LOCAL-00015" summary="重开">
+      <created>1684688831833</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684688831833</updated>
+    </task>
+    <task id="LOCAL-00016" summary="找到初始化的bug">
+      <created>1684731305773</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1684731305773</updated>
+    </task>
+    <task id="LOCAL-00017" summary="吃子的bug终于解决了，呜呜呜">
+      <created>1684741276466</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1684741276466</updated>
+    </task>
+    <task id="LOCAL-00018" summary="现在关于游戏运行的大部分bug都无了">
+      <created>1684742510701</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1684742510701</updated>
+    </task>
+    <task id="LOCAL-00019" summary="高亮初步">
+      <created>1684756582676</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1684756582676</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +248,12 @@
     <MESSAGE value="controller完善" />
     <MESSAGE value="model吃子bug fix" />
     <MESSAGE value="controller吃子bug fix" />
-    <MESSAGE value="吃子功能实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="吃子功能实现" />
+    <MESSAGE value="“内鬼”问题未解决" />
+    <MESSAGE value="重开" />
+    <MESSAGE value="找到初始化的bug" />
+    <MESSAGE value="吃子的bug终于解决了，呜呜呜" />
+    <MESSAGE value="现在关于游戏运行的大部分bug都无了" />
+    <MESSAGE value="高亮初步" />
+    <option name="LAST_COMMIT_MESSAGE" value="高亮初步" />
   </component>
 </project>

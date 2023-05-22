@@ -1,13 +1,11 @@
 package view;
 
-import listener.MusicTool;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 
 public class LogInFrame extends JFrame {
-    public LogInFrame(){
+    public LogInFrame() {
         this.setBounds(720, 410, 220, 180);
         this.setTitle("登录");
         //清空默认局部方式
@@ -37,28 +35,8 @@ public class LogInFrame extends JFrame {
         jp.add(jb1);
         jp.add(jb2);
         jp.add(jb3);
+    }
+    public void click(MouseEvent e) {
 
-        jb1.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-            }
-        });
-
-        jb2.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-            }
-        });
-
-        jb3.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LogInFrame.this.dispose();
-            }
-        });
     }
 }

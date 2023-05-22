@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EnterFrame extends JFrame  {
+public class EnterFrame extends JFrame {
     private static JLabel enter;
     JButton jb1;
     JButton jb2;
@@ -66,7 +66,7 @@ public class EnterFrame extends JFrame  {
         jb3.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SettingGameFrame settingGameFrame=new SettingGameFrame();
+                SettingGameFrame settingGameFrame = new SettingGameFrame();
                 settingGameFrame.setVisible(true);
             }
         });
@@ -76,7 +76,7 @@ public class EnterFrame extends JFrame  {
         jb5.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LogInFrame logInFrame=new LogInFrame();
+                LogInFrame logInFrame = new LogInFrame();
                 logInFrame.setVisible(true);
             }
         });
@@ -85,8 +85,8 @@ public class EnterFrame extends JFrame  {
 //    public static void main(String[] args) {
 //        EnterFrame enterFrame = new EnterFrame();
 //        enterFrame.setVisible(true);
-    }
 
+//}
 //    @Override
 //    public void actionPerformed(ActionEvent e) {
 //        if (e.getSource() == jb2) {
@@ -95,7 +95,7 @@ public class EnterFrame extends JFrame  {
 //            GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
 //            mainFrame.setVisible(true);
 //        }
-//    }
+    }
 
 //     jb2.addActionListener(e -> {
 //        SwingUtilities.invokeLater(() -> {

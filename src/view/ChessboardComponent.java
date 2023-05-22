@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static model.Constant.CHESSBOARD_COL_SIZE;
@@ -20,8 +21,8 @@ public class ChessboardComponent extends JComponent {
     private final CellComponent[][] gridComponents = new CellComponent[CHESSBOARD_ROW_SIZE.getNum()][CHESSBOARD_COL_SIZE.getNum()];
     private final int CHESS_SIZE;
     private final Set<ChessboardPoint> riverCell = new HashSet<>();
-    private final Set<ChessboardPoint> densCell= new HashSet<>();
-    private final Set<ChessboardPoint> trapCell= new HashSet<>();
+    private final Set<ChessboardPoint> densCell = new HashSet<>();
+    private final Set<ChessboardPoint> trapCell = new HashSet<>();
 
 
     private GameController gameController;
@@ -36,6 +37,26 @@ public class ChessboardComponent extends JComponent {
         System.out.printf("chessboard width, height = [%d : %d], chess size = %d\n", width, height, CHESS_SIZE);
 
         initiateGridComponents();
+        //clear2();
+    }
+
+    public void clear() {
+        for (CellComponent[] gridComponent : gridComponents) {
+            for (CellComponent cellComponent : gridComponent) {
+                if (cellComponent != null) {
+                    cellComponent.removeAll();
+                    this.repaint();
+                }
+            }
+        }
+    }
+    public void clear2() {
+        for (CellComponent[] gridComponent : gridComponents) {
+            for (CellComponent cellComponent : gridComponent) {
+                cellComponent.setOpaque(false);
+                this.repaint();
+            }
+        }
     }
 
 
@@ -50,45 +71,46 @@ public class ChessboardComponent extends JComponent {
                 if (grid[i][j].getPiece() != null) {
                     ChessPiece chessPiece = grid[i][j].getPiece();
                     switch (chessPiece.getName()) {
-                        case "Elephant" -> gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Lion" -> gridComponents[i][j].add(new LionComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Tiger" -> gridComponents[i][j].add(new TigerComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Leopard" -> gridComponents[i][j].add(new LeopardComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Wolf" -> gridComponents[i][j].add(new WolfComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Dog" -> gridComponents[i][j].add(new DogComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Cat" -> gridComponents[i][j].add(new CatComp(chessPiece.getOwner(), CHESS_SIZE));
-                        case "Rat" -> gridComponents[i][j].add(new RatComp(chessPiece.getOwner(), CHESS_SIZE));
+                        case "Elephant" ->
+                                gridComponents[i][j].add(new ElephantComp(chessPiece.getOwner(), CHESS_SIZE,"象"));
+                        case "Lion" -> gridComponents[i][j].add(new LionComp(chessPiece.getOwner(), CHESS_SIZE,"狮"));
+                        case "Tiger" -> gridComponents[i][j].add(new TigerComp(chessPiece.getOwner(), CHESS_SIZE,"虎"));
+                        case "Leopard" -> gridComponents[i][j].add(new LeopardComp(chessPiece.getOwner(), CHESS_SIZE,"豹"));
+                        case "Wolf" -> gridComponents[i][j].add(new WolfComp(chessPiece.getOwner(), CHESS_SIZE,"狼"));
+                        case "Dog" -> gridComponents[i][j].add(new DogComp(chessPiece.getOwner(), CHESS_SIZE,"狗"));
+                        case "Cat" -> gridComponents[i][j].add(new CatComp(chessPiece.getOwner(), CHESS_SIZE,"猫"));
+                        case "Rat" -> gridComponents[i][j].add(new RatComp(chessPiece.getOwner(), CHESS_SIZE,"鼠"));
                     }
                 }
             }
         }
-
+        this.repaint();
     }
 
     public void initiateGridComponents() {
-        riverCell.add(new ChessboardPoint(3,1));
-        riverCell.add(new ChessboardPoint(3,2));
-        riverCell.add(new ChessboardPoint(4,1));
-        riverCell.add(new ChessboardPoint(4,2));
-        riverCell.add(new ChessboardPoint(5,1));
-        riverCell.add(new ChessboardPoint(5,2));
+        riverCell.add(new ChessboardPoint(3, 1));
+        riverCell.add(new ChessboardPoint(3, 2));
+        riverCell.add(new ChessboardPoint(4, 1));
+        riverCell.add(new ChessboardPoint(4, 2));
+        riverCell.add(new ChessboardPoint(5, 1));
+        riverCell.add(new ChessboardPoint(5, 2));
 
-        riverCell.add(new ChessboardPoint(3,4));
-        riverCell.add(new ChessboardPoint(3,5));
-        riverCell.add(new ChessboardPoint(4,4));
-        riverCell.add(new ChessboardPoint(4,5));
-        riverCell.add(new ChessboardPoint(5,4));
-        riverCell.add(new ChessboardPoint(5,5));
+        riverCell.add(new ChessboardPoint(3, 4));
+        riverCell.add(new ChessboardPoint(3, 5));
+        riverCell.add(new ChessboardPoint(4, 4));
+        riverCell.add(new ChessboardPoint(4, 5));
+        riverCell.add(new ChessboardPoint(5, 4));
+        riverCell.add(new ChessboardPoint(5, 5));
 
-        trapCell.add(new ChessboardPoint(0,2));
-        trapCell.add(new ChessboardPoint(0,4));
-        trapCell.add(new ChessboardPoint(1,3));
-        trapCell.add(new ChessboardPoint(8,2));
-        trapCell.add(new ChessboardPoint(8,4));
-        trapCell.add(new ChessboardPoint(7,3));
+        trapCell.add(new ChessboardPoint(0, 2));
+        trapCell.add(new ChessboardPoint(0, 4));
+        trapCell.add(new ChessboardPoint(1, 3));
+        trapCell.add(new ChessboardPoint(8, 2));
+        trapCell.add(new ChessboardPoint(8, 4));
+        trapCell.add(new ChessboardPoint(7, 3));
 
-        densCell.add(new ChessboardPoint(0,3));
-        densCell.add(new ChessboardPoint(8,3));
+        densCell.add(new ChessboardPoint(0, 3));
+        densCell.add(new ChessboardPoint(8, 3));
 
         for (int i = 3; i < 6; i++) {//river area
             for (int j = 0; j < CHESSBOARD_COL_SIZE.getNum(); j++) {
@@ -112,7 +134,7 @@ public class ChessboardComponent extends JComponent {
                 if (trapCell.contains(temp)) {
                     cell = new CellComponent(Color.magenta, calculatePoint(i, j), CHESS_SIZE);
                     this.add(cell);
-                }else if (densCell.contains(temp)) {
+                } else if (densCell.contains(temp)) {
                     cell = new CellComponent(Color.blue, calculatePoint(i, j), CHESS_SIZE);
                     this.add(cell);
                 } else {
@@ -130,7 +152,7 @@ public class ChessboardComponent extends JComponent {
                 if (trapCell.contains(temp)) {
                     cell = new CellComponent(Color.magenta, calculatePoint(i, j), CHESS_SIZE);
                     this.add(cell);
-                }else if (densCell.contains(temp)) {
+                } else if (densCell.contains(temp)) {
                     cell = new CellComponent(Color.blue, calculatePoint(i, j), CHESS_SIZE);
                     this.add(cell);
                 } else {
@@ -141,6 +163,7 @@ public class ChessboardComponent extends JComponent {
             }
         }
     }
+
 
     public void registerController(GameController gameController) {
         this.gameController = gameController;
@@ -164,9 +187,10 @@ public class ChessboardComponent extends JComponent {
     }
 
     private ChessboardPoint getChessboardPoint(Point point) {
-        System.out.println("[" + point.y/CHESS_SIZE +  ", " +point.x/CHESS_SIZE + "] Clicked");
-        return new ChessboardPoint(point.y/CHESS_SIZE, point.x/CHESS_SIZE);
+        System.out.println("[" + point.y / CHESS_SIZE + ", " + point.x / CHESS_SIZE + "] Clicked");
+        return new ChessboardPoint(point.y / CHESS_SIZE, point.x / CHESS_SIZE);
     }
+
     private Point calculatePoint(int row, int col) {
         return new Point(col * CHESS_SIZE, row * CHESS_SIZE);
     }
@@ -190,5 +214,18 @@ public class ChessboardComponent extends JComponent {
                 gameController.onPlayerClickChessPiece(getChessboardPoint(e.getPoint()), (ChessComp) clickedComponent.getComponents()[0]);
             }
         }
+    }
+    public void drawHighlight(Chessboard chessboard) {
+        for (int i = 0; i < chessboard.getCanMove().size(); i++) {
+            //gridComponents[points.get(i).getRow()][points.get(i).getCol()].paintComponent();
+        }
+    }
+
+    public GameController getGameController() {
+        return gameController;
+    }
+
+    public CellComponent[][] getGridComponents() {
+        return gridComponents;
     }
 }
