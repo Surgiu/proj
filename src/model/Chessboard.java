@@ -16,6 +16,7 @@ public class Chessboard {
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
     private List<Cell> canMove = new ArrayList<>();
+    private static int num;
 
     public Chessboard() {
         this.grid =
@@ -150,6 +151,7 @@ public class Chessboard {
             }
             getGridAt(src).setOccupy(0);
             setChessPiece(dest, removeChessPiece(src));
+            num++;
         }
     }
 
@@ -165,6 +167,7 @@ public class Chessboard {
             }
             getGridAt(src).setOccupy(0);
             setChessPiece(dest, removeChessPiece(src));
+            num++;
         }
     }
 
@@ -178,7 +181,6 @@ public class Chessboard {
 
     public boolean isValidMove(ChessboardPoint src, ChessboardPoint dest) {
         ChessPiece piece = getChessPieceAt(src);
-//        ChessPiece piece1= getChessPieceAt(dest);
         if (piece == null || getChessPieceAt(dest) != null) {
             return false;
         }
