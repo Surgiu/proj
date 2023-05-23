@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,11 +12,14 @@ import java.util.TreeSet;
  * The Chessboard has 9*7 cells, and each cell has a position for chess
  */
 public class Chessboard implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 88010802L;
     private Cell[][] grid;
     private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
     private int num;
+
 
     public Chessboard() {
         this.grid =
@@ -24,8 +28,8 @@ public class Chessboard implements Serializable {
     }
 
     public void initialize() {
-        clear();
         initGrid();
+        clear();
         initPieces();
         initCoordinates();
         num = 0;
@@ -109,7 +113,7 @@ public class Chessboard implements Serializable {
     public void clear() {
         for (Cell[] cells : grid) {
             for (Cell cell : cells) {
-                if (cell != null) {
+                if (cell.getPiece() != null) {
                     cell.setPiece(null);
                 }
             }
@@ -287,7 +291,7 @@ public class Chessboard implements Serializable {
                     if (getGridAt(src).getType() == 1) {//rat in the river
                         return false;
                     } else {//rat on the ground
-                        return predator.canCapture(target);
+                        return predator.canCapture(target) && calculateDistance(src, dest) == 1;
                     }
                 }
                 default -> {

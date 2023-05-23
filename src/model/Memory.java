@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class Memory implements Serializable {
     @Serial
-    private static final long serialVersionUID = 550081;
+    private static final long serialVersionUID = 550081L;
     private Chessboard chessboard;
 
     public Memory(Chessboard chessboard) {

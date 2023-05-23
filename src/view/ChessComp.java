@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChessComp extends JComponent {
-    private PlayerColor owner;
+    private final PlayerColor owner;
     protected String name;
 
     private boolean selected;
@@ -40,10 +40,10 @@ public class ChessComp extends JComponent {
         // FIXME: Use library to find the correct offset.
         g2.drawOval(0, 0, getWidth(), getHeight());
         if (isSelected()) { // Highlights the model if selected.
-            BasicStroke circle = new BasicStroke(120.0f);
+            BasicStroke circle = new BasicStroke(140.0f);
             Graphics2D graphics2D= (Graphics2D)g;
             graphics2D.setStroke(circle);
-            graphics2D.setColor(Color.cyan);
+            graphics2D.setColor(Color.GREEN);
             graphics2D.drawOval(0, 0, getWidth(), getHeight());
         }
     }

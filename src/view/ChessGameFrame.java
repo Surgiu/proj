@@ -6,9 +6,6 @@ import listener.MusicTool;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 //zhushi
 
 /**
@@ -18,8 +15,6 @@ public class ChessGameFrame extends JFrame {
     //    public final Dimension FRAME_SIZE ;
     private final int WIDTH;
     private final int HEIGTH;
-    private final String address = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\gameInfo";
-    private GameController gameController;
     private final int ONE_CHESS_SIZE;
     private ChessboardComponent chessboardComponent;
     private static JFrame enterFrame;
@@ -46,7 +41,7 @@ public class ChessGameFrame extends JFrame {
         addChessboard();
         addBaseLabel();
         addLabel();
-        addBaseLabel();
+        addBaseLabel();//?
         addButton();
     }
 
