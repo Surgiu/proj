@@ -3,9 +3,6 @@ package model;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.TreeSet;
 
 /**
  * This class store the real chess information.
@@ -15,9 +12,6 @@ public class Chessboard implements Serializable {
     @Serial
     private static final long serialVersionUID = 88010802L;
     private Cell[][] grid;
-    private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
-    private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
-    private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
     private int num;
 
 
@@ -31,7 +25,6 @@ public class Chessboard implements Serializable {
         initGrid();
         clear();
         initPieces();
-        initCoordinates();
         num = 0;
     }
 
@@ -91,23 +84,6 @@ public class Chessboard implements Serializable {
         grid[7][5].setPiece(new ChessPiece(PlayerColor.BLUE, "Dog", 3));
         grid[8][0].setPiece(new ChessPiece(PlayerColor.BLUE, "Tiger", 7));
         grid[8][6].setPiece(new ChessPiece(PlayerColor.BLUE, "Lion", 7));
-    }
-
-    public void initCoordinates() {
-        densCoordinates.add(new ChessboardPoint(0, 3));
-        densCoordinates.add(new ChessboardPoint(8, 3));
-        trapCoordinates.add(new ChessboardPoint(0, 2));
-        trapCoordinates.add(new ChessboardPoint(0, 4));
-        trapCoordinates.add(new ChessboardPoint(1, 3));
-        trapCoordinates.add(new ChessboardPoint(7, 3));
-        trapCoordinates.add(new ChessboardPoint(8, 2));
-        trapCoordinates.add(new ChessboardPoint(8, 4));
-        for (int i = 3; i <= 5; i++) {
-            for (int j = 1; j <= 2; j++) {
-                riverCoordinates.add(new ChessboardPoint(i, j));
-                riverCoordinates.add(new ChessboardPoint(i, j + 3));
-            }
-        }
     }
 
     public void clear() {
@@ -210,12 +186,10 @@ public class Chessboard implements Serializable {
 
     private boolean dens(ChessboardPoint src, ChessboardPoint dest) {//不能走到自己方的兽穴里
         if (getGridAt(dest).getType() == 3) {
-            if ((getChessPieceAt(src).getOwner().equals(PlayerColor.BLUE)
-                    && getGridAt(dest).getTerrain() == 20)
-                    || (getChessPieceAt(src).getOwner().equals(PlayerColor.RED)
-                    && getGridAt(dest).getTerrain() == 10)) {
-                return false;
-            }
+            return (!getChessPieceAt(src).getOwner().equals(PlayerColor.BLUE)
+                    || getGridAt(dest).getTerrain() != 20)
+                    && (!getChessPieceAt(src).getOwner().equals(PlayerColor.RED)
+                    || getGridAt(dest).getTerrain() != 10);
         }
         return true;
     }
@@ -333,18 +307,7 @@ public class Chessboard implements Serializable {
         }
     }
 
-    public boolean inDens(ChessboardPoint chessboardPoint) {
-        if (getChessPieceAt(chessboardPoint) != null) {
-            if (((getChessPieceAt(chessboardPoint).getOwner().equals(PlayerColor.BLUE) && getGridAt(chessboardPoint).getTerrain() == 10)
-                    || (getChessPieceAt(chessboardPoint).getOwner().equals(PlayerColor.RED) && getGridAt(chessboardPoint).getTerrain() == 20))) {
-                return getGridAt(chessboardPoint).getType() == 3;
-            }
-        }
-        return false;
-    }
-
     public ArrayList<ChessboardPoint> highlight(ChessboardPoint here) {
-        //if current player in controller
         if (getChessPieceAt(here) == null) {
             return null;
         } else if (getChessPieceAt(here).getName().equals("Lion") || getChessPieceAt(here).getName().equals("Tiger")) {
@@ -379,5 +342,9 @@ public class Chessboard implements Serializable {
                 }
             }
         }
+    }
+
+    public int getNum() {
+        return num;
     }
 }

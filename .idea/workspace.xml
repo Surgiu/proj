@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="高亮问题进一步完善">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="修复了老鼠吃子时跨越两步的bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInfo" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +91,7 @@
       <workItem from="1684800221067" duration="1211000" />
       <workItem from="1684808154986" duration="9414000" />
       <workItem from="1684832185215" duration="2889000" />
-      <workItem from="1684839137938" duration="4186000" />
+      <workItem from="1684839137938" duration="4916000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -266,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684837238297</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="修复了老鼠吃子时跨越两步的bug">
+      <created>1684843698691</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1684843698691</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,6 +303,7 @@
     <MESSAGE value="新增“注册”功能，新增“存档”功能" />
     <MESSAGE value="AI类引入" />
     <MESSAGE value="高亮问题进一步完善" />
-    <option name="LAST_COMMIT_MESSAGE" value="高亮问题进一步完善" />
+    <MESSAGE value="修复了老鼠吃子时跨越两步的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了老鼠吃子时跨越两步的bug" />
   </component>
 </project>
