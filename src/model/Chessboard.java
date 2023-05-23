@@ -347,12 +347,7 @@ public class Chessboard implements Serializable {
             ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
             for (int i = here.getRow() - 4; i <= here.getRow() + 4; i++) {
                 for (int j = here.getCol() - 4; j <= here.getCol() + 4; j++) {
-                    if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
-                            && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
-                        if (isValidMove(here, new ChessboardPoint(i, j))) {
-                            chessboardPoints.add(new ChessboardPoint(i, j));
-                        }
-                    }
+                    doHighlight(here, chessboardPoints, i, j);
                 }
             }
             return chessboardPoints;
@@ -360,15 +355,25 @@ public class Chessboard implements Serializable {
             ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
             for (int i = here.getRow() - 1; i <= here.getRow() + 1; i++) {
                 for (int j = here.getCol() - 1; j <= here.getCol() + 1; j++) {
-                    if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
-                            && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
-                        if (isValidMove(here, new ChessboardPoint(i, j))) {
-                            chessboardPoints.add(new ChessboardPoint(i, j));
-                        }
-                    }
+                    doHighlight(here, chessboardPoints, i, j);
                 }
             }
             return chessboardPoints;
+        }
+    }
+
+    private void doHighlight(ChessboardPoint here, ArrayList<ChessboardPoint> chessboardPoints, int i, int j) {
+        if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
+                && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
+            if (getChessPieceAt(new ChessboardPoint(i, j)) == null) {
+                if (isValidMove(here, new ChessboardPoint(i, j))) {
+                    chessboardPoints.add(new ChessboardPoint(i, j));
+                }
+            } else {
+                if (isValidCapture(here, new ChessboardPoint(i, j))) {
+                    chessboardPoints.add(new ChessboardPoint(i, j));
+                }
+            }
         }
     }
 }
