@@ -69,7 +69,7 @@ public class Chessboard implements Serializable {
 
     public void initPieces() {
         grid[0][0].setPiece(new ChessPiece(PlayerColor.RED, "Lion", 7));
-        grid[0][6].setPiece(new ChessPiece(PlayerColor.RED, "Tiger", 7));
+        grid[0][6].setPiece(new ChessPiece(PlayerColor.RED, "Tiger", 6));
         grid[1][1].setPiece(new ChessPiece(PlayerColor.RED, "Dog", 3));
         grid[1][5].setPiece(new ChessPiece(PlayerColor.RED, "Cat", 2));
         grid[2][2].setPiece(new ChessPiece(PlayerColor.RED, "Leopard", 5));
@@ -82,7 +82,7 @@ public class Chessboard implements Serializable {
         grid[6][6].setPiece(new ChessPiece(PlayerColor.BLUE, "Rat", 1));
         grid[7][1].setPiece(new ChessPiece(PlayerColor.BLUE, "Cat", 2));
         grid[7][5].setPiece(new ChessPiece(PlayerColor.BLUE, "Dog", 3));
-        grid[8][0].setPiece(new ChessPiece(PlayerColor.BLUE, "Tiger", 7));
+        grid[8][0].setPiece(new ChessPiece(PlayerColor.BLUE, "Tiger", 6));
         grid[8][6].setPiece(new ChessPiece(PlayerColor.BLUE, "Lion", 7));
     }
 
