@@ -25,6 +25,8 @@ public class ChessGameFrame extends JFrame {
     JButton jb3;
     JButton jb5;
     JButton jb4;
+    JButton jb6;
+    JButton jb7;
 
 
     public ChessGameFrame(int width, int height) {
@@ -93,18 +95,25 @@ public class ChessGameFrame extends JFrame {
         jb4 = new JButton("再来一局");
         jb3 = new JButton("存档");
         jb5 = new JButton("返回主页");
+        jb6= new JButton("清空存档");
+        jb7 = new JButton("载入存档");
 
         jb1.setBounds(HEIGTH, HEIGTH / 10, 200, 60);
         jb2.setBounds(HEIGTH, HEIGTH / 10 + 100, 200, 60);
         jb3.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
         jb4.setBounds(HEIGTH, HEIGTH / 10 + 200, 200, 60);
         jb5.setBounds(HEIGTH, HEIGTH / 10 + 300, 200, 60);
+        jb6.setBounds(HEIGTH, HEIGTH / 10 + 500, 200, 60);
+        jb7.setBounds(HEIGTH, HEIGTH / 10 + 600, 200, 60);
+
 
         picture.add(jb1);
         picture.add(jb2);
         picture.add(jb3);
         picture.add(jb4);
         picture.add(jb5);
+        picture.add(jb6);
+        picture.add(jb7);
         jb1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -135,7 +144,18 @@ public class ChessGameFrame extends JFrame {
                 chessboardComponent.getGameController().saveGame();
             }
         });
+        jb6.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chessboardComponent.getGameController().deleteMemory();
+            }
+        });
+        jb7.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chessboardComponent.getGameController().loadMemory();
+            }
+        });
 
     }
-
 }

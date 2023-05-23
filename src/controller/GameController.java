@@ -7,9 +7,7 @@ import view.ChessComp;
 import view.ChessboardComponent;
 
 import javax.swing.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
  * Controller is the connection between model and view,
@@ -34,11 +32,11 @@ public class GameController implements GameListener {
         this.model = model;
         this.currentPlayer = PlayerColor.BLUE;
         view.registerController(this);
-        initialize();
+        viewInitialize();
         view.repaint();
     }
 
-    private void initialize() {
+    private void viewInitialize() {
         view.initiateChessComponent(model);
     }
 
@@ -108,7 +106,6 @@ public class GameController implements GameListener {
                 System.err.println("Illegal capture");
             }
             view.repaint();
-            //test();
         }
     }
 
@@ -121,20 +118,21 @@ public class GameController implements GameListener {
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
         winner = null;
+        test();
     }
 
     private void test() {
         int[][] test = new int[9][7];
-        for (int i = 0; i < model.getGrid().length; i++) {
-            for (int j = 0; j < model.getGrid()[i].length; j++) {
-                if (view.getGridComponents()[i][j] != null) {
+        for (int i = 0; i < test.length; i++) {
+            for (int j = 0; j < test[i].length; j++) {
+                if (view.getGridComponents()[i][j].getComponents() != null) {
                     test[i][j] = 1;
                 }
             }
         }
         for (int[] ints : test) {
             for (int anInt : ints) {
-                System.out.print(anInt);
+                System.out.print(anInt+" ");
             }
             System.out.println();
         }
@@ -158,5 +156,30 @@ public class GameController implements GameListener {
             ex.printStackTrace();
             System.err.println("存档失败");
         }
+    }
+    public void deleteMemory() {
+        File file = new File(address);
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write("");
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null,"存档已清除");
+    }
+    public void loadMemory() {
+        Memory gameInfo = null;
+        try {
+            ObjectInputStream stream = new ObjectInputStream(new FileInputStream(address));
+            gameInfo = (Memory) stream.readObject();
+            stream.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert gameInfo != null;
+        Chessboard chessboard = gameInfo.getChessboard();
+
     }
 }
