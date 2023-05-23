@@ -6,6 +6,11 @@ import view.CellComponent;
 import view.ChessComp;
 import view.ChessboardComponent;
 
+import javax.swing.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 /**
  * Controller is the connection between model and view,
  * when a Controller receive a request from a view, the Controller
@@ -21,6 +26,7 @@ public class GameController implements GameListener {
     // Record whether there is a selected piece before
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
+    private String address = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\gameInfo";
 
     public GameController(ChessboardComponent view, Chessboard model) {
         this.view = view;
@@ -138,5 +144,17 @@ public class GameController implements GameListener {
     public void highlightOff (ChessboardPoint point) {
         view.drawHighlightOff(model.highlight(point));
         view.repaint();
+    }
+    public void saveGame() {
+        try {
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(address));
+            Memory gameInfo = new Memory(model);
+            stream.writeObject(gameInfo);
+            stream.close();
+            JOptionPane.showMessageDialog( null,"存档成功！");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.err.println("存档失败");
+        }
     }
 }

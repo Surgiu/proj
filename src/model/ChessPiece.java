@@ -1,7 +1,9 @@
 package model;
 
 
-public class ChessPiece {
+import java.io.Serializable;
+
+public class ChessPiece implements Serializable {
     private PlayerColor owner;
     private String name;
     private int rank;

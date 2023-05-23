@@ -1,10 +1,30 @@
 package view;
 
+import controller.User;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.*;
+import java.net.URL;
+import java.util.ArrayList;
 
-public class LogInFrame extends JFrame {
+public class LogInFrame extends JFrame implements Serializable {
+    JLabel jl1;
+    JLabel jl2;
+    JPanel jp;
+    JButton jb1;
+    JButton jb2;
+    JButton jb3;
+    JTextField username;
+    JTextField password;
+    final String position = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\userInfo.txt";
+
+    ArrayList<User> users = new ArrayList<>();
+
     public LogInFrame() {
         this.setBounds(720, 410, 220, 180);
         this.setTitle("登录");
@@ -16,16 +36,16 @@ public class LogInFrame extends JFrame {
         this.setVisible(true);
 
 
-        JLabel jl1 = new JLabel("账号:");
-        JTextField username = new JTextField("", 21);
-        JLabel jl2 = new JLabel("密码:");
-        JTextField password = new JTextField("", 21);
-        JPanel jp = new JPanel();
-        JButton jb1 = new JButton("登陆");
+        jl1 = new JLabel("账号:");
+        username = new JTextField("", 21);
+        jl2 = new JLabel("密码:");
+        password = new JTextField("", 21);
+        jp = new JPanel();
+        jb1 = new JButton("登陆");
 //        jb1.setBounds(0,200,70, 20);
-        JButton jb2 = new JButton("注册");
+        jb2 = new JButton("注册");
 //        jb2.setBounds(90,200,70, 20);
-        JButton jb3 = new JButton("取消");
+        jb3 = new JButton("取消");
 //        jb3.setBounds(180,200,70, 20);
         add(jl1);
         add(username);
@@ -35,8 +55,53 @@ public class LogInFrame extends JFrame {
         jp.add(jb1);
         jp.add(jb2);
         jp.add(jb3);
+        addButtons();
     }
-    public void click(MouseEvent e) {
+
+    public void readUser() {
 
     }
+    public void addButtons() {
+        jb2.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == jb2) {
+                    if (username.getText().length() != 0 && password.getText().length() != 0) {
+                        try {
+                            users.add(new User(username.getText(), password.getText()));
+                            ObjectOutputStream info = new ObjectOutputStream(new FileOutputStream(position));
+                            info.writeObject(users.get(users.size() - 1));
+                            info.close();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        JOptionPane.showMessageDialog(null,"注册成功！");
+                        LogInFrame.this.setVisible(false);
+                        //System.out.println("re");
+                    }
+                } else if (e.getSource() == jb1) {
+                    if (username.getText().length() != 0 && password.getText().length() != 0) {
+                        try {
+                            users.add(new User(username.getText(), password.getText()));
+                            ObjectOutputStream info = new ObjectOutputStream(new FileOutputStream(position));
+                            info.writeObject(users.get(users.size() - 1));
+                            info.close();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        JOptionPane.showMessageDialog(null,"登录成功！");
+                        LogInFrame.this.setVisible(false);
+                    }
+                }
+            }
+        });
+        jb3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LogInFrame.this.setVisible(false);
+            }
+        });
+    }
+
+
 }
