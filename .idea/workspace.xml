@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="新增游戏结束的展示功能">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="实现了高亮展示可行棋的功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/CellComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CellComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +89,7 @@
       <workItem from="1684737444377" duration="5032000" />
       <workItem from="1684743575055" duration="317000" />
       <workItem from="1684752915386" duration="5766000" />
+      <workItem from="1684800221067" duration="897000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>

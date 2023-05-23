@@ -90,6 +90,7 @@ public class GameController implements GameListener {
             component.repaint();
         } else {
             if (model.isValidCapture(selectedPoint, point)) {//如果是有效动作，进行相应操作
+                highlightOff(selectedPoint);
                 model.captureChessPiece(selectedPoint, point);
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
@@ -99,7 +100,6 @@ public class GameController implements GameListener {
                 selectedPoint = null;
                 System.err.println("Illegal capture");
             }
-            highlightOff(point);
             view.repaint();
             //test();
         }

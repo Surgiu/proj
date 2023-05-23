@@ -342,18 +342,32 @@ public class Chessboard {
         //if current player in controller
         if (getChessPieceAt(here) == null) {
             return null;
-        }
-        ArrayList<ChessboardPoint>chessboardPoints = new ArrayList<>();
-        for (int i = here.getRow() - 1; i <= here.getRow() + 1; i++) {
-            for (int j = here.getCol() - 1; j <= here.getCol() + 1; j++) {
-                if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
-                        && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
-                    if (isValidMove(here, new ChessboardPoint(i, j))) {
-                        chessboardPoints.add(new ChessboardPoint(i, j));
+        }else if(getChessPieceAt(here).getName().equals("Lion")||getChessPieceAt(here).getName().equals("Tiger")) {
+            ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
+            for (int i = here.getRow() - 4; i <= here.getRow() + 4; i++) {
+                for (int j = here.getCol() - 4; j <= here.getCol() + 4; j++) {
+                    if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
+                            && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
+                        if (isValidMove(here, new ChessboardPoint(i, j))) {
+                            chessboardPoints.add(new ChessboardPoint(i, j));
+                        }
                     }
                 }
             }
+            return chessboardPoints;
+        }else {
+            ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
+            for (int i = here.getRow() - 1; i <= here.getRow() + 1; i++) {
+                for (int j = here.getCol() - 1; j <= here.getCol() + 1; j++) {
+                    if (i >= 0 && i < Constant.CHESSBOARD_ROW_SIZE.getNum()
+                            && j >= 0 && j < Constant.CHESSBOARD_COL_SIZE.getNum()) {
+                        if (isValidMove(here, new ChessboardPoint(i, j))) {
+                            chessboardPoints.add(new ChessboardPoint(i, j));
+                        }
+                    }
+                }
+            }
+            return chessboardPoints;
         }
-        return chessboardPoints;
     }
 }

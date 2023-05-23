@@ -216,13 +216,13 @@ public class ChessboardComponent extends JComponent {
     }
 
     public void drawHighlight(ArrayList<ChessboardPoint>points) {
-        for (int i = 0; i < points.size(); i++) {
-            gridComponents[points.get(i).getRow()][points.get(i).getCol()].setOpaque(true);
+        for (ChessboardPoint point : points) {
+            gridComponents[point.getRow()][point.getCol()].setOpaque(true);
         }
     }
     public void drawHighlightOff(ArrayList<ChessboardPoint>points) {
-        for (int i = 0; i < points.size(); i++) {
-            gridComponents[points.get(i).getRow()][points.get(i).getCol()].setOpaque(false);
+        for (ChessboardPoint point : points) {
+            gridComponents[point.getRow()][point.getCol()].setOpaque(false);
         }
     }
 
@@ -240,6 +240,8 @@ public class ChessboardComponent extends JComponent {
     }
 
     public CellComponent[][] getGridComponents() {
+        System.out.println();
         return gridComponents;
+
     }
 }
