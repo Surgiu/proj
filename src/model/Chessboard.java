@@ -12,11 +12,10 @@ import java.util.TreeSet;
  */
 public class Chessboard implements Serializable {
     private Cell[][] grid;
-    private ChessboardPoint coordinate;
     private HashSet<ChessboardPoint> densCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> trapCoordinates = new HashSet<>();
     private HashSet<ChessboardPoint> riverCoordinates = new HashSet<>();
-    private static int num;
+    private int num;
 
     public Chessboard() {
         this.grid =
@@ -29,6 +28,7 @@ public class Chessboard implements Serializable {
         initGrid();
         initPieces();
         initCoordinates();
+        num = 0;
     }
 
     public void initGrid() {//默认上红下蓝
@@ -343,7 +343,7 @@ public class Chessboard implements Serializable {
         //if current player in controller
         if (getChessPieceAt(here) == null) {
             return null;
-        }else if(getChessPieceAt(here).getName().equals("Lion")||getChessPieceAt(here).getName().equals("Tiger")) {
+        } else if (getChessPieceAt(here).getName().equals("Lion") || getChessPieceAt(here).getName().equals("Tiger")) {
             ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
             for (int i = here.getRow() - 4; i <= here.getRow() + 4; i++) {
                 for (int j = here.getCol() - 4; j <= here.getCol() + 4; j++) {
@@ -356,7 +356,7 @@ public class Chessboard implements Serializable {
                 }
             }
             return chessboardPoints;
-        }else {
+        } else {
             ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
             for (int i = here.getRow() - 1; i <= here.getRow() + 1; i++) {
                 for (int j = here.getCol() - 1; j <= here.getCol() + 1; j++) {

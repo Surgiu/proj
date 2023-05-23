@@ -26,6 +26,7 @@ public class GameController implements GameListener {
     // Record whether there is a selected piece before
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
+    private AI AI;
     private String address = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\gameInfo";
 
     public GameController(ChessboardComponent view, Chessboard model) {
@@ -119,6 +120,7 @@ public class GameController implements GameListener {
         view.repaint();
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
+        winner = null;
     }
 
     private void test() {
