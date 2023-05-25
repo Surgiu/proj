@@ -36,7 +36,6 @@ public class LogInFrame extends JFrame implements Serializable {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-
         jl1 = new JLabel("请输入用户名:");
         username = new JTextField("", 29);
         jl2 = new JLabel("请输入密码:");
