@@ -13,6 +13,7 @@ public class Chessboard implements Serializable {
     private static final long serialVersionUID = 88010802L;
     private Cell[][] grid;
     private int num;
+    private PlayerColor currentPlayer;
 
 
     public Chessboard() {
@@ -114,7 +115,7 @@ public class Chessboard implements Serializable {
         return chessPiece;
     }
 
-    private void setChessPiece(ChessboardPoint point, ChessPiece chessPiece) {
+    public void setChessPiece(ChessboardPoint point, ChessPiece chessPiece) {
         getGridAt(point).setPiece(chessPiece);//把指定的棋子放到指定坐标
     }
 
@@ -124,15 +125,20 @@ public class Chessboard implements Serializable {
         }
         ChessPiece piece0 = getChessPieceAt(src);
         if (piece0 != null) {
-            if (piece0.getOwner().equals(PlayerColor.BLUE)) {
-                getGridAt(dest).setOccupy(2);
-            } else {
-                getGridAt(dest).setOccupy(1);
-            }
-            getGridAt(src).setOccupy(0);
-            setChessPiece(dest, removeChessPiece(src));
-            num++;
+            updateOccupy(src, dest, piece0);
         }
+    }
+
+    private void updateOccupy(ChessboardPoint src, ChessboardPoint dest, ChessPiece piece0) {
+        if (piece0.getOwner().equals(PlayerColor.BLUE)) {
+            getGridAt(dest).setOccupy(2);
+        } else {
+            getGridAt(dest).setOccupy(1);
+        }
+        getGridAt(src).setOccupy(0);
+        setChessPiece(dest, removeChessPiece(src));
+        num++;
+        updateCurrentPlayer();
     }
 
     public void captureChessPiece(ChessboardPoint src, ChessboardPoint dest) {
@@ -140,14 +146,7 @@ public class Chessboard implements Serializable {
             throw new IllegalArgumentException("Illegal chess capture!");
         } else {
             ChessPiece predator = getChessPieceAt(src);
-            if (predator.getOwner().equals(PlayerColor.BLUE)) {
-                getGridAt(dest).setOccupy(2);
-            } else {
-                getGridAt(dest).setOccupy(1);
-            }
-            getGridAt(src).setOccupy(0);
-            setChessPiece(dest, removeChessPiece(src));
-            num++;
+            updateOccupy(src, dest, predator);
         }
     }
 
@@ -264,7 +263,9 @@ public class Chessboard implements Serializable {
                 case "Rat" -> {
                     if (getGridAt(src).getType() == 1) {//rat in the river
                         return false;
-                    } else {//rat on the ground
+                    } else if (getGridAt(src).getType() != 1 && getGridAt(dest).getType() == 2) {//rat on the ground
+                        return calculateDistance(src, dest) == 1;
+                    } else if (getGridAt(src).getType() != 1) {
                         return predator.canCapture(target) && calculateDistance(src, dest) == 1;
                     }
                 }
@@ -342,6 +343,26 @@ public class Chessboard implements Serializable {
                 }
             }
         }
+    }
+
+    void updateCurrentPlayer() {
+        if (this.num % 2 == 0) {
+            currentPlayer = PlayerColor.BLUE;
+        } else {
+            currentPlayer = PlayerColor.RED;
+        }
+    }
+
+    public PlayerColor getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(PlayerColor currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public int getNum() {

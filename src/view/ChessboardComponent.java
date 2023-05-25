@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.*;
-import java.util.List;
 
 import static model.Constant.CHESSBOARD_COL_SIZE;
 import static model.Constant.CHESSBOARD_ROW_SIZE;
@@ -35,28 +34,18 @@ public class ChessboardComponent extends JComponent {
         System.out.printf("chessboard width, height = [%d : %d], chess size = %d\n", width, height, CHESS_SIZE);
 
         initiateGridComponents();
-        //clear2();
     }
 
     public void clear() {
-        for (CellComponent[] gridComponent : gridComponents) {
-            for (CellComponent cellComponent : gridComponent) {
-                if (cellComponent != null) {
-                    cellComponent.removeAll();
-                    this.repaint();
+        for (int i = 0; i < gridComponents.length; i++) {
+            for (int j = 0; j < gridComponents[i].length; j++) {
+                if (gridComponents[i][j] != null) {
+                    gridComponents[i][j].removeAll();
                 }
             }
         }
     }
 
-    public void clear2() {
-        for (CellComponent[] gridComponent : gridComponents) {
-            for (CellComponent cellComponent : gridComponent) {
-                cellComponent.setOpaque(false);
-                this.repaint();
-            }
-        }
-    }
     /**
      * This method represents how to initiate ChessComponent
      * according to Chessboard information
@@ -181,7 +170,7 @@ public class ChessboardComponent extends JComponent {
         return chess;
     }
 
-    private CellComponent getGridComponentAt(ChessboardPoint point) {
+    public CellComponent getGridComponentAt(ChessboardPoint point) {
         return gridComponents[point.getRow()][point.getCol()];
     }
 
@@ -215,12 +204,13 @@ public class ChessboardComponent extends JComponent {
         }
     }
 
-    public void drawHighlight(ArrayList<ChessboardPoint>points) {
+    public void drawHighlight(ArrayList<ChessboardPoint> points) {
         for (ChessboardPoint point : points) {
             gridComponents[point.getRow()][point.getCol()].setOpaque(true);
         }
     }
-    public void drawHighlightOff(ArrayList<ChessboardPoint>points) {
+
+    public void drawHighlightOff(ArrayList<ChessboardPoint> points) {
         for (ChessboardPoint point : points) {
             gridComponents[point.getRow()][point.getCol()].setOpaque(false);
         }
@@ -242,6 +232,9 @@ public class ChessboardComponent extends JComponent {
     public CellComponent[][] getGridComponents() {
         System.out.println();
         return gridComponents;
+    }
 
+    public int getCHESS_SIZE() {
+        return CHESS_SIZE;
     }
 }

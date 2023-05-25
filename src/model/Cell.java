@@ -10,7 +10,6 @@ public class Cell implements Serializable {
     private final int type;//0:ground,1:river,2:trap,3:dens
     private int occupy;//0:noOccupation;1:red;2:blue
     private int terrain = 0;//0:none;10:red;20:blue
-    private ChessboardPoint coordinate;
 
     public Cell(int type) {
         this.type = type;
@@ -48,7 +47,4 @@ public class Cell implements Serializable {
         this.terrain = terrain;
     }
 
-    public ChessboardPoint getCoordinate() {
-        return coordinate;
-    }
 }

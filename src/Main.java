@@ -1,5 +1,5 @@
 import controller.GameController;
-import listener.MusicTool;
+import controller.Mode;
 import model.Chessboard;
 import view.ChessGameFrame;
 import view.EnterFrame;
@@ -13,7 +13,7 @@ public class Main {
 //            mainFrame.setVisible(true);
             enter.setVisible(true);
             ChessGameFrame mainFrame = new ChessGameFrame(1100,810);
-            GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard());
+            GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard(), Mode.MULTIPLAYER);
 
         });
     }

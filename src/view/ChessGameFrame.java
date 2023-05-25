@@ -1,10 +1,6 @@
 package view;
 
-import controller.GameController;
-import listener.MusicTool;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 //zhushi
 
@@ -43,8 +39,8 @@ public class ChessGameFrame extends JFrame {
         addChessboard();
         addBaseLabel();
         addLabel();
-        addBaseLabel();//?
         addButton();
+        addBaseLabel();
     }
 
     public ChessboardComponent getChessboardComponent() {
@@ -68,16 +64,16 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中添加标签
      */
     private void addLabel() {
-        JLabel statusLabel = new JLabel("Sample label");
+        JLabel statusLabel = new JLabel("当前玩家：\n"+"回合数：\n"+"下棋时间：");
         statusLabel.setLocation(HEIGTH, HEIGTH / 10);
         statusLabel.setSize(200, 0);
-        statusLabel.setFont(new Font("Rockwell", Font.BOLD, 20));
+//        statusLabel.setFont(new Font("Rockwell", Font.BOLD, 20));
         add(statusLabel);
     }
 
     public void addBaseLabel() {
         JLabel chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
-        chessboard.setBounds(102, -48, 623, 900);
+        chessboard.setBounds(102, -46, 623, 900);
 //        this.getContentPane().add(chessboard);
         add(chessboard);
         picture = new JLabel(new ImageIcon("image/picture1.png"));
@@ -90,22 +86,23 @@ public class ChessGameFrame extends JFrame {
      */
 
     private void addButton() {
-        jb1 = new JButton("设置");
-        jb2 = new JButton("悔棋");
-        jb4 = new JButton("再来一局");
-        jb3 = new JButton("存档");
-        jb5 = new JButton("返回主页");
-        jb6= new JButton("清空存档");
-        jb7 = new JButton("载入存档");
+        JButton jb1 = new JButton("设置");
+        JButton jb2 = new JButton("悔棋");
+        JButton jb3 = new JButton("认输");
+        JButton jb4 = new JButton("再来一局");
+        JButton jb5 = new JButton("返回主页");
+        JButton jb6 = new JButton("存档");
+        JButton jb7 = new JButton("清空存档");
+        JButton jb8 = new JButton("载入存档");
 
-        jb1.setBounds(HEIGTH, HEIGTH / 10, 200, 60);
-        jb2.setBounds(HEIGTH, HEIGTH / 10 + 100, 200, 60);
-        jb3.setBounds(HEIGTH, HEIGTH / 10 + 400,200, 60);
-        jb4.setBounds(HEIGTH, HEIGTH / 10 + 200, 200, 60);
-        jb5.setBounds(HEIGTH, HEIGTH / 10 + 300, 200, 60);
-        jb6.setBounds(HEIGTH, HEIGTH / 10 + 500, 200, 60);
-        jb7.setBounds(HEIGTH, HEIGTH / 10 + 600, 200, 60);
-
+        jb1.setBounds(HEIGTH+70, HEIGTH / 10 + 85, 160, 50);
+        jb2.setBounds(HEIGTH+70, HEIGTH / 10 + 160, 160, 50);
+        jb3.setBounds(HEIGTH+70, HEIGTH / 10 + 235,160, 50);
+        jb4.setBounds(HEIGTH+70, HEIGTH / 10 + 310, 160, 50);
+        jb6.setBounds(HEIGTH+70, HEIGTH / 10 + 385, 160, 50);
+        jb7.setBounds(HEIGTH+70, HEIGTH / 10 + 460, 160, 50);
+        jb8.setBounds(HEIGTH+70, HEIGTH / 10 + 535, 160, 50);
+        jb5.setBounds(HEIGTH+70, HEIGTH / 10 + 610, 160, 50);
 
         picture.add(jb1);
         picture.add(jb2);
@@ -114,6 +111,8 @@ public class ChessGameFrame extends JFrame {
         picture.add(jb5);
         picture.add(jb6);
         picture.add(jb7);
+        picture.add(jb8);
+
         jb1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -122,6 +121,24 @@ public class ChessGameFrame extends JFrame {
             }
         });
 //        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
+        jb2.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        jb6.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chessboardComponent.getGameController().saveGame();
+            }
+        });
+        jb4.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chessboardComponent.getGameController().restart();
+            }
+        });
         jb5.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -132,30 +149,23 @@ public class ChessGameFrame extends JFrame {
                 enterFrame.setVisible(true);
             }
         });
-        jb4.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                chessboardComponent.getGameController().restart();
-            }
-        });
-        jb3.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                chessboardComponent.getGameController().saveGame();
-            }
-        });
-        jb6.addActionListener(new AbstractAction() {
+        jb7.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().deleteMemory();
             }
         });
-        jb7.addActionListener(new AbstractAction() {
+        jb8.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().loadMemory();
             }
         });
+        jb3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+            }
+        });
     }
 }

@@ -37,7 +37,6 @@ public class ChessComp extends JComponent {
         g2.setFont(font);
         g2.setColor(getOwner().getColor());
         g2.drawString(name, getWidth() / 4, getHeight() * 5 / 8);
-        // FIXME: Use library to find the correct offset.
         g2.drawOval(0, 0, getWidth(), getHeight());
         if (isSelected()) { // Highlights the model if selected.
             BasicStroke circle = new BasicStroke(140.0f);

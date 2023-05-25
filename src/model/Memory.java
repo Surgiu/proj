@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class Memory implements Serializable {
     @Serial
     private static final long serialVersionUID = 550081L;
-    private Chessboard chessboard;
+    private final Chessboard chessboard;
 
     public Memory(Chessboard chessboard) {
         this.chessboard = chessboard;
@@ -46,9 +46,5 @@ public class Memory implements Serializable {
 
     public Chessboard getChessboard() {
         return chessboard;
-    }
-
-    public void setChessboard(Chessboard chessboard) {
-        this.chessboard = chessboard;
     }
 }

@@ -2,12 +2,11 @@ package controller;
 
 import listener.GameListener;
 import model.*;
-import view.CellComponent;
-import view.ChessComp;
-import view.ChessboardComponent;
+import view.*;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Controller is the connection between model and view,
@@ -25,15 +24,18 @@ public class GameController implements GameListener {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
-    private String address = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\gameInfo";
+    private final String address = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\gameInfo";
 
-    public GameController(ChessboardComponent view, Chessboard model) {
+    public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
         this.model = model;
         this.currentPlayer = PlayerColor.BLUE;
         view.registerController(this);
         viewInitialize();
         view.repaint();
+        if (gameMode.equals(Mode.SINGLEPLAYER)) {
+            AI = new AI(model);
+        }
     }
 
     private void viewInitialize() {
@@ -48,8 +50,19 @@ public class GameController implements GameListener {
     private boolean isWin() {
         ChessPiece winnerPiece1 = model.getGrid()[0][3].getPiece();
         ChessPiece winnerPiece2 = model.getGrid()[8][3].getPiece();
-        boolean case1 = winnerPiece1 != null && winnerPiece1.getOwner().equals(PlayerColor.BLUE);
-        boolean case2 = winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED);
+        int redCount = -1, blueCount = -1;
+        for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
+            for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
+                ChessPiece piece = model.getChessPieceAt(new ChessboardPoint(i, j));
+                if (piece != null && piece.getOwner().equals(PlayerColor.RED)) {
+                    redCount++;
+                } else if (piece != null && piece.getOwner().equals(PlayerColor.BLUE)) {
+                    blueCount++;
+                }
+            }
+        }
+        boolean case1 = (winnerPiece1 != null && winnerPiece1.getOwner().equals(PlayerColor.BLUE)) || redCount == -1;
+        boolean case2 = winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED) || blueCount == -1;
         if (case1) {
             winner = PlayerColor.BLUE;
         } else if (case2) {
@@ -74,6 +87,7 @@ public class GameController implements GameListener {
             }
             selectedPoint = null;
             swapColor();
+            AIGo();
             view.repaint();
         }
     }
@@ -96,15 +110,21 @@ public class GameController implements GameListener {
         } else {
             if (model.isValidCapture(selectedPoint, point)) {//如果是有效动作，进行相应操作
                 highlightOff(selectedPoint);
+                model.escapeTrap(selectedPoint, point);
                 model.captureChessPiece(selectedPoint, point);
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
                 selectedPoint = null;
                 swapColor();
+                if(isWin()) {
+                    view.showWin(winner);
+                    return;
+                }
             } else if (!model.isValidCapture(selectedPoint, point)) {
                 selectedPoint = null;
                 System.err.println("Illegal capture");
             }
+            AIGo();
             view.repaint();
         }
     }
@@ -132,31 +152,35 @@ public class GameController implements GameListener {
         }
         for (int[] ints : test) {
             for (int anInt : ints) {
-                System.out.print(anInt+" ");
+                System.out.print(anInt + " ");
             }
             System.out.println();
         }
     }
+
     public void highlightOn(ChessboardPoint point) {
         view.drawHighlight(model.highlight(point));
         view.repaint();
     }
-    public void highlightOff (ChessboardPoint point) {
+
+    public void highlightOff(ChessboardPoint point) {
         view.drawHighlightOff(model.highlight(point));
         view.repaint();
     }
+
     public void saveGame() {
         try {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(address));
             Memory gameInfo = new Memory(model);
             stream.writeObject(gameInfo);
             stream.close();
-            JOptionPane.showMessageDialog( null,"存档成功！");
+            JOptionPane.showMessageDialog(null, "存档成功！");
         } catch (IOException ex) {
             ex.printStackTrace();
             System.err.println("存档失败");
         }
     }
+
     public void deleteMemory() {
         File file = new File(address);
         try {
@@ -167,9 +191,12 @@ public class GameController implements GameListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        JOptionPane.showMessageDialog(null,"存档已清除");
+        JOptionPane.showMessageDialog(null, "存档已清除");
     }
+
     public void loadMemory() {
+        restart();
+        //read information
         Memory gameInfo = null;
         try {
             ObjectInputStream stream = new ObjectInputStream(new FileInputStream(address));
@@ -180,6 +207,79 @@ public class GameController implements GameListener {
         }
         assert gameInfo != null;
         Chessboard chessboard = gameInfo.getChessboard();
+        //load model
+        ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
+        ArrayList<ChessPiece> chessPieces = new ArrayList<>();
+        for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
+            for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
+                ChessPiece chessPiece = chessboard.getChessPieceAt(new ChessboardPoint(i, j));
+                if (chessPiece != null) {
+                    chessboardPoints.add(new ChessboardPoint(i, j));
+                    chessPieces.add(new ChessPiece(chessPiece.getOwner(), chessPiece.getName(), chessPiece.getRank()));
+                }
+            }
+        }
+        for (int i = 0; i < chessPieces.size(); i++) {
+            this.model.setChessPiece(chessboardPoints.get(i), chessPieces.get(i));
+        }
+        model.setCurrentPlayer(chessboard.getCurrentPlayer());
+        model.setNum(chessboard.getNum());
+        //load view
+        for (int i = 0; i < chessPieces.size(); i++) {
+            view.setChessComponentAtGrid(chessboardPoints.get(i), getChessViewByPiece(chessPieces.get(i)));
+        }
+    }
+
+    private ChessComp getChessViewByPiece(ChessPiece chessPiece) {
+        //当心：动态绑定机制
+        PlayerColor color = chessPiece.getOwner();
+        switch (chessPiece.getName()) {
+            case "Elephant" -> {
+                return new ElephantComp(color, view.getCHESS_SIZE(), "Elephant");
+            }
+            case "Lion" -> {
+                return new LionComp(color, view.getCHESS_SIZE(), "Lion");
+            }
+            case "Tiger" -> {
+                return new TigerComp(color, view.getCHESS_SIZE(), "Tiger");
+            }
+            case "Leopard" -> {
+                return new LeopardComp(color, view.getCHESS_SIZE(), "Leopard");
+            }
+            case "Wolf" -> {
+                return new WolfComp(color, view.getCHESS_SIZE(), "Wolf");
+            }
+            case "Dog" -> {
+                return new DogComp(color, view.getCHESS_SIZE(), "Dog");
+            }
+            case "Cat" -> {
+                return new CatComp(color, view.getCHESS_SIZE(), "Cat");
+            }
+            case "Rat" -> {
+                return new RatComp(color, view.getCHESS_SIZE(), "Rat");
+            }
+        }
+        return null;
+    }
+
+    public void AIGo() {
+        if (currentPlayer.equals(PlayerColor.BLUE) || AI == null) {
+            return;
+        }
+        ChessboardPoint[] step = AI.move();
+        ChessboardPoint src = step[0];
+        ChessboardPoint dest = step[1];
+        AI.doMove(step);
+        if (model.getChessPieceAt(dest) != null) {
+            view.getGridComponentAt(dest).removeAll();
+        }
+        view.setChessComponentAtGrid(dest, view.removeChessComponentAtGrid(src));
+        swapColor();
+    }
+    public void undo() {
+
+    }
+    public void autoSave() {
 
     }
 }

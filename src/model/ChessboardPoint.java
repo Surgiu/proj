@@ -7,6 +7,7 @@ import java.io.Serializable;
  * Where, the upper left corner is (0, 0), the lower left corner is (7, 0), the upper right corner is (0, 7), and the lower right corner is (7, 7).
  */
 public class ChessboardPoint implements Serializable {
+
     private final int row;
     private final int col;
 

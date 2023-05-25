@@ -4,11 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="修复了狮虎互吃的bug">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="引入“读档”功能">
+      <change afterPath="$PROJECT_DIR$/image/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/background1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/chessboard0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/music.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/picture1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/picture2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/picture3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/music/desktop.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/music/earth.WAV" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/music/hug.WAV" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/Mode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInfo" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/2V`7O2MN4PYUU]2G{3ZL]%9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/5J2HAW}$ID]$S4(C37WZR_Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/LTZVI4HHJ}LW7VPL1QEMBTJ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/WI(~]F4UU1BA1B2ZV)ES~5W.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chessboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/image/chessboard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chessboard1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chessboard2small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chessboard3small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chessboard4small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/chessboard6big.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/{PMG39X7FVDH(`~HUCOQ3[Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listener/MusicTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MusicTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ChessPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ChessboardPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ChessboardPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/DogComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DogComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/EnterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/EnterFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MusicFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MusicFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SettingGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SettingGameFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +54,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -44,6 +80,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -93,7 +130,13 @@
       <workItem from="1684800221067" duration="1211000" />
       <workItem from="1684808154986" duration="9414000" />
       <workItem from="1684832185215" duration="2889000" />
-      <workItem from="1684839137938" duration="6882000" />
+      <workItem from="1684839137938" duration="14211000" />
+      <workItem from="1684859268551" duration="437000" />
+      <workItem from="1684889645397" duration="82000" />
+      <workItem from="1684894967306" duration="9190000" />
+      <workItem from="1684908191173" duration="7901000" />
+      <workItem from="1684916625771" duration="2784000" />
+      <workItem from="1684929823769" duration="5410000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -284,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684844362466</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="引入“读档”功能">
+      <created>1684846320833</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1684846320833</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +352,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="探索" />
     <MESSAGE value="细化1" />
     <MESSAGE value="细化2" />
@@ -322,6 +373,22 @@
     <MESSAGE value="修复了老鼠吃子时跨越两步的bug" />
     <MESSAGE value="Chessboard简化" />
     <MESSAGE value="修复了狮虎互吃的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了狮虎互吃的bug" />
+    <MESSAGE value="引入“读档”功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="引入“读档”功能" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/GameController.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

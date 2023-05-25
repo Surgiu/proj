@@ -1,10 +1,13 @@
 package model;
 
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class ChessPiece implements Serializable {
-    private PlayerColor owner;
+    @Serial
+    private static final long serialVersionUID = 5152478909569497901L;
+    private final PlayerColor owner;
     private String name;
     private int rank;
 
@@ -33,10 +36,6 @@ public class ChessPiece implements Serializable {
 
     public PlayerColor getOwner() {
         return owner;
-    }
-
-    public void setOwner(PlayerColor owner) {
-        this.owner = owner;
     }
 
     public void setName(String name) {

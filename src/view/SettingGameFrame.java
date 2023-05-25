@@ -1,9 +1,5 @@
 package view;
 
-import controller.GameController;
-import listener.MusicTool;
-import model.Chessboard;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -13,13 +9,15 @@ public class SettingGameFrame extends JFrame {
     JButton jb1;
     JButton jb2;
     JButton jb3;
+    JButton jb4;
     JButton jb7;
+
     public SettingGameFrame(){
         this.setTitle("设置");
         this.setBounds(715,200,290,620);
         this.setLayout(null);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
         background =new JLabel(new ImageIcon("image/background.png")) ;
@@ -27,19 +25,22 @@ public class SettingGameFrame extends JFrame {
         this.add(background);
 
         jb1 = new JButton("规则");
-        jb2 = new JButton("音量");
-        jb3 = new JButton("音乐");
+        jb2 = new JButton("音乐");
+        jb3 = new JButton("日/夜主题切换");
+        jb4 = new JButton("背景切换");
         jb7 = new JButton("返回");
 
 
         jb1.setBounds(65, 40, 160, 30);
         jb2.setBounds(65, 100, 160, 30);
         jb3.setBounds(65, 160, 160, 30);
-        jb7.setBounds(65, 220, 160, 30);
+        jb4.setBounds(65, 220, 160, 30);
+        jb7.setBounds(65, 280, 160, 30);
 
         background.add(jb1);
         background.add(jb2);
         background.add(jb3);
+        background.add(jb4);
         background.add(jb7);
 
         jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "《斗兽棋》是一款棋类游戏，分两方对战，红蓝双方各持有8个棋子隔河相对，通过移动棋子并吃掉另一方所有棋子或者占领对方巢穴即视为胜利。\n" +
@@ -70,14 +71,25 @@ public class SettingGameFrame extends JFrame {
 //
 //            }
 //        });
-        jb3.addActionListener(new AbstractAction() {
+        jb2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MusicFrame musicFrame=new MusicFrame();
                 musicFrame.setVisible(true);
             }
         });
+        jb3.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+        jb4.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         jb7.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
