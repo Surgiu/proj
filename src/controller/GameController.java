@@ -65,6 +65,7 @@ public class GameController implements GameListener {
         boolean case2 = (winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED)) || blueCount == -1;
         if (case1) {
             winner = PlayerColor.BLUE;
+            view.getChessGameFrame().grading();
         } else if (case2) {
             winner = PlayerColor.RED;
         }

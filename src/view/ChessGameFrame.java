@@ -170,7 +170,8 @@ public class ChessGameFrame extends JFrame {
             }
         });
     }
-    public void grading() {
 
+    public void grading() {
+        user.setRank(user.getRank() + 1);
     }
 }
