@@ -6,8 +6,7 @@ import view.*;
 
 import javax.swing.*;
 import java.io.*;
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Controller is the connection between model and view,
@@ -25,14 +24,13 @@ public class GameController implements GameListener {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
-    private final String address = "resource/gameInfo";
-
     public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
         this.model = model;
         this.currentPlayer = PlayerColor.BLUE;
         view.registerController(this);
         viewInitialize();
+        autoSave();
         view.repaint();
         if (gameMode.equals(Mode.SINGLEPLAYER)) {
             AI = new AI(model);
@@ -193,15 +191,20 @@ public class GameController implements GameListener {
     }
 
     public void deleteMemory() {
-        File file = new File(address);
-        try {
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write("");
-            fileWriter.flush();
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        File file = new File("resource/gameInformation/");
+        File[] files = file.listFiles();
+        for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
+            files[i].delete();
         }
+//        File file = new File(address);
+//        try {
+//            FileWriter fileWriter = new FileWriter(file);
+//            fileWriter.write("");
+//            fileWriter.flush();
+//            fileWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         JOptionPane.showMessageDialog(null, "存档已清除");
     }
 
@@ -212,42 +215,7 @@ public class GameController implements GameListener {
         if (n == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile();
             //read information
-            Memory gameInfo = null;
-            model.initialize();
-            view.removeAll();
-            view.initiateGridComponents();
-            try {
-                ObjectInputStream stream = new ObjectInputStream(new FileInputStream(file));
-                gameInfo = (Memory) stream.readObject();
-                stream.close();
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            assert gameInfo != null;
-            this.model = gameInfo.getChessboard();
-//            Chessboard chessboard = gameInfo.getChessboard();
-            //load model
-//            ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
-//            ArrayList<ChessPiece> chessPieces = new ArrayList<>();
-//            for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
-//                for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
-//                    ChessPiece chessPiece = chessboard.getChessPieceAt(new ChessboardPoint(i, j));
-//                    if (chessPiece != null) {
-//                        chessboardPoints.add(new ChessboardPoint(i, j));
-//                        chessPieces.add(new ChessPiece(chessPiece.getOwner(), chessPiece.getName(), chessPiece.getRank()));
-//                    }
-//                }
-//            }
-//            for (int i = 0; i < chessPieces.size(); i++) {
-//                this.model.setChessPiece(chessboardPoints.get(i), chessPieces.get(i));
-//            }
-//            model.setCurrentPlayer(chessboard.getCurrentPlayer());
-//            model.setNum(chessboard.getNum());
-            //load view
-//            for (int i = 0; i < chessPieces.size(); i++) {
-//                view.setChessComponentAtGrid(chessboardPoints.get(i), getChessViewByPiece(chessPieces.get(i)));
-//            }
-            view.initiateChessComponent(this.model);
+            doLoad(file);
         }
     }
 
@@ -299,12 +267,39 @@ public class GameController implements GameListener {
     }
 
     public void undo() {
+        int currentTurn = model.getNum();
+        File file = new File("resource/gameInformation/");
+        File[] files = file.listFiles();
+        for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
+            if (files[i].getName().equals(String.valueOf(currentTurn - 1))) {
+                doLoad(files[i]);
+            }
+        }
+        this.model.setNum(currentTurn - 1);
+    }
 
+    private void doLoad(File file) {
+        Memory gameInfo = null;
+        model.initialize();
+        view.removeAll();
+        view.initiateGridComponents();
+        try {
+            ObjectInputStream stream = new ObjectInputStream(new FileInputStream(file));
+            gameInfo = (Memory) stream.readObject();
+            stream.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        assert gameInfo != null;
+        this.model = gameInfo.getChessboard();
+        view.initiateChessComponent(this.model);
     }
 
     public void autoSave() {
+        int turn = model.getNum();
+        File file = new File("resource/gameInformation/" + turn);
         try {
-            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(address));
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file));
             Memory status = new Memory(this.model);
             stream.writeObject(status);
             stream.close();

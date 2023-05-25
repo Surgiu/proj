@@ -122,10 +122,10 @@ public class ChessGameFrame extends JFrame {
             }
         });
 //        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
-        jb2.addActionListener(new AbstractAction() {
+        jb2.addActionListener(new AbstractAction() {//regret
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                chessboardComponent.getGameController().undo();
             }
         });
         jb6.addActionListener(new AbstractAction() {

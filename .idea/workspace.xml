@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="存读档的进一步优化">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/ddd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/hhh" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="restart方法的bug解决了大部分，但是保留了一部分">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resource/gameInfo" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/ddd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/hhh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/EnterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/EnterFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,7 @@
       <workItem from="1684916625771" duration="2784000" />
       <workItem from="1684929823769" duration="5410000" />
       <workItem from="1684995949183" duration="112000" />
-      <workItem from="1684996076487" duration="9369000" />
+      <workItem from="1684996076487" duration="11692000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -323,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685000034546</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="restart方法的bug解决了大部分，但是保留了一部分">
+      <created>1685007270562</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1685007270562</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,7 +368,8 @@
     <MESSAGE value="修复了狮虎互吃的bug" />
     <MESSAGE value="引入“读档”功能" />
     <MESSAGE value="存读档的进一步优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="存读档的进一步优化" />
+    <MESSAGE value="restart方法的bug解决了大部分，但是保留了一部分" />
+    <option name="LAST_COMMIT_MESSAGE" value="restart方法的bug解决了大部分，但是保留了一部分" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
