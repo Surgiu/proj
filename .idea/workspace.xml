@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="实现了悔棋功能">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInfo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/userInfo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/2" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/3" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/4" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInformation/4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +108,7 @@
       <workItem from="1684916625771" duration="2784000" />
       <workItem from="1684929823769" duration="5410000" />
       <workItem from="1684995949183" duration="112000" />
-      <workItem from="1684996076487" duration="14482000" />
+      <workItem from="1684996076487" duration="15780000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -338,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685009457978</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="实现了悔棋功能">
+      <created>1685016112434</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1685016112434</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

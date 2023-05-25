@@ -85,9 +85,9 @@ public class GameController implements GameListener {
                 return;
             }
             selectedPoint = null;
+            autoSave();
             swapColor();
             AIGo();
-            autoSave();
             view.repaint();
         }
     }
@@ -115,6 +115,7 @@ public class GameController implements GameListener {
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
                 selectedPoint = null;
+                autoSave();
                 swapColor();
                 if (isWin()) {
                     view.showWin(winner);
@@ -125,7 +126,6 @@ public class GameController implements GameListener {
                 System.err.println("Illegal capture");
             }
             AIGo();
-            autoSave();
             view.repaint();
         }
     }
@@ -171,7 +171,7 @@ public class GameController implements GameListener {
     }
 
     public void saveGame() throws IOException {
-        JFileChooser fileChooser = new JFileChooser("resource/gameInformation");
+        JFileChooser fileChooser = new JFileChooser("resource/SavedGames");
         int m = fileChooser.showSaveDialog(view.getChessGameFrame());
         File file = null;
         if (m == JFileChooser.APPROVE_OPTION) {
@@ -209,7 +209,7 @@ public class GameController implements GameListener {
     }
 
     public void loadMemory() {
-        JFileChooser fileChooser = new JFileChooser("resource/gameInformation");
+        JFileChooser fileChooser = new JFileChooser("resource/SavedGames");
         int n = fileChooser.showOpenDialog(view.getChessGameFrame());
         File file = null;
         if (n == JFileChooser.APPROVE_OPTION) {
@@ -263,6 +263,7 @@ public class GameController implements GameListener {
             view.getGridComponentAt(dest).removeAll();
         }
         view.setChessComponentAtGrid(dest, view.removeChessComponentAtGrid(src));
+        autoSave();
         swapColor();
     }
 
