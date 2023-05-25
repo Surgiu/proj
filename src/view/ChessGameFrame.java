@@ -1,5 +1,7 @@
 package view;
 
+import controller.User;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -17,13 +19,7 @@ public class ChessGameFrame extends JFrame {
     private static JFrame enterFrame;
     private static JLabel enter;
     private static JLabel picture;
-    JButton jb1;
-    JButton jb2;
-    JButton jb3;
-    JButton jb5;
-    JButton jb4;
-    JButton jb6;
-    JButton jb7;
+    private User user;
 
 
     public ChessGameFrame(int width, int height) {
@@ -114,6 +110,7 @@ public class ChessGameFrame extends JFrame {
         picture.add(jb7);
         picture.add(jb8);
 
+
         jb1.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -172,5 +169,8 @@ public class ChessGameFrame extends JFrame {
 
             }
         });
+    }
+    public void grading() {
+
     }
 }
