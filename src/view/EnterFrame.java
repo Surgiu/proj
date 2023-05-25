@@ -6,7 +6,6 @@ import model.Chessboard;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class EnterFrame extends JFrame {
     private static JLabel enter;

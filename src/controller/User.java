@@ -1,10 +1,14 @@
 package controller;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -3557937072531099794L;
     private String name;
     private String psd;
+    private int rank;
 
     public User(String name, String psd) {
         this.name = "";
@@ -27,4 +31,11 @@ public class User implements Serializable {
         this.psd = psd;
     }
 
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
 }

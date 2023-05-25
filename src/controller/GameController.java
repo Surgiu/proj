@@ -25,7 +25,7 @@ public class GameController implements GameListener {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
-    private final String address = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\gameInfo";
+    private final String address = "resource/gameInfo";
 
     public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
@@ -133,15 +133,16 @@ public class GameController implements GameListener {
     }
 
     public void restart() {
-        view.clear();
+//        view.clear();
         model.initialize();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
+        System.out.println(111);
         view.repaint();
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
         winner = null;
-        test();
+//        test();
     }
 
     private void test() {
@@ -210,9 +211,11 @@ public class GameController implements GameListener {
         File file = null;
         if (n == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile();
-            restart();
             //read information
             Memory gameInfo = null;
+            model.initialize();
+            view.removeAll();
+            view.initiateGridComponents();
             try {
                 ObjectInputStream stream = new ObjectInputStream(new FileInputStream(file));
                 gameInfo = (Memory) stream.readObject();
@@ -221,30 +224,31 @@ public class GameController implements GameListener {
                 e.printStackTrace();
             }
             assert gameInfo != null;
-            Chessboard chessboard = gameInfo.getChessboard();
+            this.model = gameInfo.getChessboard();
+//            Chessboard chessboard = gameInfo.getChessboard();
             //load model
-            ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
-            ArrayList<ChessPiece> chessPieces = new ArrayList<>();
-            for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
-                for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
-                    ChessPiece chessPiece = chessboard.getChessPieceAt(new ChessboardPoint(i, j));
-                    if (chessPiece != null) {
-                        chessboardPoints.add(new ChessboardPoint(i, j));
-                        chessPieces.add(new ChessPiece(chessPiece.getOwner(), chessPiece.getName(), chessPiece.getRank()));
-                    }
-                }
-            }
-            for (int i = 0; i < chessPieces.size(); i++) {
-                this.model.setChessPiece(chessboardPoints.get(i), chessPieces.get(i));
-            }
-            model.setCurrentPlayer(chessboard.getCurrentPlayer());
-            model.setNum(chessboard.getNum());
+//            ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
+//            ArrayList<ChessPiece> chessPieces = new ArrayList<>();
+//            for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
+//                for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
+//                    ChessPiece chessPiece = chessboard.getChessPieceAt(new ChessboardPoint(i, j));
+//                    if (chessPiece != null) {
+//                        chessboardPoints.add(new ChessboardPoint(i, j));
+//                        chessPieces.add(new ChessPiece(chessPiece.getOwner(), chessPiece.getName(), chessPiece.getRank()));
+//                    }
+//                }
+//            }
+//            for (int i = 0; i < chessPieces.size(); i++) {
+//                this.model.setChessPiece(chessboardPoints.get(i), chessPieces.get(i));
+//            }
+//            model.setCurrentPlayer(chessboard.getCurrentPlayer());
+//            model.setNum(chessboard.getNum());
             //load view
-            for (int i = 0; i < chessPieces.size(); i++) {
-                view.setChessComponentAtGrid(chessboardPoints.get(i), getChessViewByPiece(chessPieces.get(i)));
-            }
+//            for (int i = 0; i < chessPieces.size(); i++) {
+//                view.setChessComponentAtGrid(chessboardPoints.get(i), getChessViewByPiece(chessPieces.get(i)));
+//            }
+            view.initiateChessComponent(this.model);
         }
-
     }
 
     private ChessComp getChessViewByPiece(ChessPiece chessPiece) {
@@ -252,28 +256,28 @@ public class GameController implements GameListener {
         PlayerColor color = chessPiece.getOwner();
         switch (chessPiece.getName()) {
             case "Elephant" -> {
-                return new ElephantComp(color, view.getCHESS_SIZE(), "Elephant");
+                return new ElephantComp(color, view.getCHESS_SIZE(), "象");
             }
             case "Lion" -> {
-                return new LionComp(color, view.getCHESS_SIZE(), "Lion");
+                return new LionComp(color, view.getCHESS_SIZE(), "狮");
             }
             case "Tiger" -> {
-                return new TigerComp(color, view.getCHESS_SIZE(), "Tiger");
+                return new TigerComp(color, view.getCHESS_SIZE(), "虎");
             }
             case "Leopard" -> {
-                return new LeopardComp(color, view.getCHESS_SIZE(), "Leopard");
+                return new LeopardComp(color, view.getCHESS_SIZE(), "豹");
             }
             case "Wolf" -> {
-                return new WolfComp(color, view.getCHESS_SIZE(), "Wolf");
+                return new WolfComp(color, view.getCHESS_SIZE(), "狼");
             }
             case "Dog" -> {
-                return new DogComp(color, view.getCHESS_SIZE(), "Dog");
+                return new DogComp(color, view.getCHESS_SIZE(), "狗");
             }
             case "Cat" -> {
-                return new CatComp(color, view.getCHESS_SIZE(), "Cat");
+                return new CatComp(color, view.getCHESS_SIZE(), "猫");
             }
             case "Rat" -> {
-                return new RatComp(color, view.getCHESS_SIZE(), "Rat");
+                return new RatComp(color, view.getCHESS_SIZE(), "鼠");
             }
         }
         return null;

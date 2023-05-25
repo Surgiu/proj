@@ -5,14 +5,12 @@ import controller.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.*;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class LogInFrame extends JFrame implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -5794362277352127126L;
     JLabel jl1;
     JLabel jl2;
     JPanel jp;
@@ -21,7 +19,7 @@ public class LogInFrame extends JFrame implements Serializable {
     JButton jb3;
     JTextField username;
     JTextField password;
-    final String position = "C:\\Users\\DELL\\IdeaProjects\\pro\\resource\\userInfo.txt";
+    String position = "resource/UserInfo";
 
     ArrayList<User> users = new ArrayList<>();
 
@@ -65,7 +63,7 @@ public class LogInFrame extends JFrame implements Serializable {
         jb2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == jb2) {
+                if (e.getSource() == jb2) {//register
                     if (username.getText().length() != 0 && password.getText().length() != 0) {
                         try {
                             users.add(new User(username.getText(), password.getText()));
@@ -77,9 +75,8 @@ public class LogInFrame extends JFrame implements Serializable {
                         }
                         JOptionPane.showMessageDialog(null,"注册成功！");
                         LogInFrame.this.setVisible(false);
-                        //System.out.println("re");
                     }
-                } else if (e.getSource() == jb1) {
+                } else if (e.getSource() == jb1) {//login
                     if (username.getText().length() != 0 && password.getText().length() != 0) {
                         try {
                             users.add(new User(username.getText(), password.getText()));
