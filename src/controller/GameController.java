@@ -6,6 +6,7 @@ import view.*;
 
 import javax.swing.*;
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -88,6 +89,7 @@ public class GameController implements GameListener {
             selectedPoint = null;
             swapColor();
             AIGo();
+            autoSave();
             view.repaint();
         }
     }
@@ -125,6 +127,7 @@ public class GameController implements GameListener {
                 System.err.println("Illegal capture");
             }
             AIGo();
+            autoSave();
             view.repaint();
         }
     }
@@ -168,16 +171,23 @@ public class GameController implements GameListener {
         view.repaint();
     }
 
-    public void saveGame() {
-        try {
-            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(address));
-            Memory gameInfo = new Memory(model);
-            stream.writeObject(gameInfo);
-            stream.close();
-            JOptionPane.showMessageDialog(null, "存档成功！");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            System.err.println("存档失败");
+    public void saveGame() throws IOException {
+        JFileChooser fileChooser = new JFileChooser("resource/gameInformation");
+        int m = fileChooser.showSaveDialog(view.getChessGameFrame());
+        File file = null;
+        if (m == JFileChooser.APPROVE_OPTION) {
+            try {
+                file = fileChooser.getSelectedFile();
+                String add = file.getCanonicalPath();
+                ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(add));
+                Memory gameInfo = new Memory(model);
+                stream.writeObject(gameInfo);
+                stream.close();
+                JOptionPane.showMessageDialog(null, "存档成功！");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                System.err.println("存档失败");
+            }
         }
     }
 
@@ -195,39 +205,46 @@ public class GameController implements GameListener {
     }
 
     public void loadMemory() {
-        restart();
-        //read information
-        Memory gameInfo = null;
-        try {
-            ObjectInputStream stream = new ObjectInputStream(new FileInputStream(address));
-            gameInfo = (Memory) stream.readObject();
-            stream.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        assert gameInfo != null;
-        Chessboard chessboard = gameInfo.getChessboard();
-        //load model
-        ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
-        ArrayList<ChessPiece> chessPieces = new ArrayList<>();
-        for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
-            for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
-                ChessPiece chessPiece = chessboard.getChessPieceAt(new ChessboardPoint(i, j));
-                if (chessPiece != null) {
-                    chessboardPoints.add(new ChessboardPoint(i, j));
-                    chessPieces.add(new ChessPiece(chessPiece.getOwner(), chessPiece.getName(), chessPiece.getRank()));
+        JFileChooser fileChooser = new JFileChooser("resource/gameInformation");
+        int n = fileChooser.showOpenDialog(view.getChessGameFrame());
+        File file = null;
+        if (n == JFileChooser.APPROVE_OPTION) {
+            file = fileChooser.getSelectedFile();
+            restart();
+            //read information
+            Memory gameInfo = null;
+            try {
+                ObjectInputStream stream = new ObjectInputStream(new FileInputStream(file));
+                gameInfo = (Memory) stream.readObject();
+                stream.close();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            assert gameInfo != null;
+            Chessboard chessboard = gameInfo.getChessboard();
+            //load model
+            ArrayList<ChessboardPoint> chessboardPoints = new ArrayList<>();
+            ArrayList<ChessPiece> chessPieces = new ArrayList<>();
+            for (int i = 0; i < Constant.CHESSBOARD_ROW_SIZE.getNum(); i++) {
+                for (int j = 0; j < Constant.CHESSBOARD_COL_SIZE.getNum(); j++) {
+                    ChessPiece chessPiece = chessboard.getChessPieceAt(new ChessboardPoint(i, j));
+                    if (chessPiece != null) {
+                        chessboardPoints.add(new ChessboardPoint(i, j));
+                        chessPieces.add(new ChessPiece(chessPiece.getOwner(), chessPiece.getName(), chessPiece.getRank()));
+                    }
                 }
             }
+            for (int i = 0; i < chessPieces.size(); i++) {
+                this.model.setChessPiece(chessboardPoints.get(i), chessPieces.get(i));
+            }
+            model.setCurrentPlayer(chessboard.getCurrentPlayer());
+            model.setNum(chessboard.getNum());
+            //load view
+            for (int i = 0; i < chessPieces.size(); i++) {
+                view.setChessComponentAtGrid(chessboardPoints.get(i), getChessViewByPiece(chessPieces.get(i)));
+            }
         }
-        for (int i = 0; i < chessPieces.size(); i++) {
-            this.model.setChessPiece(chessboardPoints.get(i), chessPieces.get(i));
-        }
-        model.setCurrentPlayer(chessboard.getCurrentPlayer());
-        model.setNum(chessboard.getNum());
-        //load view
-        for (int i = 0; i < chessPieces.size(); i++) {
-            view.setChessComponentAtGrid(chessboardPoints.get(i), getChessViewByPiece(chessPieces.get(i)));
-        }
+
     }
 
     private ChessComp getChessViewByPiece(ChessPiece chessPiece) {
@@ -282,6 +299,13 @@ public class GameController implements GameListener {
     }
 
     public void autoSave() {
-
+        try {
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(address));
+            Memory status = new Memory(this.model);
+            stream.writeObject(status);
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

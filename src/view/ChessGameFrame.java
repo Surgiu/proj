@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 //zhushi
 
 /**
@@ -55,7 +56,7 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中添加棋盘
      */
     private void addChessboard() {
-        chessboardComponent = new ChessboardComponent(ONE_CHESS_SIZE);
+        chessboardComponent = new ChessboardComponent(this, ONE_CHESS_SIZE);
         chessboardComponent.setLocation(HEIGTH / 5, HEIGTH / 10);
         add(chessboardComponent);
     }
@@ -64,7 +65,7 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中添加标签
      */
     private void addLabel() {
-        JLabel statusLabel = new JLabel("当前玩家：\n"+"回合数：\n"+"下棋时间：");
+        JLabel statusLabel = new JLabel("当前玩家：\n" + "回合数：\n" + "下棋时间：");
         statusLabel.setLocation(HEIGTH, HEIGTH / 10);
         statusLabel.setSize(200, 0);
 //        statusLabel.setFont(new Font("Rockwell", Font.BOLD, 20));
@@ -95,14 +96,14 @@ public class ChessGameFrame extends JFrame {
         JButton jb7 = new JButton("清空存档");
         JButton jb8 = new JButton("载入存档");
 
-        jb1.setBounds(HEIGTH+70, HEIGTH / 10 + 85, 160, 50);
-        jb2.setBounds(HEIGTH+70, HEIGTH / 10 + 160, 160, 50);
-        jb3.setBounds(HEIGTH+70, HEIGTH / 10 + 235,160, 50);
-        jb4.setBounds(HEIGTH+70, HEIGTH / 10 + 310, 160, 50);
-        jb6.setBounds(HEIGTH+70, HEIGTH / 10 + 385, 160, 50);
-        jb7.setBounds(HEIGTH+70, HEIGTH / 10 + 460, 160, 50);
-        jb8.setBounds(HEIGTH+70, HEIGTH / 10 + 535, 160, 50);
-        jb5.setBounds(HEIGTH+70, HEIGTH / 10 + 610, 160, 50);
+        jb1.setBounds(HEIGTH + 70, HEIGTH / 10 + 85, 160, 50);
+        jb2.setBounds(HEIGTH + 70, HEIGTH / 10 + 160, 160, 50);
+        jb3.setBounds(HEIGTH + 70, HEIGTH / 10 + 235, 160, 50);
+        jb4.setBounds(HEIGTH + 70, HEIGTH / 10 + 310, 160, 50);
+        jb6.setBounds(HEIGTH + 70, HEIGTH / 10 + 385, 160, 50);
+        jb7.setBounds(HEIGTH + 70, HEIGTH / 10 + 460, 160, 50);
+        jb8.setBounds(HEIGTH + 70, HEIGTH / 10 + 535, 160, 50);
+        jb5.setBounds(HEIGTH + 70, HEIGTH / 10 + 610, 160, 50);
 
         picture.add(jb1);
         picture.add(jb2);
@@ -130,7 +131,11 @@ public class ChessGameFrame extends JFrame {
         jb6.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chessboardComponent.getGameController().saveGame();
+                try {
+                    chessboardComponent.getGameController().saveGame();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         jb4.addActionListener(new AbstractAction() {

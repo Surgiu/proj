@@ -21,10 +21,11 @@ public class ChessboardComponent extends JComponent {
     private final Set<ChessboardPoint> densCell = new HashSet<>();
     private final Set<ChessboardPoint> trapCell = new HashSet<>();
 
-
+    private ChessGameFrame chessGameFrame;
     private GameController gameController;
 
-    public ChessboardComponent(int chessSize) {
+    public ChessboardComponent(ChessGameFrame chessGameFrame, int chessSize) {
+        this.chessGameFrame = chessGameFrame;
         CHESS_SIZE = chessSize;
         int width = CHESS_SIZE * 7;
         int height = CHESS_SIZE * 9;
@@ -236,5 +237,9 @@ public class ChessboardComponent extends JComponent {
 
     public int getCHESS_SIZE() {
         return CHESS_SIZE;
+    }
+
+    public ChessGameFrame getChessGameFrame() {
+        return chessGameFrame;
     }
 }
