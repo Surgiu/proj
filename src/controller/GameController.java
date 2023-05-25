@@ -24,6 +24,7 @@ public class GameController implements GameListener {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
+
     public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
         this.model = model;
@@ -196,15 +197,6 @@ public class GameController implements GameListener {
         for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
             files[i].delete();
         }
-//        File file = new File(address);
-//        try {
-//            FileWriter fileWriter = new FileWriter(file);
-//            fileWriter.write("");
-//            fileWriter.flush();
-//            fileWriter.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         JOptionPane.showMessageDialog(null, "存档已清除");
     }
 
@@ -214,7 +206,6 @@ public class GameController implements GameListener {
         File file = null;
         if (n == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile();
-            //read information
             doLoad(file);
         }
     }

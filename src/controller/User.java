@@ -11,8 +11,8 @@ public class User implements Serializable {
     private int rank;
 
     public User(String name, String psd) {
-        this.name = "";
-        this.psd = "";
+        this.name = name;
+        this.psd = psd;
     }
 
     public String getName() {
