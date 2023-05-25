@@ -62,7 +62,7 @@ public class GameController implements GameListener {
             }
         }
         boolean case1 = (winnerPiece1 != null && winnerPiece1.getOwner().equals(PlayerColor.BLUE)) || redCount == -1;
-        boolean case2 = winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED) || blueCount == -1;
+        boolean case2 = (winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED)) || blueCount == -1;
         if (case1) {
             winner = PlayerColor.BLUE;
         } else if (case2) {
@@ -116,7 +116,7 @@ public class GameController implements GameListener {
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
                 selectedPoint = null;
                 swapColor();
-                if(isWin()) {
+                if (isWin()) {
                     view.showWin(winner);
                     return;
                 }
@@ -276,9 +276,11 @@ public class GameController implements GameListener {
         view.setChessComponentAtGrid(dest, view.removeChessComponentAtGrid(src));
         swapColor();
     }
+
     public void undo() {
 
     }
+
     public void autoSave() {
 
     }
