@@ -124,6 +124,9 @@ public class GameController implements GameListener {
                     return;
                 }
             } else if (!model.isValidCapture(selectedPoint, point)) {
+                highlightOff(selectedPoint);
+                ChessComp chess = (ChessComp) view.getGridComponentAt(selectedPoint).getComponents()[0];
+                chess.setSelected(false);
                 selectedPoint = null;
                 System.err.println("Illegal capture");
             }

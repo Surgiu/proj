@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="登录和注册的判断优化">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="玩家排名的初步搭建">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInformation/0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +107,9 @@
       <workItem from="1684995949183" duration="112000" />
       <workItem from="1684996076487" duration="22621000" />
       <workItem from="1685025306907" duration="955000" />
+      <workItem from="1685026536953" duration="144000" />
+      <workItem from="1685026794633" duration="199000" />
+      <workItem from="1685029768509" duration="922000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -361,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685025335855</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="玩家排名的初步搭建">
+      <created>1685026664546</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1685026664546</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +389,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="细化1" />
     <MESSAGE value="细化2" />
     <MESSAGE value="controller完善" />
     <MESSAGE value="model吃子bug fix" />
@@ -405,7 +413,8 @@
     <MESSAGE value="实现了悔棋功能" />
     <MESSAGE value="AI悔棋的修改" />
     <MESSAGE value="登录和注册的判断优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="登录和注册的判断优化" />
+    <MESSAGE value="玩家排名的初步搭建" />
+    <option name="LAST_COMMIT_MESSAGE" value="玩家排名的初步搭建" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
