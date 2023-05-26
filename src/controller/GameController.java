@@ -7,6 +7,8 @@ import view.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Controller is the connection between model and view,
@@ -24,6 +26,7 @@ public class GameController implements GameListener {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
+    private int runTime = 40;
 
     public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
@@ -98,6 +101,7 @@ public class GameController implements GameListener {
             selectedPoint = null;
             autoSave();
             swapColor();
+            myTimer();
             AIGo();
             view.repaint();
         }
@@ -128,6 +132,7 @@ public class GameController implements GameListener {
                 selectedPoint = null;
                 autoSave();
                 swapColor();
+                myTimer();
                 if (isWin()) {
                     view.showWin(winner);
                     return;
@@ -310,5 +315,33 @@ public class GameController implements GameListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getRunTime() {
+        return runTime;
+    }
+
+    public void setRunTime(int runTime) {
+        this.runTime = runTime;
+    }
+
+    public void myTimer() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                GameController.this.setRunTime(GameController.this.getRunTime() - 1);
+                System.out.println(GameController.this.getRunTime());
+                if (GameController.this.getRunTime() == 0) {
+                    if(GameController.this.currentPlayer==PlayerColor.RED) {
+                        JOptionPane.showMessageDialog(null,"红方超时，蓝胜");
+                    }else {
+                        JOptionPane.showConfirmDialog(null,"蓝方超时，红胜");
+                    }
+                    timer.cancel();
+                }
+            }
+        }, 1000, 1000);
+
     }
 }
