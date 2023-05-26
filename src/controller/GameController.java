@@ -206,7 +206,11 @@ public class GameController implements GameListener {
     }
 
     public void deleteMemory() {
-        initMemory();
+        File file = new File("resource/SavedGames/");
+        File[] files = file.listFiles();
+        for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
+            files[i].delete();
+        }
         JOptionPane.showMessageDialog(null, "存档已清除");
     }
 

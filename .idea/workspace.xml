@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="修复了存档初始化的bug">
-      <change afterPath="$PROJECT_DIR$/resource/SavedGames/xxx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/13" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/14" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="用户排名按钮添加">
+      <change afterPath="$PROJECT_DIR$/resource/SavedGames/dd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/SavedGames/xxx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +118,7 @@
       <workItem from="1685029768509" duration="1100000" />
       <workItem from="1685067249143" duration="900000" />
       <workItem from="1685101093219" duration="178000" />
+      <workItem from="1685101493827" duration="1201000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -387,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685068088122</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="用户排名按钮添加">
+      <created>1685101776590</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1685101776590</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,7 +419,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="model吃子bug fix" />
     <MESSAGE value="controller吃子bug fix" />
     <MESSAGE value="“内鬼”问题未解决" />
     <MESSAGE value="重开" />
@@ -431,7 +443,8 @@
     <MESSAGE value="玩家排名的初步搭建" />
     <MESSAGE value="修复了重选棋子时高亮错误的bug" />
     <MESSAGE value="修复了存档初始化的bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了存档初始化的bug" />
+    <MESSAGE value="用户排名按钮添加" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户排名按钮添加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
