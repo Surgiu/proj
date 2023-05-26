@@ -137,7 +137,7 @@ public class GameController implements GameListener {
                 ChessComp chess = (ChessComp) view.getGridComponentAt(selectedPoint).getComponents()[0];
                 chess.setSelected(false);
                 selectedPoint = null;
-                System.err.println("Illegal capture");
+                System.out.println("Illegal capture");
             }
             AIGo();
             view.repaint();
@@ -145,17 +145,15 @@ public class GameController implements GameListener {
     }
 
     public void restart() {
-//        view.clear();
         initMemory();
+        autoSave();
         model.initialize();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
-        System.out.println(111);
         view.repaint();
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
         winner = null;
-//        test();
     }
 
     private void test() {

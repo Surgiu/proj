@@ -1,5 +1,7 @@
 package view;
+
 import model.PlayerColor;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,7 +14,7 @@ public class ChessComp extends JComponent {
     public ChessComp(PlayerColor owner, int size) {
         this.owner = owner;
         this.selected = false;
-        setSize(size , size );
+        setSize(size, size);
         setLocation(0, 0);
         setVisible(true);
     }
@@ -38,7 +40,7 @@ public class ChessComp extends JComponent {
         g2.drawOval(0, 0, getWidth(), getHeight());
         if (isSelected()) { // Highlights the model if selected.
             BasicStroke circle = new BasicStroke(140.0f);
-            Graphics2D graphics2D= (Graphics2D)g;
+            Graphics2D graphics2D = (Graphics2D) g;
             graphics2D.setStroke(circle);
             graphics2D.setColor(Color.GREEN);
             graphics2D.drawOval(0, 0, getWidth(), getHeight());
