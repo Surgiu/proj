@@ -31,6 +31,7 @@ public class GameController implements GameListener {
         this.currentPlayer = PlayerColor.BLUE;
         view.registerController(this);
         viewInitialize();
+        initMemory();
         autoSave();
         view.repaint();
         if (gameMode.equals(Mode.SINGLEPLAYER)) {
@@ -40,6 +41,14 @@ public class GameController implements GameListener {
 
     private void viewInitialize() {
         view.initiateChessComponent(model);
+    }
+
+    public void initMemory() {
+        File file = new File("resource/gameInformation/");
+        File[] files = file.listFiles();
+        for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
+            files[i].delete();
+        }
     }
 
     // after a valid move swap the player
@@ -137,6 +146,7 @@ public class GameController implements GameListener {
 
     public void restart() {
 //        view.clear();
+        initMemory();
         model.initialize();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
@@ -196,11 +206,7 @@ public class GameController implements GameListener {
     }
 
     public void deleteMemory() {
-        File file = new File("resource/gameInformation/");
-        File[] files = file.listFiles();
-        for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
-            files[i].delete();
-        }
+        initMemory();
         JOptionPane.showMessageDialog(null, "存档已清除");
     }
 
