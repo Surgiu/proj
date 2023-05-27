@@ -223,7 +223,10 @@ public class ChessboardComponent extends JComponent {
             case BLUE -> winner = "游戏结束，蓝胜！";
             case RED -> winner = "游戏结束，红胜！";
         }
-        JOptionPane.showMessageDialog(this, winner);
+        int choice = JOptionPane.showConfirmDialog(this, "再来一局?", winner, JOptionPane.YES_NO_OPTION);
+        if (choice == 0) {
+            gameController.restart();
+        }
     }
 
     public GameController getGameController() {

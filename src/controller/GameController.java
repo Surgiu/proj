@@ -26,7 +26,9 @@ public class GameController implements GameListener {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
-    private int runTime = 40;
+    private int runTime = 31;
+    private static Timer timer;
+    private static Timer timer0;
 
     public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
@@ -94,6 +96,7 @@ public class GameController implements GameListener {
             model.moveChessPiece(selectedPoint, point);
             model.inTrap(point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
+            timerEnd();
             if (isWin()) {
                 view.showWin(winner);
                 return;
@@ -101,7 +104,7 @@ public class GameController implements GameListener {
             selectedPoint = null;
             autoSave();
             swapColor();
-            myTimer();
+            timerStart();
             AIGo();
             view.repaint();
         }
@@ -130,9 +133,10 @@ public class GameController implements GameListener {
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
                 selectedPoint = null;
+                timerEnd();
                 autoSave();
                 swapColor();
-                myTimer();
+                timerStart();
                 if (isWin()) {
                     view.showWin(winner);
                     return;
@@ -197,7 +201,7 @@ public class GameController implements GameListener {
                 file = fileChooser.getSelectedFile();
                 String add = file.getCanonicalPath();
                 ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(add));
-                Memory gameInfo = new Memory(model);
+                Memory gameInfo = new Memory(model, this.runTime);
                 stream.writeObject(gameInfo);
                 stream.close();
                 JOptionPane.showMessageDialog(null, "存档成功！");
@@ -282,9 +286,12 @@ public class GameController implements GameListener {
         for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
             if (files[i].getName().equals(String.valueOf(currentTurn - 1))) {
                 doLoad(files[i]);
+                break;
             }
         }
         this.model.setNum(currentTurn - 1);
+        timerEnd();
+        timerStart();
     }
 
     private void doLoad(File file) {
@@ -302,6 +309,9 @@ public class GameController implements GameListener {
         assert gameInfo != null;
         this.model = gameInfo.getChessboard();
         view.initiateChessComponent(this.model);
+        this.runTime = gameInfo.getCurrentTime();
+        timerStart();
+        view.repaint();
     }
 
     public void autoSave() {
@@ -309,7 +319,7 @@ public class GameController implements GameListener {
         File file = new File("resource/gameInformation/" + turn);
         try {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file));
-            Memory status = new Memory(this.model);
+            Memory status = new Memory(this.model, 30);
             stream.writeObject(status);
             stream.close();
         } catch (IOException e) {
@@ -325,23 +335,66 @@ public class GameController implements GameListener {
         this.runTime = runTime;
     }
 
-    public void myTimer() {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+    public void timerStart() {
+        if (timer == null) {
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    GameController.this.setRunTime(GameController.this.getRunTime() - 1);
+                    System.err.println(GameController.this.getRunTime());
+                    if (GameController.this.getRunTime() == 0) {
+                        int choice;
+                        if (GameController.this.currentPlayer == PlayerColor.RED) {
+                            choice = JOptionPane.showConfirmDialog(null, "再来一局?", "红方超时，蓝胜!", JOptionPane.YES_NO_OPTION);
+                        } else {
+                            choice = JOptionPane.showConfirmDialog(null, "再来一局?", "蓝方超时，红胜!", JOptionPane.YES_NO_OPTION);
+                        }
+                        if (choice == 0) {
+                            timerEnd();
+                            restart();
+                        }
+                        timerEnd();
+                    }
+                }
+            }, 1, 1000);
+        }
+    }
+
+    public void timerEnd() {
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+            setRunTime(31);
+        }
+    }
+
+    public void playBack() {
+        timer0 = new Timer();
+        timerEnd();
+        timer0.schedule(new TimerTask() {
+            final File file = new File("resource/gameInformation/");
+            final File[] files = file.listFiles();
+
             @Override
             public void run() {
-                GameController.this.setRunTime(GameController.this.getRunTime() - 1);
-                System.out.println(GameController.this.getRunTime());
-                if (GameController.this.getRunTime() == 0) {
-                    if(GameController.this.currentPlayer==PlayerColor.RED) {
-                        JOptionPane.showMessageDialog(null,"红方超时，蓝胜");
-                    }else {
-                        JOptionPane.showConfirmDialog(null,"蓝方超时，红胜");
+                for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
+                    if (files[i].getName().equals(String.valueOf(i))) {
+                        doLoad(files[i]);
+                        timerEnd();
+                        if (i == files.length - 1) {
+                            timer0.cancel();
+                        }
                     }
-                    timer.cancel();
                 }
             }
-        }, 1000, 1000);
+        }, 1000, 1921);
+    }
 
+    public void surrender() {
+        switch (this.currentPlayer) {
+            case RED -> view.showWin(PlayerColor.BLUE);
+            case BLUE -> view.showWin(PlayerColor.RED);
+        }
     }
 }

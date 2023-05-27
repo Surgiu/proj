@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="细节优化">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="倒计时">
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/0" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInformation/0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/1" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +120,9 @@
       <workItem from="1685067249143" duration="900000" />
       <workItem from="1685101093219" duration="178000" />
       <workItem from="1685101493827" duration="2563000" />
-      <workItem from="1685106987061" duration="6181000" />
+      <workItem from="1685106987061" duration="8208000" />
+      <workItem from="1685176811277" duration="517000" />
+      <workItem from="1685185526739" duration="8023000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -409,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685103536911</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="倒计时">
+      <created>1685114176579</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1685114176579</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +444,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="重开" />
     <MESSAGE value="找到初始化的bug" />
     <MESSAGE value="吃子的bug终于解决了，呜呜呜" />
     <MESSAGE value="现在关于游戏运行的大部分bug都无了" />
@@ -453,7 +468,8 @@
     <MESSAGE value="用户排名按钮添加" />
     <MESSAGE value="终于把初始化的bug解决了，我哭死" />
     <MESSAGE value="细节优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="细节优化" />
+    <MESSAGE value="倒计时" />
+    <option name="LAST_COMMIT_MESSAGE" value="倒计时" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -7,11 +7,26 @@ public class Memory implements Serializable {
     @Serial
     private static final long serialVersionUID = 550081L;
     private final Chessboard chessboard;
+    private int currentTime;
 
-    public Memory(Chessboard chessboard) {
+    public Memory(Chessboard chessboard,int currentTime) {
         this.chessboard = chessboard;
+        this.currentTime = currentTime;
     }
-    //int[][] status = new int[64][2];
+
+    public Chessboard getChessboard() {
+        return chessboard;
+    }
+
+    public int getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(int currentTime) {
+        this.currentTime = currentTime;
+    }
+}
+//int[][] status = new int[64][2];
 
     /*64个长度为2的数组构成的二维数组
     第一个数组代表当前执行方。11为蓝，12为红
@@ -42,9 +57,3 @@ public class Memory implements Serializable {
 //            }
 //        }
 //    }
-
-
-    public Chessboard getChessboard() {
-        return chessboard;
-    }
-}

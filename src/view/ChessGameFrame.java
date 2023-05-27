@@ -3,7 +3,9 @@ package view;
 import controller.User;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 //zhushi
 
@@ -37,7 +39,6 @@ public class ChessGameFrame extends JFrame {
         addBaseLabel();
         addLabel();
         addButton();
-        addBaseLabel();
     }
 
     public ChessboardComponent getChessboardComponent() {
@@ -61,12 +62,17 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中添加标签
      */
     private void addLabel() {
-        JLabel statusLabel = new JLabel("当前玩家：\n" + "回合数：\n" + "下棋时间：");
-        statusLabel.setLocation(HEIGTH, HEIGTH / 10);
-        statusLabel.setSize(200, 0);
-//        statusLabel.setFont(new Font("Rockwell", Font.BOLD, 20));
+        String text = "<html> 当前玩家：<br/> 回合数：<br/>下棋时间：<br/></html>";
+        JLabel statusLabel = new JLabel(text);
+//        JLabel statusLabel = new JLabel("当前玩家：\n"+"回合数：\n"+"下棋时间：");
+        statusLabel.setOpaque(true);
+        statusLabel.setBounds(877, 30, 160, 100);
+//        statusLabel.setForeground(new Color(190,230,233));
+        statusLabel.setBackground(new Color(177, 183, 245, 255));
+        statusLabel.setFont(new Font("Rockwell", Font.BOLD, 17));
         add(statusLabel);
     }
+
 
     public void addBaseLabel() {
         JLabel chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
@@ -91,6 +97,8 @@ public class ChessGameFrame extends JFrame {
         JButton jb6 = new JButton("存档");
         JButton jb7 = new JButton("清空存档");
         JButton jb8 = new JButton("载入存档");
+        JButton jb9 = new JButton("棋局回放");
+
 
         jb1.setBounds(HEIGTH + 70, HEIGTH / 10 + 85, 160, 50);
         jb2.setBounds(HEIGTH + 70, HEIGTH / 10 + 160, 160, 50);
@@ -100,6 +108,7 @@ public class ChessGameFrame extends JFrame {
         jb7.setBounds(HEIGTH + 70, HEIGTH / 10 + 460, 160, 50);
         jb8.setBounds(HEIGTH + 70, HEIGTH / 10 + 535, 160, 50);
         jb5.setBounds(HEIGTH + 70, HEIGTH / 10 + 610, 160, 50);
+        jb9.setBounds(HEIGTH + 70, HEIGTH / 10 + 685, 160, 50);
 
         picture.add(jb1);
         picture.add(jb2);
@@ -109,6 +118,7 @@ public class ChessGameFrame extends JFrame {
         picture.add(jb6);
         picture.add(jb7);
         picture.add(jb8);
+        //picture.add(jb9);
 
 
         jb1.addActionListener(new AbstractAction() {
@@ -146,6 +156,7 @@ public class ChessGameFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
 //                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
 //                mainFrame.dispose();
+                chessboardComponent.getGameController().timerEnd();
                 ChessGameFrame.this.setVisible(false);
                 EnterFrame enterFrame = new EnterFrame();
                 enterFrame.setVisible(true);
@@ -166,12 +177,20 @@ public class ChessGameFrame extends JFrame {
         jb3.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                chessboardComponent.getGameController().surrender();
+            }
+        });
+        jb9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chessboardComponent.getGameController().playBack();
             }
         });
     }
 
     public void grading() {
-        user.setRank(user.getRank() + 1);
+        if (user != null) {
+            user.setRank(user.getRank() + 1);
+        }
     }
 }
