@@ -60,7 +60,7 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中添加标签
      */
     private void addLabel() {
-        String text = "当前玩家： 蓝方" + "\n回合数：0 " + "\n下棋时间：30";
+        String text = "当前玩家： 蓝方" + "\n回合数：0 " + "\n下棋时间：30（等待中···）";
         statusLabel = new JLabel(text);
 //        JLabel statusLabel = new JLabel("当前玩家：\n"+"回合数：\n"+"下棋时间：");
         statusLabel.setVisible(true);
