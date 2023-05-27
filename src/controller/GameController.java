@@ -26,7 +26,7 @@ public class GameController implements GameListener {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
-    private int runTime = 31;
+    private int runTime = 30;
     private static Timer timer;
     private static Timer timer0;
     private String currentStatus = "";
@@ -166,6 +166,8 @@ public class GameController implements GameListener {
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
         winner = null;
+        timerEnd();
+        setCurrentStatus(status());
         view.getChessGameFrame().statusUpgrading(currentStatus);
         view.repaint();
     }
@@ -367,14 +369,14 @@ public class GameController implements GameListener {
                 @Override
                 public void run() {
                     GameController.this.setRunTime(GameController.this.getRunTime() - 1);
-                    System.err.println(GameController.this.getRunTime());
-                    GameController.this.view.getChessGameFrame().getStatusLabel().repaint();
+                    setCurrentStatus(status());
+                    view.getChessGameFrame().statusUpgrading(currentStatus);
                     if (GameController.this.getRunTime() == 0) {
                         int choice;
                         if (GameController.this.currentPlayer == PlayerColor.RED) {
-                            choice = JOptionPane.showConfirmDialog(null, "再来一局?", "红方超时，蓝胜!", JOptionPane.YES_NO_OPTION);
+                            choice = JOptionPane.showConfirmDialog(null, "红方超时，蓝胜! 再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
                         } else {
-                            choice = JOptionPane.showConfirmDialog(null, "再来一局?", "蓝方超时，红胜!", JOptionPane.YES_NO_OPTION);
+                            choice = JOptionPane.showConfirmDialog(null, "蓝方超时，红胜! 再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
                         }
                         if (choice == 0) {
                             timerEnd();
@@ -383,7 +385,7 @@ public class GameController implements GameListener {
                         timerEnd();
                     }
                 }
-            }, 1, 1000);
+            }, 1000, 1000);
         }
     }
 
@@ -425,6 +427,7 @@ public class GameController implements GameListener {
     }
 
     public String status() {
-        return "当前玩家： " + currentPlayer + "\n回合数： " + model.getNum() + "\n下棋时间： " + runTime;
+        String player = currentPlayer == PlayerColor.RED ? "蓝方" : "红方";
+        return "当前玩家:   " + player + "\n      回合数: 0" + model.getNum() + "\n       剩余时间: " + runTime + "s";
     }
 }

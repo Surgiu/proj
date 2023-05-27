@@ -1,11 +1,14 @@
 package view;
+
 import controller.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 //zhushi
+
 /**
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
@@ -31,12 +34,11 @@ public class ChessGameFrame extends JFrame {
         setSize(WIDTH, HEIGTH);
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //设置程序关闭按键，如果点击右上方的叉就游戏全部关闭了
-        setLayout(null);
+        setLayout(new BorderLayout());
+        addLabel();
         addChessboard();
         addBaseLabel();
         addButton();
-        addLabel();
-
     }
 
     public ChessboardComponent getChessboardComponent() {
@@ -60,15 +62,16 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中添加标签
      */
     private void addLabel() {
-        String text = "当前玩家： 蓝方" + "\n回合数：0 " + "\n下棋时间：30（等待中···）";
+        String text = "当前玩家:   蓝方" + "\n      回合数: 0" + "\n       剩余时间: 30s(等待玩家准备···)";
         statusLabel = new JLabel(text);
-//        JLabel statusLabel = new JLabel("当前玩家：\n"+"回合数：\n"+"下棋时间：");
         statusLabel.setVisible(true);
+//        JLabel statusLabel = new JLabel("当前玩家：\n"+"回合数：\n"+"下棋时间：");
         statusLabel.setBounds(877, 30, 160, 100);
+        statusLabel.setForeground(Color.MAGENTA);
 //        statusLabel.setForeground(new Color(190,230,233));
         statusLabel.setBackground(new Color(177, 183, 245, 255));
-        statusLabel.setFont(new Font("Rockwell", Font.BOLD, 17));
-        add(statusLabel);
+        statusLabel.setFont(new Font("MS Song", Font.PLAIN, 25));
+        add(statusLabel, BorderLayout.NORTH);
     }
 
 
@@ -197,6 +200,13 @@ public class ChessGameFrame extends JFrame {
     }
 
     public void statusUpgrading(String string) {
+        String initial = "当前玩家:   蓝方" + "\n      回合数: 0" + "\n       剩余时间: 30s(等待玩家准备···)";
+        if (getChessboardComponent().getGameController() != null) {
+            int t = getChessboardComponent().getGameController().getModel().getNum();
+            if (t == 0) {
+                statusLabel.setText(initial);
+            }
+        }
         statusLabel.setText(string);
     }
 }
