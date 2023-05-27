@@ -1,14 +1,11 @@
 package view;
-
 import controller.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 //zhushi
-
 /**
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
@@ -19,8 +16,9 @@ public class ChessGameFrame extends JFrame {
     private final int ONE_CHESS_SIZE;
     private ChessboardComponent chessboardComponent;
     private static JFrame enterFrame;
-    private static JLabel enter;
+    private JLabel statusLabel;
     private static JLabel picture;
+    private JLabel chessboard;
     private User user;
 
 
@@ -34,11 +32,11 @@ public class ChessGameFrame extends JFrame {
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //设置程序关闭按键，如果点击右上方的叉就游戏全部关闭了
         setLayout(null);
-
         addChessboard();
         addBaseLabel();
-        addLabel();
         addButton();
+        addLabel();
+
     }
 
     public ChessboardComponent getChessboardComponent() {
@@ -62,10 +60,10 @@ public class ChessGameFrame extends JFrame {
      * 在游戏面板中添加标签
      */
     private void addLabel() {
-        String text = "<html> 当前玩家：<br/> 回合数：<br/>下棋时间：<br/></html>";
-        JLabel statusLabel = new JLabel(text);
+        String text = "当前玩家： 蓝方" + "\n回合数：0 " + "\n下棋时间：30";
+        statusLabel = new JLabel(text);
 //        JLabel statusLabel = new JLabel("当前玩家：\n"+"回合数：\n"+"下棋时间：");
-        statusLabel.setOpaque(true);
+        statusLabel.setVisible(true);
         statusLabel.setBounds(877, 30, 160, 100);
 //        statusLabel.setForeground(new Color(190,230,233));
         statusLabel.setBackground(new Color(177, 183, 245, 255));
@@ -75,7 +73,7 @@ public class ChessGameFrame extends JFrame {
 
 
     public void addBaseLabel() {
-        JLabel chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
+        chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
         chessboard.setBounds(102, -46, 623, 900);
 //        this.getContentPane().add(chessboard);
         add(chessboard);
@@ -192,5 +190,13 @@ public class ChessGameFrame extends JFrame {
         if (user != null) {
             user.setRank(user.getRank() + 1);
         }
+    }
+
+    public JLabel getStatusLabel() {
+        return statusLabel;
+    }
+
+    public void statusUpgrading(String string) {
+        statusLabel.setText(string);
     }
 }

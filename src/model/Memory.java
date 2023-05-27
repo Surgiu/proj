@@ -8,10 +8,12 @@ public class Memory implements Serializable {
     private static final long serialVersionUID = 550081L;
     private final Chessboard chessboard;
     private int currentTime;
+    private ChessboardPoint chessboardPoint;
 
-    public Memory(Chessboard chessboard,int currentTime) {
+    public Memory(Chessboard chessboard, int currentTime, ChessboardPoint previous) {
         this.chessboard = chessboard;
         this.currentTime = currentTime;
+        this.chessboardPoint = previous;
     }
 
     public Chessboard getChessboard() {
@@ -24,6 +26,14 @@ public class Memory implements Serializable {
 
     public void setCurrentTime(int currentTime) {
         this.currentTime = currentTime;
+    }
+
+    public ChessboardPoint getChessboardPoint() {
+        return chessboardPoint;
+    }
+
+    public void setChessboardPoint(ChessboardPoint chessboardPoint) {
+        this.chessboardPoint = chessboardPoint;
     }
 }
 //int[][] status = new int[64][2];

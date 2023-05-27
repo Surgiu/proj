@@ -29,6 +29,7 @@ public class GameController implements GameListener {
     private int runTime = 31;
     private static Timer timer;
     private static Timer timer0;
+    private String currentStatus = "";
 
     public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
@@ -59,6 +60,8 @@ public class GameController implements GameListener {
     // after a valid move swap the player
     private void swapColor() {
         currentPlayer = (currentPlayer == PlayerColor.BLUE) ? PlayerColor.RED : PlayerColor.BLUE;
+        timerStart();
+        view.getChessGameFrame().statusUpgrading(currentStatus);
     }
 
     private boolean isWin() {
@@ -104,7 +107,6 @@ public class GameController implements GameListener {
             selectedPoint = null;
             autoSave();
             swapColor();
-            timerStart();
             AIGo();
             view.repaint();
         }
@@ -118,6 +120,9 @@ public class GameController implements GameListener {
                 selectedPoint = point;
                 highlightOn(selectedPoint);
                 component.setSelected(true);
+                if (model.getNum() == 0) {
+                    timerStart();
+                }
                 component.repaint();
             }
         } else if (selectedPoint.equals(point)) {//如果放到自己的位置，就放弃选中
@@ -136,12 +141,11 @@ public class GameController implements GameListener {
                 timerEnd();
                 autoSave();
                 swapColor();
-                timerStart();
                 if (isWin()) {
                     view.showWin(winner);
                     return;
                 }
-            } else if (!model.isValidCapture(selectedPoint, point)) {
+            } else if (!model.isValidCapture(selectedPoint, point)) {//否则取消行动
                 highlightOff(selectedPoint);
                 ChessComp chess = (ChessComp) view.getGridComponentAt(selectedPoint).getComponents()[0];
                 chess.setSelected(false);
@@ -159,10 +163,11 @@ public class GameController implements GameListener {
         model.initialize();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
-        view.repaint();
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
         winner = null;
+        view.getChessGameFrame().statusUpgrading(currentStatus);
+        view.repaint();
     }
 
     private void test() {
@@ -201,7 +206,7 @@ public class GameController implements GameListener {
                 file = fileChooser.getSelectedFile();
                 String add = file.getCanonicalPath();
                 ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(add));
-                Memory gameInfo = new Memory(model, this.runTime);
+                Memory gameInfo = new Memory(model, this.runTime, selectedPoint);
                 stream.writeObject(gameInfo);
                 stream.close();
                 JOptionPane.showMessageDialog(null, "存档成功！");
@@ -308,6 +313,10 @@ public class GameController implements GameListener {
         }
         assert gameInfo != null;
         this.model = gameInfo.getChessboard();
+        selectedPoint = gameInfo.getChessboardPoint();
+        if (selectedPoint != null) {
+            highlightOn(selectedPoint);
+        }
         view.initiateChessComponent(this.model);
         this.runTime = gameInfo.getCurrentTime();
         timerStart();
@@ -319,7 +328,7 @@ public class GameController implements GameListener {
         File file = new File("resource/gameInformation/" + turn);
         try {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file));
-            Memory status = new Memory(this.model, 30);
+            Memory status = new Memory(this.model, 30, selectedPoint);
             stream.writeObject(status);
             stream.close();
         } catch (IOException e) {
@@ -335,6 +344,22 @@ public class GameController implements GameListener {
         this.runTime = runTime;
     }
 
+    public PlayerColor getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public Chessboard getModel() {
+        return model;
+    }
+
+    public String getCurrentStatus() {
+        return currentStatus;
+    }
+
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
+    }
+
     public void timerStart() {
         if (timer == null) {
             timer = new Timer();
@@ -343,6 +368,7 @@ public class GameController implements GameListener {
                 public void run() {
                     GameController.this.setRunTime(GameController.this.getRunTime() - 1);
                     System.err.println(GameController.this.getRunTime());
+                    GameController.this.view.getChessGameFrame().getStatusLabel().repaint();
                     if (GameController.this.getRunTime() == 0) {
                         int choice;
                         if (GameController.this.currentPlayer == PlayerColor.RED) {
@@ -396,5 +422,9 @@ public class GameController implements GameListener {
             case RED -> view.showWin(PlayerColor.BLUE);
             case BLUE -> view.showWin(PlayerColor.RED);
         }
+    }
+
+    public String status() {
+        return "当前玩家： " + currentPlayer + "\n回合数： " + model.getNum() + "\n下棋时间： " + runTime;
     }
 }
