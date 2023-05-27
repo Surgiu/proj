@@ -385,7 +385,7 @@ public class GameController implements GameListener {
                         timerEnd();
                     }
                 }
-            }, 1000, 1000);
+            }, 1, 1000);
         }
     }
 
@@ -393,7 +393,7 @@ public class GameController implements GameListener {
         if (timer != null) {
             timer.cancel();
             timer = null;
-            setRunTime(31);
+            setRunTime(30);
         }
     }
 

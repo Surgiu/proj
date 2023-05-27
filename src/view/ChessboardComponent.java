@@ -220,10 +220,10 @@ public class ChessboardComponent extends JComponent {
     public void showWin(PlayerColor playerColor) {
         String winner = "";
         switch (playerColor) {
-            case BLUE -> winner = "游戏结束，蓝胜！";
-            case RED -> winner = "游戏结束，红胜！";
+            case BLUE -> winner = "蓝胜！";
+            case RED -> winner = "红胜！";
         }
-        int choice = JOptionPane.showConfirmDialog(this, "再来一局?", winner, JOptionPane.YES_NO_OPTION);
+        int choice = JOptionPane.showConfirmDialog(this, winner+"  再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
             gameController.restart();
         }
