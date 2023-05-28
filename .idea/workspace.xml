@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="高亮和选中优化">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/7" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="清空存档优化">
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,14 +151,7 @@
       <workItem from="1685185526739" duration="17281000" />
       <workItem from="1685207116076" duration="594000" />
       <workItem from="1685234376218" duration="809000" />
-      <workItem from="1685240115471" duration="812000" />
-    </task>
-    <task id="LOCAL-00003" summary="细化2">
-      <created>1684570128349</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1684570128349</updated>
+      <workItem from="1685240115471" duration="2951000" />
     </task>
     <task id="LOCAL-00004" summary="controller完善">
       <created>1684648047049</created>
@@ -490,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685240724973</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="清空存档优化">
+      <created>1685241041630</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1685241041630</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="狮虎的高亮展示bug" />
     <MESSAGE value="新增“注册”功能，新增“存档”功能" />
     <MESSAGE value="AI类引入" />
     <MESSAGE value="高亮问题进一步完善" />
@@ -534,7 +539,8 @@
     <MESSAGE value="睡不着觉，顺手调一下" />
     <MESSAGE value="棋子显示优化" />
     <MESSAGE value="高亮和选中优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="高亮和选中优化" />
+    <MESSAGE value="清空存档优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="清空存档优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

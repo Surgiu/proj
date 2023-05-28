@@ -26,11 +26,10 @@ public class AI {
         }
         ArrayList<ChessboardPoint> canMove;
         do {
-            pieceNum = new Random().nextInt(points.size() - 1);
+            pieceNum = new Random().nextInt(points.size());
             canMove = chooseDest(points.get(pieceNum));
-
-        } while (canMove.size() <= 2);
-        go = new Random().nextInt(canMove.size() - 1);
+            go = new Random().nextInt(canMove.size());
+        } while (canMove.size() == 0);
         ChessboardPoint[] step = new ChessboardPoint[2];
         step[0] = points.get(pieceNum);
         step[1] = canMove.get(go);

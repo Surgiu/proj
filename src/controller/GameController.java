@@ -99,6 +99,7 @@ public class GameController implements GameListener {
             model.moveChessPiece(selectedPoint, point);
             model.inTrap(point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
+            view.repaint();
             timerEnd();
             if (isWin()) {
                 view.showWin(winner);
@@ -137,6 +138,7 @@ public class GameController implements GameListener {
                 model.captureChessPiece(selectedPoint, point);
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
+                view.repaint();
                 selectedPoint = null;
                 timerEnd();
                 autoSave();
