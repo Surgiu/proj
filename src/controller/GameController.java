@@ -437,7 +437,7 @@ public class GameController implements GameListener {
     }
 
     public String status() {
-        String player = currentPlayer == PlayerColor.RED ? "蓝方" : "红方";
+        String player = currentPlayer == PlayerColor.BLUE ? "蓝方" : "红方";
         return "当前玩家:   " + player + "\n      回合数: 0" + model.getNum() + "\n       剩余时间: " + runTime + "s";
     }
 }
