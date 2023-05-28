@@ -102,7 +102,12 @@ public class GameController implements GameListener {
             view.repaint();
             timerEnd();
             if (isWin()) {
-                view.showWin(winner);
+//                view.showWin(winner);
+                if(currentPlayer==PlayerColor.BLUE) {
+                    new WinFrame(view);
+                }else {
+                    new LoseFrame(view);
+                }
                 return;
             }
             selectedPoint = null;

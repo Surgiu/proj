@@ -23,6 +23,7 @@ public class ChessGameFrame extends JFrame {
     private static JLabel picture;
     private JLabel chessboard;
     private User user;
+    private WinFrame winFrame;
 
 
     public ChessGameFrame(int width, int height) {

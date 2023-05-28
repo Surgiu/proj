@@ -342,7 +342,6 @@ public class Chessboard implements Serializable {
                     chessboardPoints.add(new ChessboardPoint(i, j));
                 }
             }
-            chessboardPoints.add(here);
         }
     }
 
