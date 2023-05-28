@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="棋子显示优化">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInformation/28" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="高亮和选中优化">
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,14 +145,7 @@
       <workItem from="1685185526739" duration="17281000" />
       <workItem from="1685207116076" duration="594000" />
       <workItem from="1685234376218" duration="809000" />
-      <workItem from="1685240115471" duration="311000" />
-    </task>
-    <task id="LOCAL-00002" summary="细化1">
-      <created>1684559723607</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1684559723607</updated>
+      <workItem from="1685240115471" duration="812000" />
     </task>
     <task id="LOCAL-00003" summary="细化2">
       <created>1684570128349</created>
@@ -492,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685235186427</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="高亮和选中优化">
+      <created>1685240724973</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1685240724973</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,7 +509,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="新增游戏结束的展示功能" />
     <MESSAGE value="狮虎的高亮展示bug" />
     <MESSAGE value="新增“注册”功能，新增“存档”功能" />
     <MESSAGE value="AI类引入" />
@@ -536,7 +533,8 @@
     <MESSAGE value="新增了状态显示功能" />
     <MESSAGE value="睡不着觉，顺手调一下" />
     <MESSAGE value="棋子显示优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="棋子显示优化" />
+    <MESSAGE value="高亮和选中优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="高亮和选中优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

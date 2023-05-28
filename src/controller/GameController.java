@@ -222,10 +222,18 @@ public class GameController implements GameListener {
     public void deleteMemory() {
         File file = new File("resource/SavedGames/");
         File[] files = file.listFiles();
+        int count = 0;
         for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
-            files[i].delete();
+            boolean is = files[i].delete();
+            if (!is) {
+                count++;
+            }
         }
-        JOptionPane.showMessageDialog(null, "存档已清除");
+        if (count == 0) {
+            JOptionPane.showMessageDialog(null, "存档已清除");
+        } else {
+            JOptionPane.showMessageDialog(null, "清除失败，请重试");
+        }
     }
 
     public void loadMemory() {
