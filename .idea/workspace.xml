@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="睡不着觉，顺手调一下">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="棋子显示优化">
       <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +143,7 @@
       <workItem from="1685176811277" duration="517000" />
       <workItem from="1685185526739" duration="17281000" />
       <workItem from="1685207116076" duration="594000" />
-      <workItem from="1685234376218" duration="307000" />
+      <workItem from="1685234376218" duration="636000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -485,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685207621558</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="棋子显示优化">
+      <created>1685234760856</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1685234760856</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +507,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="高亮初步" />
     <MESSAGE value="新增游戏结束的展示功能" />
     <MESSAGE value="狮虎的高亮展示bug" />
     <MESSAGE value="新增“注册”功能，新增“存档”功能" />
@@ -529,7 +531,8 @@
     <MESSAGE value="存档支持当前时间，以及倒计时的bug修复" />
     <MESSAGE value="新增了状态显示功能" />
     <MESSAGE value="睡不着觉，顺手调一下" />
-    <option name="LAST_COMMIT_MESSAGE" value="睡不着觉，顺手调一下" />
+    <MESSAGE value="棋子显示优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="棋子显示优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
