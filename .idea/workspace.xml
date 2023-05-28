@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="棋子显示优化">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/28" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Chessboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,14 +146,8 @@
       <workItem from="1685176811277" duration="517000" />
       <workItem from="1685185526739" duration="17281000" />
       <workItem from="1685207116076" duration="594000" />
-      <workItem from="1685234376218" duration="636000" />
-    </task>
-    <task id="LOCAL-00001" summary="探索">
-      <created>1684558267937</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1684558267937</updated>
+      <workItem from="1685234376218" duration="809000" />
+      <workItem from="1685240115471" duration="311000" />
     </task>
     <task id="LOCAL-00002" summary="细化1">
       <created>1684559723607</created>
@@ -488,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685234760856</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="棋子显示优化">
+      <created>1685235186427</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1685235186427</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

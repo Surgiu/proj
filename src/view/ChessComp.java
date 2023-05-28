@@ -43,10 +43,10 @@ public class ChessComp extends JComponent {
         g2.setStroke(b2);
         g2.drawOval(0, 0, getWidth(), getHeight());
         if (isSelected()) { // Highlights the model if selected.
-            BasicStroke circle = new BasicStroke(140.0f);
+            BasicStroke circle = new BasicStroke(4);
             Graphics2D graphics2D = (Graphics2D) g;
             graphics2D.setStroke(circle);
-            graphics2D.setColor(Color.cyan);
+            graphics2D.setColor(Color.MAGENTA);
             graphics2D.drawOval(0, 0, getWidth(), getHeight());
         }
     }
