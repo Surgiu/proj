@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="新增了状态显示功能">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/17" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_20_19_27_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_20_19_27__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_20_22_17_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_20_22_17__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_13_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_13__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_51_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_5_21_0_51__Changes_.xml" beforeDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="睡不着觉，顺手调一下">
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/SavedGames/dd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/SavedGames/jj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/SavedGames/oo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInformation/0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInformation/1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInformation/2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +146,8 @@
       <workItem from="1685106987061" duration="8208000" />
       <workItem from="1685176811277" duration="517000" />
       <workItem from="1685185526739" duration="17281000" />
-      <workItem from="1685207116076" duration="437000" />
+      <workItem from="1685207116076" duration="594000" />
+      <workItem from="1685234376218" duration="307000" />
     </task>
     <task id="LOCAL-00001" summary="探索">
       <created>1684558267937</created>
@@ -490,7 +478,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685202862175</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="睡不着觉，顺手调一下">
+      <created>1685207621558</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1685207621558</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -509,7 +504,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="现在关于游戏运行的大部分bug都无了" />
     <MESSAGE value="高亮初步" />
     <MESSAGE value="新增游戏结束的展示功能" />
     <MESSAGE value="狮虎的高亮展示bug" />
@@ -534,7 +528,8 @@
     <MESSAGE value="倒计时" />
     <MESSAGE value="存档支持当前时间，以及倒计时的bug修复" />
     <MESSAGE value="新增了状态显示功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增了状态显示功能" />
+    <MESSAGE value="睡不着觉，顺手调一下" />
+    <option name="LAST_COMMIT_MESSAGE" value="睡不着觉，顺手调一下" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

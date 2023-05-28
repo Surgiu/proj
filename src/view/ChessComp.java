@@ -33,6 +33,8 @@ public class ChessComp extends JComponent {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setColor(Color.ORANGE);
+        g2.fillOval(0,0,getWidth(),getHeight());
         Font font = new Font("隶书", Font.PLAIN, getWidth() / 2);
         g2.setFont(font);
         g2.setColor(getOwner().getColor());
@@ -42,7 +44,7 @@ public class ChessComp extends JComponent {
             BasicStroke circle = new BasicStroke(140.0f);
             Graphics2D graphics2D = (Graphics2D) g;
             graphics2D.setStroke(circle);
-            graphics2D.setColor(Color.GREEN);
+            graphics2D.setColor(Color.cyan);
             graphics2D.drawOval(0, 0, getWidth(), getHeight());
         }
     }
