@@ -1,7 +1,5 @@
 package view;
-
 import controller.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -107,10 +105,10 @@ public class LogInFrame extends JFrame implements Serializable {
                             if (psd.equals(user.getPsd())) {
                                 JOptionPane.showMessageDialog(null, "登录成功！");
                                 LogInFrame.this.dispose();
-                                break;
                             } else {
                                 JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您输入的密码不正确");
                             }
+                            break;
                         } else {
                             JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您还没有注册呢~");
                         }

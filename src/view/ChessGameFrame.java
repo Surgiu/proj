@@ -101,7 +101,6 @@ public class ChessGameFrame extends JFrame {
         JButton jb8 = new JButton("载入存档");
         JButton jb9 = new JButton("棋局回放");
 
-
         jb1.setBounds(HEIGTH + 70, HEIGTH / 10 + 85, 160, 50);
         jb2.setBounds(HEIGTH + 70, HEIGTH / 10 + 160, 160, 50);
         jb3.setBounds(HEIGTH + 70, HEIGTH / 10 + 235, 160, 50);
@@ -120,7 +119,7 @@ public class ChessGameFrame extends JFrame {
         picture.add(jb6);
         picture.add(jb7);
         picture.add(jb8);
-        //picture.add(jb9);
+        picture.add(jb9);
 
 
         jb1.addActionListener(new AbstractAction() {

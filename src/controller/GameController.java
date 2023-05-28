@@ -97,15 +97,16 @@ public class GameController implements GameListener {
             model.escapeTrap(selectedPoint, point);
             highlightOff(selectedPoint);
             model.moveChessPiece(selectedPoint, point);
+            music();
             model.inTrap(point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
             view.repaint();
             timerEnd();
             if (isWin()) {
 //                view.showWin(winner);
-                if(currentPlayer==PlayerColor.BLUE) {
+                if (currentPlayer == PlayerColor.BLUE) {
                     new WinFrame(view);
-                }else {
+                } else {
                     new LoseFrame(view);
                 }
                 return;
@@ -124,6 +125,7 @@ public class GameController implements GameListener {
         if (selectedPoint == null) {//如果还没被选中，那么就让它被选中
             if (model.getChessPieceOwner(point).equals(currentPlayer)) {
                 selectedPoint = point;
+                music();
                 highlightOn(selectedPoint);
                 component.setSelected(true);
                 if (model.getNum() == 0) {
@@ -134,6 +136,7 @@ public class GameController implements GameListener {
         } else if (selectedPoint.equals(point)) {//如果放到自己的位置，就放弃选中
             selectedPoint = null;
             component.setSelected(false);
+            music();
             highlightOff(point);
             component.repaint();
         } else {
@@ -141,6 +144,7 @@ public class GameController implements GameListener {
                 highlightOff(selectedPoint);
                 model.escapeTrap(selectedPoint, point);
                 model.captureChessPiece(selectedPoint, point);
+                music();
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
                 view.repaint();
@@ -336,7 +340,7 @@ public class GameController implements GameListener {
         }
         view.initiateChessComponent(this.model);
         this.runTime = gameInfo.getCurrentTime();
-        timerStart();
+//        timerStart();
         view.repaint();
     }
 
@@ -444,5 +448,9 @@ public class GameController implements GameListener {
     public String status() {
         String player = currentPlayer == PlayerColor.BLUE ? "蓝方" : "红方";
         return "当前玩家:   " + player + "\n      回合数: 0" + model.getNum() + "\n       剩余时间: " + runTime + "s";
+    }
+
+    public void music() {
+        MusicTool.MusicTool2();
     }
 }

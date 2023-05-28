@@ -12,16 +12,16 @@ public class SettingGameFrame extends JFrame {
     JButton jb4;
     JButton jb7;
 
-    public SettingGameFrame(){
+    public SettingGameFrame() {
         this.setTitle("设置");
-        this.setBounds(715,200,290,620);
+        this.setBounds(715, 200, 290, 620);
         this.setLayout(null);
         this.setResizable(false);
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        background =new JLabel(new ImageIcon("image/background.png")) ;
-        background.setBounds(0,0,277,600);
+        background = new JLabel(new ImageIcon("image/background.png"));
+        background.setBounds(0, 0, 277, 600);
         this.add(background);
 
         jb1 = new JButton("规则");
@@ -74,7 +74,7 @@ public class SettingGameFrame extends JFrame {
         jb2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MusicFrame musicFrame=new MusicFrame();
+                MusicFrame musicFrame = new MusicFrame();
                 musicFrame.setVisible(true);
             }
         });
@@ -96,8 +96,6 @@ public class SettingGameFrame extends JFrame {
                 SettingGameFrame.this.dispose();
             }
         });
-
-
 
 
     }
