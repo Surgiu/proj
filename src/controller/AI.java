@@ -28,7 +28,9 @@ public class AI {
         do {
             pieceNum = new Random().nextInt(points.size());
             canMove = chooseDest(points.get(pieceNum));
-            go = new Random().nextInt(canMove.size());
+            if (canMove.size() > 0) {
+                go = new Random().nextInt(canMove.size());
+            }
         } while (canMove.size() == 0);
         ChessboardPoint[] step = new ChessboardPoint[2];
         step[0] = points.get(pieceNum);

@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="AI的bug修复">
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="当前玩家bug修复">
       <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,14 +151,7 @@
       <workItem from="1685185526739" duration="17281000" />
       <workItem from="1685207116076" duration="594000" />
       <workItem from="1685234376218" duration="809000" />
-      <workItem from="1685240115471" duration="3256000" />
-    </task>
-    <task id="LOCAL-00005" summary="model吃子bug fix">
-      <created>1684650720617</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1684650720617</updated>
+      <workItem from="1685240115471" duration="3638000" />
     </task>
     <task id="LOCAL-00006" summary="model吃子bug fix">
       <created>1684650822607</created>
@@ -491,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685243117752</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="当前玩家bug修复">
+      <created>1685243521487</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1685243521487</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="AI类引入" />
     <MESSAGE value="高亮问题进一步完善" />
     <MESSAGE value="修复了老鼠吃子时跨越两步的bug" />
     <MESSAGE value="Chessboard简化" />
@@ -535,7 +539,8 @@
     <MESSAGE value="高亮和选中优化" />
     <MESSAGE value="清空存档优化" />
     <MESSAGE value="AI的bug修复" />
-    <option name="LAST_COMMIT_MESSAGE" value="AI的bug修复" />
+    <MESSAGE value="当前玩家bug修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="当前玩家bug修复" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
