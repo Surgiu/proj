@@ -102,6 +102,7 @@ public class LogInFrame extends JFrame implements Serializable {
                 if (username.getText().length() != 0 && password.getText().length() != 0) {
                     String name = username.getText();
                     String psd = password.getText();
+                    int count = 0;
                     for (User user : users) {
                         if (name.equals(user.getName())) {
                             if (psd.equals(user.getPsd())) {
@@ -110,11 +111,13 @@ public class LogInFrame extends JFrame implements Serializable {
                             } else {
                                 JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您输入的密码不正确");
                             }
-                            break;
+                            return;
                         } else {
-                            JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您还没有注册呢~");
-                            break;
+                            count++;
                         }
+                    }
+                    if (count != 0) {
+                        JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您还没有注册呢~");
                     }
                 }
             }
@@ -138,6 +141,7 @@ public class LogInFrame extends JFrame implements Serializable {
             }
         });
     }
+
     private void loadUsers() {
         File file = new File("resource/UserInfo/");
         File[] files = file.listFiles();
@@ -146,13 +150,13 @@ public class LogInFrame extends JFrame implements Serializable {
             try {
                 read = new ObjectInputStream(new FileInputStream(files[i]));
             } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                ex.printStackTrace();
             }
             User user = null;
             try {
                 user = (User) read.readObject();
             } catch (IOException | ClassNotFoundException ex) {
-                throw new RuntimeException(ex);
+                ex.printStackTrace();
             }
             users.add(user);
         }

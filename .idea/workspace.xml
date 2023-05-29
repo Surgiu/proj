@@ -9,14 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="最终版">
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="登录bug修复">
+      <change afterPath="$PROJECT_DIR$/resource/SavedGames/beijing" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/SavedGames/巢穴胜利" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/SavedGames/无法进河" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/SavedGames/棋子胜利" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resource/gameInformation/3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,6 +89,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
     "git-widget-placeholder": "new__3",
@@ -173,13 +174,6 @@
       <workItem from="1685326718331" duration="3982000" />
       <workItem from="1685333717758" duration="3556000" />
       <workItem from="1685366776407" duration="1023000" />
-    </task>
-    <task id="LOCAL-00013" summary="“内鬼”问题未解决">
-      <created>1684680361236</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1684680361236</updated>
     </task>
     <task id="LOCAL-00014" summary="“内鬼”问题未解决">
       <created>1684688258587</created>
@@ -517,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685369006911</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="登录bug修复">
+      <created>1685374646764</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1685374646764</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="restart方法的bug解决了大部分，但是保留了一部分" />
     <MESSAGE value="实现了悔棋功能" />
     <MESSAGE value="AI悔棋的修改" />
     <MESSAGE value="登录和注册的判断优化" />
@@ -561,7 +561,8 @@
     <MESSAGE value="修复了棋局回放的bug，音效引入" />
     <MESSAGE value="最终定型" />
     <MESSAGE value="最终版" />
-    <option name="LAST_COMMIT_MESSAGE" value="最终版" />
+    <MESSAGE value="登录bug修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录bug修复" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
