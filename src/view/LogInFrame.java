@@ -113,6 +113,7 @@ public class LogInFrame extends JFrame implements Serializable {
                             break;
                         } else {
                             JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您还没有注册呢~");
+                            break;
                         }
                     }
                 }

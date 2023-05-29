@@ -12,9 +12,8 @@ public class Main {
             EnterFrame enter = new EnterFrame();
 //            mainFrame.setVisible(true);
             enter.setVisible(true);
-            ChessGameFrame mainFrame = new ChessGameFrame(1100,810);
+            ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
             GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard(), Mode.MULTIPLAYER);
-
         });
     }
 }
