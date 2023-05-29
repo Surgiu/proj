@@ -2,26 +2,31 @@ package view;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.Serial;
+import java.io.Serializable;
 
 
-public class SettingGameFrame extends JFrame {
-    private static JLabel background;
+public class SettingGameFrame extends JFrame implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -8806409173436292101L;
+    private JLabel background;
     JButton jb1;
     JButton jb2;
     JButton jb3;
     JButton jb4;
     JButton jb7;
-
-    public SettingGameFrame() {
+    ChessGameFrame chessGameFrame;
+    public SettingGameFrame(ChessGameFrame chessGameFrame){
         this.setTitle("设置");
-        this.setBounds(715, 200, 290, 620);
+        this.setBounds(715,200,290,338);
         this.setLayout(null);
         this.setResizable(false);
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        this.chessGameFrame=chessGameFrame;
 
-        background = new JLabel(new ImageIcon("image/background.png"));
-        background.setBounds(0, 0, 277, 600);
+        background =new JLabel(new ImageIcon("image/background.png")) ;
+        background.setBounds(0,0,277,600);
         this.add(background);
 
         jb1 = new JButton("规则");
@@ -72,32 +77,33 @@ public class SettingGameFrame extends JFrame {
 //            }
 //        });
         jb2.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -7817683151677238573L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                MusicFrame musicFrame = new MusicFrame();
+                MusicFrame musicFrame=new MusicFrame();
                 musicFrame.setVisible(true);
             }
         });
-        jb3.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        jb3.addActionListener(e -> {
+            SwingUtilities.invokeLater(() -> {
+                this.chessGameFrame.addChangeBackground();
+            });
         });
-        jb4.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        jb4.addActionListener(e -> {
+            SwingUtilities.invokeLater(() -> {
+                this.chessGameFrame.addChangePicture();
+            });
         });
         jb7.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -7231196366098858164L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 SettingGameFrame.this.dispose();
             }
         });
-
-
     }
-
 }

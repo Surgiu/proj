@@ -4,8 +4,11 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.Serial;
+import java.io.Serializable;
 
-public class MusicFrame extends JFrame {
+public class MusicFrame extends JFrame implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 2225571584244590218L;
     private static JLabel music;
     private boolean Bgm1Play = false;
     private boolean Bgm2Play = false;
@@ -50,7 +53,7 @@ public class MusicFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                MusicTool.MusicTool();
+                musicTool.MusicTool();
             }
         });
 //        jb2.addActionListener(new AbstractAction() {
@@ -61,6 +64,9 @@ public class MusicFrame extends JFrame {
 //            }
 //        });
         jb3.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = 2216358074568335721L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
 //                MusicTool musicTool=new MusicTool();
@@ -69,6 +75,9 @@ public class MusicFrame extends JFrame {
         });
 
         jb4.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -4988620863852964352L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 MusicFrame.this.dispose();

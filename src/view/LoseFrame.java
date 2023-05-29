@@ -4,8 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.Serial;
+import java.io.Serializable;
 
-public class LoseFrame extends JFrame {
+public class LoseFrame extends JFrame implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -2700339924094015175L;
     private static JLabel background;
     JButton jb1;
     JButton jb2;

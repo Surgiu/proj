@@ -5,6 +5,7 @@ import model.*;
 import view.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.Objects;
 import java.util.Timer;
@@ -16,8 +17,10 @@ import java.util.TimerTask;
  * analyzes and then hands over to the model for processing
  * [in this demo the request methods are onPlayerClickCell() and onPlayerClickChessPiece()]
  */
-public class GameController implements GameListener {
+public class GameController implements GameListener, Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -4947732304289783372L;
     private Chessboard model;
     private ChessboardComponent view;
     private PlayerColor currentPlayer;
@@ -30,6 +33,7 @@ public class GameController implements GameListener {
     private static Timer timer;
     private static Timer timer0;
     private String currentStatus = "";
+    private int steps = 0;
 
     public GameController(ChessboardComponent view, Chessboard model, Mode gameMode) {
         this.view = view;
@@ -97,7 +101,11 @@ public class GameController implements GameListener {
             model.escapeTrap(selectedPoint, point);
             highlightOff(selectedPoint);
             model.moveChessPiece(selectedPoint, point);
-            music();
+            if (model.getGridAt(point).getType() == 1) {
+                musicInWater();
+            } else {
+                musicPlay();
+            }
             model.inTrap(point);
             view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
             view.repaint();
@@ -125,7 +133,7 @@ public class GameController implements GameListener {
         if (selectedPoint == null) {//如果还没被选中，那么就让它被选中
             if (model.getChessPieceOwner(point).equals(currentPlayer)) {
                 selectedPoint = point;
-                music();
+                musicSelect();
                 highlightOn(selectedPoint);
                 component.setSelected(true);
                 if (model.getNum() == 0) {
@@ -136,7 +144,7 @@ public class GameController implements GameListener {
         } else if (selectedPoint.equals(point)) {//如果放到自己的位置，就放弃选中
             selectedPoint = null;
             component.setSelected(false);
-            music();
+            musicPlay();
             highlightOff(point);
             component.repaint();
         } else {
@@ -144,18 +152,23 @@ public class GameController implements GameListener {
                 highlightOff(selectedPoint);
                 model.escapeTrap(selectedPoint, point);
                 model.captureChessPiece(selectedPoint, point);
-                music();
+                musicPlay();
                 view.removeChessComponentAtGrid(point);
                 view.setChessComponentAtGrid(point, view.removeChessComponentAtGrid(selectedPoint));
                 view.repaint();
                 selectedPoint = null;
                 timerEnd();
                 autoSave();
-                swapColor();
                 if (isWin()) {
-                    view.showWin(winner);
+//                view.showWin(winner);
+                    if (currentPlayer == PlayerColor.BLUE) {
+                        new WinFrame(view);
+                    } else {
+                        new LoseFrame(view);
+                    }
                     return;
                 }
+                swapColor();
             } else if (!model.isValidCapture(selectedPoint, point)) {//否则取消行动
                 highlightOff(selectedPoint);
                 ChessComp chess = (ChessComp) view.getGridComponentAt(selectedPoint).getComponents()[0];
@@ -219,7 +232,10 @@ public class GameController implements GameListener {
                 file = fileChooser.getSelectedFile();
                 String add = file.getCanonicalPath();
                 ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(add));
-                Memory gameInfo = new Memory(model, this.runTime, selectedPoint);
+                ChessGameFrame frame = view.getChessGameFrame();
+                boolean isChanged = frame.getPicture2().isVisible();
+                boolean themeChanged = frame.getContentPane().getBackground() == Color.BLACK;
+                Memory gameInfo = new Memory(model, this.runTime, selectedPoint, isChanged, themeChanged);
                 stream.writeObject(gameInfo);
                 stream.close();
                 JOptionPane.showMessageDialog(null, "存档成功！");
@@ -315,7 +331,10 @@ public class GameController implements GameListener {
                 break;
             }
         }
-        this.model.setNum(currentTurn - 1);
+        if (currentTurn != 0) {
+            this.model.setNum(currentTurn - 1);
+            swapColor();
+        }
         timerEnd();
         timerStart();
     }
@@ -339,8 +358,14 @@ public class GameController implements GameListener {
             highlightOn(selectedPoint);
         }
         view.initiateChessComponent(this.model);
+        if (gameInfo.isChange()) {
+            view.getChessGameFrame().addChangePicture();
+        }
+        if (gameInfo.isTheme()) {
+            view.getChessGameFrame().addChangeBackground();
+        }
         this.runTime = gameInfo.getCurrentTime();
-//        timerStart();
+        timerStart();
         view.repaint();
     }
 
@@ -349,7 +374,7 @@ public class GameController implements GameListener {
         File file = new File("resource/gameInformation/" + turn);
         try {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file));
-            Memory status = new Memory(this.model, 30, selectedPoint);
+            Memory status = new Memory(this.model, 30, selectedPoint, false, false);
             stream.writeObject(status);
             stream.close();
         } catch (IOException e) {
@@ -391,15 +416,10 @@ public class GameController implements GameListener {
                     setCurrentStatus(status());
                     view.getChessGameFrame().statusUpgrading(currentStatus);
                     if (GameController.this.getRunTime() == 0) {
-                        int choice;
                         if (GameController.this.currentPlayer == PlayerColor.RED) {
-                            choice = JOptionPane.showConfirmDialog(null, "红方超时，蓝胜! 再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
+                            new TimeFrame(view, "红方");
                         } else {
-                            choice = JOptionPane.showConfirmDialog(null, "蓝方超时，红胜! 再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
-                        }
-                        if (choice == 0) {
-                            timerEnd();
-                            restart();
+                            new TimeFrame(view, "蓝方");
                         }
                         timerEnd();
                     }
@@ -425,17 +445,18 @@ public class GameController implements GameListener {
 
             @Override
             public void run() {
-                for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
-                    if (files[i].getName().equals(String.valueOf(i))) {
-                        doLoad(files[i]);
-                        timerEnd();
-                        if (i == files.length - 1) {
-                            timer0.cancel();
-                        }
+                assert files != null;
+                if (files[steps].getName().equals(String.valueOf(steps))) {
+                    doLoad(files[steps]);
+                    timerEnd();
+                    steps++;
+                    if (steps == files.length) {
+                        steps = 0;
+                        timer0.cancel();
                     }
                 }
             }
-        }, 1000, 1921);
+        }, 1000, 1573);
     }
 
     public void surrender() {
@@ -447,10 +468,20 @@ public class GameController implements GameListener {
 
     public String status() {
         String player = currentPlayer == PlayerColor.BLUE ? "蓝方" : "红方";
-        return "当前玩家:   " + player + "\n      回合数: 0" + model.getNum() + "\n       剩余时间: " + runTime + "s";
+        return "<html>当前玩家:   " + player + "<br/>    回合数: 0" + model.getNum() / 2 + "<br/>       剩余时间: " + runTime + "s<br/></html>";
+//        String player = currentPlayer == PlayerColor.BLUE ? "蓝方" : "红方";
+//        return "当前玩家:   " + player + "\n      回合数: 0" + model.getNum() + "\n       剩余时间: " + runTime + "s";
     }
 
-    public void music() {
+    public void musicPlay() {
         MusicTool.MusicTool2();
+    }
+
+    public void musicSelect() {
+        MusicTool.MusicTool3();
+    }
+
+    public void musicInWater() {
+        MusicTool.MusicTool4();
     }
 }

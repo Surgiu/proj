@@ -257,7 +257,7 @@ public class Chessboard implements Serializable {
                             }
                         }
                     } else {//lion or tiger on the ground
-                        return predator.canCapture(target);
+                        return predator.canCapture(target)&&getGridAt(dest).getType() != 1;
                     }
                 }
                 case "Rat" -> {

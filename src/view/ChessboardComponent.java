@@ -6,6 +6,8 @@ import model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.*;
 
 import static model.Constant.CHESSBOARD_COL_SIZE;
@@ -14,7 +16,9 @@ import static model.Constant.CHESSBOARD_ROW_SIZE;
 /**
  * This class represents the checkerboard component object on the panel
  */
-public class ChessboardComponent extends JComponent {
+public class ChessboardComponent extends JComponent implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -4378006668323425340L;
     private final CellComponent[][] gridComponents = new CellComponent[CHESSBOARD_ROW_SIZE.getNum()][CHESSBOARD_COL_SIZE.getNum()];
     private final int CHESS_SIZE;
     private final Set<ChessboardPoint> riverCell = new HashSet<>();
@@ -180,6 +184,7 @@ public class ChessboardComponent extends JComponent {
         return new ChessboardPoint(point.y / CHESS_SIZE, point.x / CHESS_SIZE);
     }
 
+
     private Point calculatePoint(int row, int col) {
         return new Point(col * CHESS_SIZE, row * CHESS_SIZE);
     }
@@ -223,7 +228,7 @@ public class ChessboardComponent extends JComponent {
             case BLUE -> winner = "蓝胜！";
             case RED -> winner = "红胜！";
         }
-        int choice = JOptionPane.showConfirmDialog(this, winner+"  再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
+        int choice = JOptionPane.showConfirmDialog(this, winner + "  再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
             gameController.restart();
         }
@@ -244,5 +249,9 @@ public class ChessboardComponent extends JComponent {
 
     public ChessGameFrame getChessGameFrame() {
         return chessGameFrame;
+    }
+
+    public void setChessGameFrame(ChessGameFrame chessGameFrame) {
+        this.chessGameFrame = chessGameFrame;
     }
 }

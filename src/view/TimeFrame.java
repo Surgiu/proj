@@ -1,30 +1,30 @@
 package view;
 
+import model.PlayerColor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.Serial;
 import java.io.Serializable;
 
-public class WinFrame extends JFrame implements Serializable {
+public class TimeFrame extends JFrame implements Serializable {
     @Serial
-    private static final long serialVersionUID = -1094674145970616625L;
+    private static final long serialVersionUID = 4487473261355787122L;
     private static JLabel background;
     JButton jb1;
     JButton jb2;
     JButton jb3;
 
-
-    public WinFrame(ChessboardComponent chessboardComponent) {
+    public TimeFrame(ChessboardComponent chessboardComponent,String d) {
         this.setTitle("斗兽棋");
         this.setBounds(705, 350, 310, 200);
         this.setLayout(null);
         this.setResizable(false);
-//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        JLabel jl = new JLabel("恭喜！您赢了！");
-        jl.setBounds(65, 30, 200, 60);
+        JLabel jl = new JLabel(d+"超时，游戏结束");
+        jl.setBounds(25, 30, 280, 60);
         jl.setForeground(new Color(5, 27, 93, 229));
         jl.setFont(new Font("MS Song", Font.BOLD, 22));
         add(jl);
@@ -59,24 +59,24 @@ public class WinFrame extends JFrame implements Serializable {
 
         jb1.addActionListener(new AbstractAction() {
             @Serial
-            private static final long serialVersionUID = 4341241932262345437L;
+            private static final long serialVersionUID = -7809399524545280947L;
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().restart();
-                WinFrame.this.dispose();
-
+                TimeFrame.this.dispose();
             }
         });
         jb2.addActionListener(new AbstractAction() {
             @Serial
-            private static final long serialVersionUID = 7379875196635755159L;
+            private static final long serialVersionUID = -4250500450613256080L;
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                WinFrame.this.dispose();
+                TimeFrame.this.dispose();
             }
         });
         jb3.addActionListener(e -> System.exit(0));
     }
 }
+

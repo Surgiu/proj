@@ -1,5 +1,7 @@
 package model;
 
+import view.ChessGameFrame;
+
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -9,11 +11,16 @@ public class Memory implements Serializable {
     private final Chessboard chessboard;
     private int currentTime;
     private ChessboardPoint chessboardPoint;
+    private boolean change;
+    private boolean theme;
 
-    public Memory(Chessboard chessboard, int currentTime, ChessboardPoint previous) {
+
+    public Memory(Chessboard chessboard, int currentTime, ChessboardPoint previous, boolean change, boolean theme) {
         this.chessboard = chessboard;
         this.currentTime = currentTime;
         this.chessboardPoint = previous;
+        this.change = change;
+        this.theme = theme;
     }
 
     public Chessboard getChessboard() {
@@ -34,6 +41,22 @@ public class Memory implements Serializable {
 
     public void setChessboardPoint(ChessboardPoint chessboardPoint) {
         this.chessboardPoint = chessboardPoint;
+    }
+
+    public boolean isChange() {
+        return change;
+    }
+
+    public void setChange(boolean change) {
+        this.change = change;
+    }
+
+    public boolean isTheme() {
+        return theme;
+    }
+
+    public void setTheme(boolean theme) {
+        this.theme = theme;
     }
 }
 //int[][] status = new int[64][2];
