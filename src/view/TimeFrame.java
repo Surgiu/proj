@@ -6,13 +6,14 @@ import java.awt.event.ActionEvent;
 import java.io.Serial;
 
 public class TimeFrame extends JFrame {
-    private static JLabel background= new JLabel(new ImageIcon("image/lose.png"));;
+    private static JLabel background = new JLabel(new ImageIcon("image/lose.png"));
+    ;
     JLabel jl;
     JButton jb1;
     JButton jb2;
     JButton jb3;
 
-    public TimeFrame(ChessboardComponent chessboardComponent,String d) {
+    public TimeFrame(ChessboardComponent chessboardComponent, String d) {
         this.setTitle("斗兽棋");
         this.setBounds(705, 350, 310, 200);
         this.setLayout(null);
@@ -22,7 +23,7 @@ public class TimeFrame extends JFrame {
 
         background.setBounds(0, 0, 310, 200);
 
-        jl = new JLabel(d+"超时，游戏结束!");
+        jl = new JLabel(d + "超时，游戏结束!");
         jl.setBounds(40, 25, 230, 60);
         jl.setForeground(new Color(5, 27, 93, 229));
         jl.setFont(new Font("MS Song", Font.BOLD, 22));

@@ -21,10 +21,10 @@ public class ChessGameFrame extends JFrame {
     private JLabel statusLabel;
     private JLabel chessboard;
     private User user;
-    private static JLabel picture1=new JLabel(new ImageIcon("image/picture1.png")) ;
-    private static JLabel picture2=new JLabel(new ImageIcon("image/picture2.png")) ;
-    boolean changePicture=false;
-    boolean changeBackground=false;
+    private static JLabel picture1 = new JLabel(new ImageIcon("image/picture1.png"));
+    private static JLabel picture2 = new JLabel(new ImageIcon("image/picture2.png"));
+    boolean changePicture = false;
+    boolean changeBackground = false;
 
     public ChessGameFrame(int width, int height) {
         setTitle("斗兽棋"); //设置标题
@@ -82,7 +82,7 @@ public class ChessGameFrame extends JFrame {
 
     public void addBaseLabel() {
         chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
-        chessboard.setBounds(102, -46,623, 900);
+        chessboard.setBounds(102, -46, 623, 900);
         add(chessboard);
         picture1.setBounds(-134, -12, 1100, 810);
         picture2.setBounds(-134, -12, 1100, 810);
@@ -98,11 +98,12 @@ public class ChessGameFrame extends JFrame {
         if (changePicture == false) {
             picture1.setVisible(false);
             picture2.setVisible(true);
-        } else if (changePicture == true)  {
+        } else if (changePicture == true) {
             picture1.setVisible(true);
             picture2.setVisible(false);
         }
     }
+
     public void addChangeBackground() {
         changeBackground = !changeBackground;
         if (changeBackground == false) {
@@ -201,7 +202,7 @@ public class ChessGameFrame extends JFrame {
         jb3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoseFrame loseFrame=new LoseFrame(chessboardComponent);
+                LoseFrame loseFrame = new LoseFrame(chessboardComponent);
                 loseFrame.setVisible(true);
             }
         });

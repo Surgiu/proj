@@ -4,25 +4,26 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class MusicFrame extends JFrame{
+public class MusicFrame extends JFrame {
     private static JLabel music;
     private boolean Bgm1Play = false;
     private boolean Bgm2Play = false;
     JButton jb1;
-//    JButton jb2;
+    //    JButton jb2;
     JButton jb3;
     JButton jb4;
-    public MusicFrame(){
+
+    public MusicFrame() {
         this.setTitle("音乐");
 //        this.setBounds(715,360,290,340);
-        this.setBounds(715,360,290,280);
+        this.setBounds(715, 360, 290, 280);
         this.setLayout(null);
         this.setResizable(false);
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        music =new JLabel(new ImageIcon("image/music.png")) ;
-        music.setBounds(0,0,277,308);
+        music = new JLabel(new ImageIcon("image/music.png"));
+        music.setBounds(0, 0, 277, 308);
         this.add(music);
 
         jb1 = new JButton("拥抱");
@@ -71,7 +72,8 @@ public class MusicFrame extends JFrame{
         });
 
     }
-    MusicTool musicTool=new MusicTool();
+
+    MusicTool musicTool = new MusicTool();
 
     public MusicTool getMusicTool() {
         return musicTool;
