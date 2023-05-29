@@ -1,15 +1,12 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.Serial;
-import java.io.Serializable;
 
 
-public class SettingGameFrame extends JFrame implements Serializable {
-    @Serial
-    private static final long serialVersionUID = -8806409173436292101L;
-    private JLabel background;
+public class SettingGameFrame extends JFrame {
+    private static JLabel background;
     JButton jb1;
     JButton jb2;
     JButton jb3;
@@ -18,7 +15,7 @@ public class SettingGameFrame extends JFrame implements Serializable {
     ChessGameFrame chessGameFrame;
     public SettingGameFrame(ChessGameFrame chessGameFrame){
         this.setTitle("设置");
-        this.setBounds(715,200,290,338);
+        this.setBounds(715,200,290,385);
         this.setLayout(null);
         this.setResizable(false);
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,7 +23,7 @@ public class SettingGameFrame extends JFrame implements Serializable {
         this.chessGameFrame=chessGameFrame;
 
         background =new JLabel(new ImageIcon("image/background.png")) ;
-        background.setBounds(0,0,277,600);
+        background.setBounds(0,0,277,450);
         this.add(background);
 
         jb1 = new JButton("规则");
@@ -41,6 +38,24 @@ public class SettingGameFrame extends JFrame implements Serializable {
         jb3.setBounds(65, 160, 160, 30);
         jb4.setBounds(65, 220, 160, 30);
         jb7.setBounds(65, 280, 160, 30);
+
+        jb1.setForeground(new Color(185, 249, 255));
+        jb2.setForeground(new Color(185, 249, 255));
+        jb3.setForeground(new Color(185, 249, 255));
+        jb4.setForeground(new Color(185, 249, 255));
+        jb7.setForeground(new Color(185, 249, 255));
+
+        jb1.setFont(new Font("MS Song", Font.BOLD, 13));
+        jb2.setFont(new Font("MS Song", Font.BOLD, 13));
+        jb3.setFont(new Font("MS Song", Font.BOLD, 13));
+        jb4.setFont(new Font("MS Song", Font.BOLD, 13));
+        jb7.setFont(new Font("MS Song", Font.BOLD, 13));
+
+        jb1.setBackground(new Color(238, 180, 194));
+        jb2.setBackground(new Color(238, 163, 193));
+        jb3.setBackground(new Color(238, 149, 182));
+        jb4.setBackground(new Color(229, 134, 170));
+        jb7.setBackground(new Color(220, 122, 165));
 
         background.add(jb1);
         background.add(jb2);
@@ -77,9 +92,6 @@ public class SettingGameFrame extends JFrame implements Serializable {
 //            }
 //        });
         jb2.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = -7817683151677238573L;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 MusicFrame musicFrame=new MusicFrame();
@@ -97,9 +109,6 @@ public class SettingGameFrame extends JFrame implements Serializable {
             });
         });
         jb7.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = -7231196366098858164L;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 SettingGameFrame.this.dispose();

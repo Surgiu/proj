@@ -4,11 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.Serial;
-import java.io.Serializable;
 
-public class WinFrame extends JFrame implements Serializable {
-    @Serial
-    private static final long serialVersionUID = -1094674145970616625L;
+public class WinFrame extends JFrame {
     private static JLabel background;
     JButton jb1;
     JButton jb2;
@@ -23,7 +20,7 @@ public class WinFrame extends JFrame implements Serializable {
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        JLabel jl = new JLabel("恭喜！您赢了！");
+        JLabel jl = new JLabel("恭喜您，您赢了！");
         jl.setBounds(65, 30, 200, 60);
         jl.setForeground(new Color(5, 27, 93, 229));
         jl.setFont(new Font("MS Song", Font.BOLD, 22));

@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="棋局回放，保存背景图片">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/0" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="修复了棋局回放的bug，音效引入">
       <change afterPath="$PROJECT_DIR$/resource/gameInformation/1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/gameInformation/0" beforeDir="false" afterPath="$PROJECT_DIR$/resource/gameInformation/0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ChessboardPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ChessboardPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/EnterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/EnterFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LoseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoseFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MusicFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MusicFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SettingGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SettingGameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TimeFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TimeFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/WinFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/WinFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +56,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="new_3" />
-                    <option name="lastUsedInstant" value="1685198717" />
+                    <option name="lastUsedInstant" value="1685368156" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="new_one" />
@@ -106,6 +116,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="pro" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="pro" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -160,14 +183,8 @@
       <workItem from="1685261958706" duration="66000" />
       <workItem from="1685275698101" duration="15276000" />
       <workItem from="1685326718331" duration="3982000" />
-      <workItem from="1685333717758" duration="3374000" />
-    </task>
-    <task id="LOCAL-00010" summary="model吃子bug fix">
-      <created>1684661607816</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1684661607816</updated>
+      <workItem from="1685333717758" duration="3556000" />
+      <workItem from="1685366776407" duration="1023000" />
     </task>
     <task id="LOCAL-00011" summary="controller吃子bug fix">
       <created>1684669644692</created>
@@ -505,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685334937221</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="修复了棋局回放的bug，音效引入">
+      <created>1685337301280</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1685337301280</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="修复了狮虎互吃的bug" />
     <MESSAGE value="引入“读档”功能" />
     <MESSAGE value="存读档的进一步优化" />
     <MESSAGE value="restart方法的bug解决了大部分，但是保留了一部分" />
@@ -549,7 +572,8 @@
     <MESSAGE value="AIbug修复" />
     <MESSAGE value="输赢界面美化" />
     <MESSAGE value="棋局回放，保存背景图片" />
-    <option name="LAST_COMMIT_MESSAGE" value="棋局回放，保存背景图片" />
+    <MESSAGE value="修复了棋局回放的bug，音效引入" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了棋局回放的bug，音效引入" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

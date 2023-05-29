@@ -118,17 +118,13 @@ public class LogInFrame extends JFrame implements Serializable {
                 }
             }
         });
-        jb3.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = 305416063315622329L;//cancel
+        jb3.addActionListener(new AbstractAction() {//cancel
             @Override
             public void actionPerformed(ActionEvent e) {
                 LogInFrame.this.setVisible(false);
             }
         });
-        jb4.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = 1107367456220913823L;//clear
+        jb4.addActionListener(new AbstractAction() {//clear
             @Override
             public void actionPerformed(ActionEvent e) {
                 users.clear();

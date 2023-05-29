@@ -1,7 +1,5 @@
 package model;
 
-import view.ChessGameFrame;
-
 import java.io.Serial;
 import java.io.Serializable;
 

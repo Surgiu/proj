@@ -1,17 +1,13 @@
 package view;
 
-import model.PlayerColor;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.Serial;
-import java.io.Serializable;
 
-public class TimeFrame extends JFrame implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 4487473261355787122L;
-    private static JLabel background;
+public class TimeFrame extends JFrame {
+    private static JLabel background= new JLabel(new ImageIcon("image/lose.png"));;
+    JLabel jl;
     JButton jb1;
     JButton jb2;
     JButton jb3;
@@ -21,17 +17,15 @@ public class TimeFrame extends JFrame implements Serializable {
         this.setBounds(705, 350, 310, 200);
         this.setLayout(null);
         this.setResizable(false);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        JLabel jl = new JLabel(d+"超时，游戏结束");
-        jl.setBounds(25, 30, 280, 60);
+        background.setBounds(0, 0, 310, 200);
+
+        jl = new JLabel(d+"超时，游戏结束!");
+        jl.setBounds(40, 25, 230, 60);
         jl.setForeground(new Color(5, 27, 93, 229));
         jl.setFont(new Font("MS Song", Font.BOLD, 22));
-        add(jl);
-
-        background = new JLabel(new ImageIcon("image/lose.png"));
-        background.setBounds(0, 0, 310, 200);
-        this.add(background);
 
         jb1 = new JButton("再来一局");
         jb2 = new JButton("返回");
@@ -52,10 +46,15 @@ public class TimeFrame extends JFrame implements Serializable {
         jb1.setBackground(new Color(225, 153, 219));
         jb2.setBackground(new Color(225, 153, 219));
         jb3.setBackground(new Color(225, 153, 219));
-
+        this.add(background);
         background.add(jb1);
         background.add(jb2);
         background.add(jb3);
+        background.add(jl);
+
+//        background.setVisible(true);
+
+//        addBaseLabel();
 
         jb1.addActionListener(new AbstractAction() {
             @Serial
@@ -78,5 +77,11 @@ public class TimeFrame extends JFrame implements Serializable {
         });
         jb3.addActionListener(e -> System.exit(0));
     }
+//    public void addBaseLabel() {
+//        background = new JLabel(new ImageIcon("D:JAVA/proj/src/image/lose.png"));
+//        background.setBounds(0, 0, 310, 200);
+//        add(background);
+//        background.setVisible(true);
+//    }
 }
 

@@ -7,16 +7,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.Serial;
-import java.io.Serializable;
 //zhushi
 
 /**
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
-public class ChessGameFrame extends JFrame implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 6040603365009384815L;
+public class ChessGameFrame extends JFrame {
     //    public final Dimension FRAME_SIZE ;
     private final int WIDTH;
     private final int HEIGTH;
@@ -25,13 +21,13 @@ public class ChessGameFrame extends JFrame implements Serializable {
     private JLabel statusLabel;
     private JLabel chessboard;
     private User user;
-    private JLabel picture1 = new JLabel(new ImageIcon("image/picture1.png"));
-    private JLabel picture2 = new JLabel(new ImageIcon("image/picture2.png"));
-    boolean changePicture = false;
-    boolean changeBackground = false;
+    private static JLabel picture1=new JLabel(new ImageIcon("image/picture1.png")) ;
+    private static JLabel picture2=new JLabel(new ImageIcon("image/picture2.png")) ;
+    boolean changePicture=false;
+    boolean changeBackground=false;
 
     public ChessGameFrame(int width, int height) {
-        setTitle("2023 CS109 Project Demo"); //设置标题
+        setTitle("斗兽棋"); //设置标题
         this.WIDTH = width;
         this.HEIGTH = height;
         this.ONE_CHESS_SIZE = (HEIGTH * 4 / 5) / 9;
@@ -86,7 +82,7 @@ public class ChessGameFrame extends JFrame implements Serializable {
 
     public void addBaseLabel() {
         chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
-        chessboard.setBounds(102, -46, 623, 900);
+        chessboard.setBounds(102, -46,623, 900);
         add(chessboard);
         picture1.setBounds(-134, -12, 1100, 810);
         picture2.setBounds(-134, -12, 1100, 810);
@@ -99,20 +95,19 @@ public class ChessGameFrame extends JFrame implements Serializable {
      */
     public void addChangePicture() {
         changePicture = !changePicture;
-        if (!changePicture) {
+        if (changePicture == false) {
             picture1.setVisible(false);
             picture2.setVisible(true);
-        } else {
+        } else if (changePicture == true)  {
             picture1.setVisible(true);
             picture2.setVisible(false);
         }
     }
-
     public void addChangeBackground() {
         changeBackground = !changeBackground;
-        if (!changeBackground) {
+        if (changeBackground == false) {
             ChessGameFrame.this.getContentPane().setBackground(Color.BLACK);
-        } else {
+        } else if (changeBackground == true) {
             ChessGameFrame.this.getContentPane().setBackground(Color.white);
         }
     }
@@ -157,6 +152,18 @@ public class ChessGameFrame extends JFrame implements Serializable {
         jb7.setBackground(new Color(198, 204, 255, 255));
         jb9.setBackground(new Color(198, 204, 255, 255));
 
+        jb1.setForeground(new Color(213, 242, 255));
+        jb3.setForeground(new Color(213, 242, 255));
+        jb5.setForeground(new Color(213, 242, 255));
+        jb6.setForeground(new Color(213, 242, 255));
+        jb8.setForeground(new Color(213, 242, 255));
+
+        jb2.setForeground(new Color(255, 255, 255));
+        jb4.setForeground(new Color(255, 255, 255));
+        jb7.setForeground(new Color(255, 255, 255));
+        jb9.setForeground(new Color(255, 255, 255));
+
+
         jb1.setFont(new Font("MS Song", Font.BOLD, 18));
         jb2.setFont(new Font("MS Song", Font.BOLD, 18));
         jb3.setFont(new Font("MS Song", Font.BOLD, 18));
@@ -185,9 +192,7 @@ public class ChessGameFrame extends JFrame implements Serializable {
             });
         });
 //        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
-        jb2.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = 7421086327278483839L;//regret
+        jb2.addActionListener(new AbstractAction() {//regret
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().undo();
@@ -196,23 +201,17 @@ public class ChessGameFrame extends JFrame implements Serializable {
         jb3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoseFrame loseFrame = new LoseFrame(chessboardComponent);
+                LoseFrame loseFrame=new LoseFrame(chessboardComponent);
                 loseFrame.setVisible(true);
             }
         });
         jb4.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = -790161250695757798L;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().restart();
             }
         });
         jb5.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = -5349472553197223127L;
-
             @Override
             public void actionPerformed(ActionEvent e) {
 //                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
@@ -224,9 +223,6 @@ public class ChessGameFrame extends JFrame implements Serializable {
             }
         });
         jb6.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = -1095497018465553152L;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -237,18 +233,12 @@ public class ChessGameFrame extends JFrame implements Serializable {
             }
         });
         jb7.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = -2428710925048253967L;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().deleteMemory();
             }
         });
         jb8.addActionListener(new AbstractAction() {
-            @Serial
-            private static final long serialVersionUID = 2541050168961933491L;
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().loadMemory();

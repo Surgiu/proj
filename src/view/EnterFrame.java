@@ -8,12 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.Serial;
-import java.io.Serializable;
 
-public class EnterFrame extends JFrame implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 6236977156223714604L;
+public class EnterFrame extends JFrame {
     private static JLabel enter;
     JButton jb1;
     JButton jb2;
@@ -43,12 +39,19 @@ public class EnterFrame extends JFrame implements Serializable {
         jb5 = new JButton("登录");
         jb6 = new JButton("排名");
 
-        jb1.setBackground(new Color(178, 225, 255, 255));
-        jb2.setBackground(new Color(166, 236, 236, 255));
+        jb1.setBackground(new Color(94, 177, 231, 255));
+        jb2.setBackground(new Color(102, 193, 211, 255));
         jb3.setBackground(new Color(105, 139, 199, 255));
-        jb5.setBackground(new Color(144, 171, 220, 255));
-        jb6.setBackground(new Color(170, 191, 232, 255));
-        jb4.setBackground(new Color(193, 206, 236, 255));
+        jb5.setBackground(new Color(122, 145, 196, 255));
+        jb6.setBackground(new Color(146, 164, 204, 255));
+        jb4.setBackground(new Color(162, 175, 206, 255));
+
+        jb1.setForeground(new Color(255, 213, 254));
+        jb2.setForeground(new Color(255, 222, 245));
+        jb3.setForeground(new Color(255, 207, 245));
+        jb5.setForeground(new Color(255, 217, 243));
+        jb6.setForeground(new Color(255, 237, 247));
+        jb4.setForeground(new Color(255, 255, 255));
 
         jb1.setFont(new Font("MS Song", Font.BOLD, 18));
         jb2.setFont(new Font("MS Song", Font.BOLD, 18));

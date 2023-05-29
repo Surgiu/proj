@@ -1,6 +1,5 @@
 package model;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -9,8 +8,6 @@ import java.io.Serializable;
  */
 public class ChessboardPoint implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 6573769168152474927L;
     private final int row;
     private final int col;
 
