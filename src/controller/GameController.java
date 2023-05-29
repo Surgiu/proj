@@ -54,7 +54,7 @@ public class GameController implements GameListener, Serializable {
     }
 
     public void initMemory() {
-        File file = new File("resource/gameInformation/");
+        File file = new File("resource/gameInformation");
         File[] files = file.listFiles();
         for (int i = 0; i < Objects.requireNonNull(files).length; i++) {
             files[i].delete();
@@ -183,13 +183,13 @@ public class GameController implements GameListener, Serializable {
 
     public void restart() {
         initMemory();
-        autoSave();
         model.initialize();
         view.initiateGridComponents();
         view.initiateChessComponent(model);
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
         winner = null;
+        autoSave();
         timerEnd();
         setCurrentStatus(status());
         view.getChessGameFrame().statusUpgrading(currentStatus);
@@ -446,15 +446,15 @@ public class GameController implements GameListener, Serializable {
             @Override
             public void run() {
                 assert files != null;
-                if (files[steps].getName().equals(String.valueOf(steps))) {
-                    doLoad(files[steps]);
-                    timerEnd();
-                    steps++;
-                    if (steps == files.length) {
-                        steps = 0;
-                        timer0.cancel();
-                    }
+
+                doLoad(files[steps]);
+                timerEnd();
+                steps++;
+                if (steps == files.length) {
+                    steps = 0;
+                    timer0.cancel();
                 }
+
             }
         }, 1000, 1573);
     }
