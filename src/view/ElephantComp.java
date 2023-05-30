@@ -1,4 +1,5 @@
 package view;
+
 import model.PlayerColor;
 
 import java.awt.*;
@@ -8,8 +9,8 @@ import java.awt.*;
  * but this class only cares how to draw Chess on ChessboardComponent
  */
 public class ElephantComp extends ChessComp {
-    public ElephantComp(PlayerColor owner, int size,String name) {
-        super(owner,size);
+    public ElephantComp(PlayerColor owner, int size, String name) {
+        super(owner, size);
         this.setName(name);
     }
 

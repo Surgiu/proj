@@ -1,5 +1,7 @@
 package view;
+
 import model.PlayerColor;
+
 import javax.swing.*;
 import java.awt.*;
 

@@ -263,9 +263,9 @@ public class Chessboard implements Serializable {
                 case "Rat" -> {
                     if (getGridAt(src).getType() == 1) {//rat in the river
                         return getGridAt(dest).getType() == 1 && getChessPieceAt(dest) != null && calculateDistance(dest, src) == 1;
-                    } else if (getGridAt(src).getType() != 1 && getGridAt(dest).getType() == 2) {//rat on the ground
+                    } else if (getGridAt(src).getType() != 1 && getGridAt(dest).getType() == 2) {
                         return calculateDistance(src, dest) == 1;
-                    } else if (getGridAt(src).getType() != 1) {
+                    } else if (getGridAt(src).getType() != 1) {//rat on the ground
                         return predator.canCapture(target) && calculateDistance(src, dest) == 1;
                     }
                 }

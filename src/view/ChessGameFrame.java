@@ -95,10 +95,10 @@ public class ChessGameFrame extends JFrame {
      */
     public void addChangePicture() {
         changePicture = !changePicture;
-        if (changePicture == false) {
+        if (!changePicture) {
             picture1.setVisible(false);
             picture2.setVisible(true);
-        } else if (changePicture == true) {
+        } else {
             picture1.setVisible(true);
             picture2.setVisible(false);
         }
@@ -106,9 +106,9 @@ public class ChessGameFrame extends JFrame {
 
     public void addChangeBackground() {
         changeBackground = !changeBackground;
-        if (changeBackground == false) {
+        if (!changeBackground) {
             ChessGameFrame.this.getContentPane().setBackground(Color.BLACK);
-        } else if (changeBackground == true) {
+        } else {
             ChessGameFrame.this.getContentPane().setBackground(Color.white);
         }
     }

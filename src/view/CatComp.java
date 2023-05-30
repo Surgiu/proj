@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class CatComp extends ChessComp {
 
-    public CatComp(PlayerColor owner, int size,String name) {
-        super(owner,size);
+    public CatComp(PlayerColor owner, int size, String name) {
+        super(owner, size);
         this.setName(name);
     }
 }

@@ -79,7 +79,7 @@ public class EnterFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
                 mainFrame.setVisible(true);
-                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard(),Mode.MULTIPLAYER);
+                GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard(), Mode.MULTIPLAYER);
 //                跳转的界面
 
 //                EnterFrame enterFrame = new EnterFrame();
@@ -106,7 +106,7 @@ public class EnterFrame extends JFrame {
         jb3.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ChessGameFrame chessGameFrame=new ChessGameFrame(1100, 810);
+                ChessGameFrame chessGameFrame = new ChessGameFrame(1100, 810);
                 SettingGameFrame settingGameFrame = new SettingGameFrame(chessGameFrame);
                 settingGameFrame.setVisible(true);
             }
