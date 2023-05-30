@@ -29,7 +29,7 @@ public class GameController implements GameListener, Serializable {
     private ChessboardPoint selectedPoint;
     private PlayerColor winner;
     private AI AI;
-    private int runTime = 30;
+    private int runTime = 60;
     private static Timer timer;
     private static Timer timer0;
     private String currentStatus = "";
@@ -432,7 +432,7 @@ public class GameController implements GameListener, Serializable {
         if (timer != null) {
             timer.cancel();
             timer = null;
-            setRunTime(30);
+            setRunTime(60);
         }
     }
 

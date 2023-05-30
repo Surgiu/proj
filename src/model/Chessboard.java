@@ -257,12 +257,12 @@ public class Chessboard implements Serializable {
                             }
                         }
                     } else {//lion or tiger on the ground
-                        return predator.canCapture(target)&&getGridAt(dest).getType() != 1;
+                        return predator.canCapture(target) && getGridAt(dest).getType() != 1;
                     }
                 }
                 case "Rat" -> {
                     if (getGridAt(src).getType() == 1) {//rat in the river
-                        return false;
+                        return getGridAt(dest).getType() == 1 && getChessPieceAt(dest) != null && calculateDistance(dest, src) == 1;
                     } else if (getGridAt(src).getType() != 1 && getGridAt(dest).getType() == 2) {//rat on the ground
                         return calculateDistance(src, dest) == 1;
                     } else if (getGridAt(src).getType() != 1) {

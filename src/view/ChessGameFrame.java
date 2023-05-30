@@ -68,7 +68,7 @@ public class ChessGameFrame extends JFrame {
      */
     private void addLabel() {
 //        String text = "当前玩家:   蓝方" + "\n      回合数: 0" + "\n       剩余时间: 30s(等待玩家准备···)";
-        String text = "<html> 当前玩家：蓝方<br/> 回合数：0<br/>剩余时间：30s<br/></html>";
+        String text = "<html> 当前玩家：蓝方<br/> 回合数：0<br/>剩余时间：60s<br/></html>";
         statusLabel = new JLabel(text);
         statusLabel.setOpaque(true);
         statusLabel.setBounds(880, 25, 160, 100);
