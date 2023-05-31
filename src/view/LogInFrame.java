@@ -27,7 +27,7 @@ public class LogInFrame extends JFrame implements Serializable {
     ArrayList<User> users = new ArrayList<>();
 
     public LogInFrame() {
-        this.setBounds(720, 410, 324, 185);
+        this.setBounds(740, 410, 220, 185);
         this.setTitle("登录");
         //清空默认局部方式
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -37,9 +37,9 @@ public class LogInFrame extends JFrame implements Serializable {
         this.setVisible(true);
 
         jl1 = new JLabel("请输入用户名:");
-        username = new JTextField("", 29);
+        username = new JTextField("", 21);
         jl2 = new JLabel("请输入密码:");
-        password = new JTextField("", 29);
+        password = new JTextField("", 21);
         jp = new JPanel();
         jb1 = new JButton("登陆");
 //        jb1.setBounds(0,200,70, 20);
@@ -56,7 +56,7 @@ public class LogInFrame extends JFrame implements Serializable {
         jp.add(jb1);
         jp.add(jb2);
         jp.add(jb3);
-        jp.add(jb4);
+//        jp.add(jb4);
         addButtons();
     }
 
