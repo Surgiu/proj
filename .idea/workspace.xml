@@ -9,20 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="2.0">
-      <change afterPath="$PROJECT_DIR$/~$包exe文档.docx" afterDir="false" />
+    <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="定型">
+      <change afterPath="$PROJECT_DIR$/resource/SavedGames/不能进河" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resource/gameInformation/0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource/gameInformation/0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/SavedGames/beijing" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/SavedGames/巢穴胜利" beforeDir="false" afterPath="$PROJECT_DIR$/resource/SavedGames/巢穴胜利" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/SavedGames/无法进河" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/SavedGames/棋子胜利" beforeDir="false" afterPath="$PROJECT_DIR$/resource/SavedGames/棋子胜利" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/UserInfo/eee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/UserInfo/www" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource/UserInfo/xxx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/EnterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/EnterFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LionComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LionComp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MusicFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MusicFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MusicTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MusicTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/RatComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/RatComp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SettingGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SettingGameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/TigerComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TigerComp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/WolfComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/WolfComp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,28 +88,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "new__3",
-    "last_opened_file_path": "C:/Users/DELL/IdeaProjects/pro",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Errors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new__3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/IdeaProjects/pro&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\IdeaProjects\pro\src\view" />
@@ -186,13 +186,8 @@
       <workItem from="1685424760487" duration="25000" />
       <workItem from="1685434176627" duration="264000" />
       <workItem from="1685499792997" duration="1686000" />
-    </task>
-    <task id="LOCAL-00017" summary="吃子的bug终于解决了，呜呜呜">
-      <created>1684741276466</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1684741276466</updated>
+      <workItem from="1685503052339" duration="507000" />
+      <workItem from="1685504250443" duration="3528000" />
     </task>
     <task id="LOCAL-00018" summary="现在关于游戏运行的大部分bug都无了">
       <created>1684742510701</created>
@@ -530,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685423168388</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="定型">
+      <created>1685503238243</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1685503238243</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="玩家排名的初步搭建" />
     <MESSAGE value="修复了重选棋子时高亮错误的bug" />
     <MESSAGE value="修复了存档初始化的bug" />
     <MESSAGE value="用户排名按钮添加" />
@@ -574,7 +575,8 @@
     <MESSAGE value="登录bug进一步修复" />
     <MESSAGE value="新版本：鼠在河中可以互吃" />
     <MESSAGE value="2.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.0" />
+    <MESSAGE value="定型" />
+    <option name="LAST_COMMIT_MESSAGE" value="定型" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

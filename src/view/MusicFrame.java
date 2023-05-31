@@ -23,7 +23,7 @@ public class MusicFrame extends JFrame {
         this.setVisible(true);
 
         music = new JLabel(new ImageIcon("image/music.png"));
-        music.setBounds(0, 0, 290, 308);
+        music.setBounds(0, 0, 277, 308);
         this.add(music);
 
         jb1 = new JButton("拥抱");

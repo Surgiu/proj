@@ -28,7 +28,7 @@ public class EnterFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         enter = new JLabel(new ImageIcon("image/enter.png"));
-        enter.setBounds(0, 0, 740, 550);
+        enter.setBounds(0, 0, 727, 515);
         this.add(enter);
 
         jb1 = new JButton("单人模式");
