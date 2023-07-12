@@ -3,7 +3,6 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.Serial;
 
@@ -11,7 +10,7 @@ import java.io.Serial;
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
 public class ChessGameFrame extends JFrame {
-    private final int HEIGTH;
+    private final int HEIGHT;
     private final int ONE_CHESS_SIZE;
     private ChessboardComponent chessboardComponent;
     private JLabel statusLabel;
@@ -23,10 +22,10 @@ public class ChessGameFrame extends JFrame {
     public ChessGameFrame(int width, int height) {
         setTitle("斗兽棋"); //设置标题
         //    public final Dimension FRAME_SIZE ;
-        this.HEIGTH = height;
-        this.ONE_CHESS_SIZE = (HEIGTH * 4 / 5) / 9;
+        this.HEIGHT = height;
+        this.ONE_CHESS_SIZE = (HEIGHT * 4 / 5) / 9;
 
-        setSize(width, HEIGTH);
+        setSize(width, HEIGHT);
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //设置程序关闭按键，如果点击右上方的叉就游戏全部关闭了
 //        setLayout(new BorderLayout());
@@ -49,7 +48,7 @@ public class ChessGameFrame extends JFrame {
      */
     private void addChessboard() {
         chessboardComponent = new ChessboardComponent(this, ONE_CHESS_SIZE);
-        chessboardComponent.setLocation(HEIGTH / 5, HEIGTH / 10);
+        chessboardComponent.setLocation(HEIGHT / 5, HEIGHT / 10);
         add(chessboardComponent);
     }
 
@@ -114,15 +113,15 @@ public class ChessGameFrame extends JFrame {
         JButton jb8 = new JButton("载入存档");
         JButton jb9 = new JButton("棋局回放");
 
-        jb1.setBounds(HEIGTH + 70, HEIGTH / 10 + 65, 160, 45);
-        jb2.setBounds(HEIGTH + 70, HEIGTH / 10 + 135, 160, 45);
-        jb3.setBounds(HEIGTH + 70, HEIGTH / 10 + 205, 160, 45);
-        jb4.setBounds(HEIGTH + 70, HEIGTH / 10 + 275, 160, 45);
-        jb6.setBounds(HEIGTH + 70, HEIGTH / 10 + 345, 160, 45);
-        jb7.setBounds(HEIGTH + 70, HEIGTH / 10 + 415, 160, 45);
-        jb8.setBounds(HEIGTH + 70, HEIGTH / 10 + 485, 160, 45);
-        jb9.setBounds(HEIGTH + 70, HEIGTH / 10 + 555, 160, 45);
-        jb5.setBounds(HEIGTH + 70, HEIGTH / 10 + 625, 160, 45);
+        jb1.setBounds(HEIGHT + 70, HEIGHT / 10 + 65, 160, 45);
+        jb2.setBounds(HEIGHT + 70, HEIGHT / 10 + 135, 160, 45);
+        jb3.setBounds(HEIGHT + 70, HEIGHT / 10 + 205, 160, 45);
+        jb4.setBounds(HEIGHT + 70, HEIGHT / 10 + 275, 160, 45);
+        jb6.setBounds(HEIGHT + 70, HEIGHT / 10 + 345, 160, 45);
+        jb7.setBounds(HEIGHT + 70, HEIGHT / 10 + 415, 160, 45);
+        jb8.setBounds(HEIGHT + 70, HEIGHT / 10 + 485, 160, 45);
+        jb9.setBounds(HEIGHT + 70, HEIGHT / 10 + 555, 160, 45);
+        jb5.setBounds(HEIGHT + 70, HEIGHT / 10 + 625, 160, 45);
 
         jb1.setBackground(new Color(164, 168, 208, 255));
         jb3.setBackground(new Color(164, 168, 208, 255));
