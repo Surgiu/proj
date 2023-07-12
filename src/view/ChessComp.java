@@ -34,7 +34,6 @@ public class ChessComp extends JComponent {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(new Color(231, 205, 205));
-//        g2.setColor(new Color(167, 213, 211));
         g2.fillOval(0, 0, getWidth(), getHeight());
         Font font = new Font("隶书", Font.PLAIN, getWidth() / 2);
         g2.setFont(font);
@@ -43,7 +42,7 @@ public class ChessComp extends JComponent {
         BasicStroke b2 = new BasicStroke(3);
         g2.setStroke(b2);
         g2.drawOval(0, 0, getWidth(), getHeight());
-        if (isSelected()) { // Highlights the model if selected.
+        if (isSelected()) { // Highlight the model when selected.
             BasicStroke circle = new BasicStroke(4);
             Graphics2D graphics2D = (Graphics2D) g;
             graphics2D.setStroke(circle);

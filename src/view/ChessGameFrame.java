@@ -1,38 +1,32 @@
 package view;
 
-import controller.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-//zhushi
+import java.io.Serial;
 
 /**
  * 这个类表示游戏过程中的整个游戏界面，是一切的载体
  */
 public class ChessGameFrame extends JFrame {
-    //    public final Dimension FRAME_SIZE ;
-    private final int WIDTH;
     private final int HEIGTH;
     private final int ONE_CHESS_SIZE;
     private ChessboardComponent chessboardComponent;
     private JLabel statusLabel;
-    private JLabel chessboard;
-    private User user;
-    private static JLabel picture1 = new JLabel(new ImageIcon("image/picture1.png"));
-    private static JLabel picture2 = new JLabel(new ImageIcon("image/picture2.png"));
+    private static final JLabel picture1 = new JLabel(new ImageIcon("image/picture1.png"));
+    private static final JLabel picture2 = new JLabel(new ImageIcon("image/picture2.png"));
     boolean changePicture = false;
     boolean changeBackground = false;
 
     public ChessGameFrame(int width, int height) {
         setTitle("斗兽棋"); //设置标题
-        this.WIDTH = width;
+        //    public final Dimension FRAME_SIZE ;
         this.HEIGTH = height;
         this.ONE_CHESS_SIZE = (HEIGTH * 4 / 5) / 9;
 
-        setSize(WIDTH, HEIGTH);
+        setSize(width, HEIGTH);
         setLocationRelativeTo(null); // Center the window.
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //设置程序关闭按键，如果点击右上方的叉就游戏全部关闭了
 //        setLayout(new BorderLayout());
@@ -48,10 +42,6 @@ public class ChessGameFrame extends JFrame {
 
     public ChessboardComponent getChessboardComponent() {
         return chessboardComponent;
-    }
-
-    public void setChessboardComponent(ChessboardComponent chessboardComponent) {
-        this.chessboardComponent = chessboardComponent;
     }
 
     /**
@@ -81,7 +71,7 @@ public class ChessGameFrame extends JFrame {
 
 
     public void addBaseLabel() {
-        chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
+        JLabel chessboard = new JLabel(new ImageIcon("image/chessboard.png"));
         chessboard.setBounds(102, -46, 623, 900);
         add(chessboard);
         picture1.setBounds(-134, -12, 1100, 810);
@@ -133,15 +123,6 @@ public class ChessGameFrame extends JFrame {
         jb8.setBounds(HEIGTH + 70, HEIGTH / 10 + 485, 160, 45);
         jb9.setBounds(HEIGTH + 70, HEIGTH / 10 + 555, 160, 45);
         jb5.setBounds(HEIGTH + 70, HEIGTH / 10 + 625, 160, 45);
-//        jb1.setBounds(HEIGTH + 70, HEIGTH / 10 + 85, 160, 50);
-//        jb2.setBounds(HEIGTH + 70, HEIGTH / 10 + 160, 160, 50);
-//        jb3.setBounds(HEIGTH + 70, HEIGTH / 10 + 235, 160, 50);
-//        jb4.setBounds(HEIGTH + 70, HEIGTH / 10 + 310, 160, 50);
-//        jb6.setBounds(HEIGTH + 70, HEIGTH / 10 + 385, 160, 50);
-//        jb7.setBounds(HEIGTH + 70, HEIGTH / 10 + 460, 160, 50);
-//        jb8.setBounds(HEIGTH + 70, HEIGTH / 10 + 535, 160, 50);
-//        jb5.setBounds(HEIGTH + 70, HEIGTH / 10 + 610, 160, 50);
-//        jb9.setBounds(HEIGTH + 70, HEIGTH / 10 + 685, 160, 50);
 
         jb1.setBackground(new Color(164, 168, 208, 255));
         jb3.setBackground(new Color(164, 168, 208, 255));
@@ -186,37 +167,38 @@ public class ChessGameFrame extends JFrame {
         add(jb9);
 
 
-        jb1.addActionListener(e -> {
-            SwingUtilities.invokeLater(() -> {
-                SettingGameFrame settingGameFrame = new SettingGameFrame(this);
-                settingGameFrame.setVisible(true);
-            });
-        });
-//        jb1.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
-        jb2.addActionListener(new AbstractAction() {//regret
+        jb1.addActionListener(e -> SwingUtilities.invokeLater(() -> {
+            SettingGameFrame settingGameFrame = new SettingGameFrame(this);
+            settingGameFrame.setVisible(true);
+        }));
+        jb2.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = 7421086327278483839L;//regret
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().undo();
             }
         });
-        jb3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LoseFrame loseFrame = new LoseFrame(chessboardComponent);
-                loseFrame.setVisible(true);
-            }
+        jb3.addActionListener(e -> {
+            LoseFrame loseFrame = new LoseFrame(chessboardComponent);
+            loseFrame.setVisible(true);
         });
         jb4.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -790161250695757798L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().restart();
             }
         });
         jb5.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -5349472553197223127L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
-//                ChessGameFrame mainFrame=new ChessGameFrame(1100,810);
-//                mainFrame.dispose();
                 chessboardComponent.getGameController().timerEnd();
                 ChessGameFrame.this.setVisible(false);
                 EnterFrame enterFrame = new EnterFrame();
@@ -224,6 +206,9 @@ public class ChessGameFrame extends JFrame {
             }
         });
         jb6.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -1095497018465553152L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -234,34 +219,25 @@ public class ChessGameFrame extends JFrame {
             }
         });
         jb7.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -2428710925048253967L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().deleteMemory();
             }
         });
         jb8.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = 2541050168961933491L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 chessboardComponent.getGameController().loadMemory();
             }
         });
 
-        jb9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                chessboardComponent.getGameController().playBack();
-            }
-        });
-    }
-
-    public void grading() {
-        if (user != null) {
-            user.setRank(user.getRank() + 1);
-        }
-    }
-
-    public JLabel getStatusLabel() {
-        return statusLabel;
+        jb9.addActionListener(e -> chessboardComponent.getGameController().playBack());
     }
 
     public void statusUpgrading(String string) {
@@ -273,10 +249,6 @@ public class ChessGameFrame extends JFrame {
             }
         }
         statusLabel.setText(string);
-    }
-
-    public JLabel getPicture1() {
-        return picture1;
     }
 
     public JLabel getPicture2() {

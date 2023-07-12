@@ -21,7 +21,7 @@ public class ChessboardComponent extends JComponent {
     private final Set<ChessboardPoint> densCell = new HashSet<>();
     private final Set<ChessboardPoint> trapCell = new HashSet<>();
 
-    private ChessGameFrame chessGameFrame;
+    private final ChessGameFrame chessGameFrame;
     private GameController gameController;
 
     public ChessboardComponent(ChessGameFrame chessGameFrame, int chessSize) {
@@ -34,16 +34,6 @@ public class ChessboardComponent extends JComponent {
         setSize(width, height);
         System.out.printf("chessboard width, height = [%d : %d], chess size = %d\n", width, height, CHESS_SIZE);
         initiateGridComponents();
-    }
-
-    public void clear() {
-        for (int i = 0; i < gridComponents.length; i++) {
-            for (int j = 0; j < gridComponents[i].length; j++) {
-                if (gridComponents[i][j] != null) {
-                    gridComponents[i][j].removeAll();
-                }
-            }
-        }
     }
 
     /**
@@ -202,6 +192,16 @@ public class ChessboardComponent extends JComponent {
                 System.out.print("One chess here and ");
                 gameController.onPlayerClickChessPiece(getChessboardPoint(e.getPoint()), (ChessComp) clickedComponent.getComponents()[0]);
             }
+        } else if (e.getID() == MouseEvent.MOUSE_ENTERED) {
+            JComponent enteredComponent = (JComponent) getComponentAt(e.getX(), e.getY());
+            if (enteredComponent != null) {
+                gameController.onPlayerHoverPoint(getChessboardPoint(e.getPoint()));
+            }
+        } else if (e.getID() == MouseEvent.MOUSE_EXITED) {
+            JComponent exitedComponent = (JComponent) getComponentAt(e.getX(), e.getY());
+            if (exitedComponent != null) {
+                gameController.onPlayerHoverPoint(null);
+            }
         }
     }
 
@@ -217,15 +217,15 @@ public class ChessboardComponent extends JComponent {
         }
     }
 
-    public void showWin(PlayerColor playerColor) {
-        String winner = "";
-        switch (playerColor) {
-            case BLUE -> winner = "蓝胜！";
-            case RED -> winner = "红胜！";
-        }
-        int choice = JOptionPane.showConfirmDialog(this, winner + "  再来一局?", "游戏结束", JOptionPane.YES_NO_OPTION);
-        if (choice == 0) {
-            gameController.restart();
+    public void hoverHighlight(ChessboardPoint point) {
+        if (point != null) {
+            gridComponents[point.getRow()][point.getCol()].setOpaque(true);
+        } else {
+            for (int i = 0; i < CHESSBOARD_ROW_SIZE.getNum(); i++) {
+                for (int j = 0; j < CHESSBOARD_COL_SIZE.getNum(); j++) {
+                    gridComponents[i][j].setOpaque(false);
+                }
+            }
         }
     }
 

@@ -10,5 +10,6 @@ public interface GameListener {
 
 
     void onPlayerClickChessPiece(ChessboardPoint point, ChessComp component);
+    void onPlayerHoverPoint(ChessboardPoint point);
 
 }

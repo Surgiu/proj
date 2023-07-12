@@ -22,12 +22,11 @@ public class GameController implements GameListener, Serializable {
     @Serial
     private static final long serialVersionUID = -4947732304289783372L;
     private Chessboard model;
-    private ChessboardComponent view;
+    private final ChessboardComponent view;
     private PlayerColor currentPlayer;
 
     // Record whether there is a selected piece before
     private ChessboardPoint selectedPoint;
-    private PlayerColor winner;
     private AI AI;
     private int runTime = 60;
     private static Timer timer;
@@ -84,12 +83,6 @@ public class GameController implements GameListener, Serializable {
         }
         boolean case1 = (winnerPiece1 != null && winnerPiece1.getOwner().equals(PlayerColor.BLUE)) || redCount == -1;
         boolean case2 = (winnerPiece2 != null && winnerPiece2.getOwner().equals(PlayerColor.RED)) || blueCount == -1;
-        if (case1) {
-            winner = PlayerColor.BLUE;
-            view.getChessGameFrame().grading();
-        } else if (case2) {
-            winner = PlayerColor.RED;
-        }
         return case1 || case2;
     }
 
@@ -111,7 +104,6 @@ public class GameController implements GameListener, Serializable {
             view.repaint();
             timerEnd();
             if (isWin()) {
-//                view.showWin(winner);
                 if (currentPlayer == PlayerColor.BLUE) {
                     new WinFrame(view);
                 } else {
@@ -160,7 +152,6 @@ public class GameController implements GameListener, Serializable {
                 timerEnd();
                 autoSave();
                 if (isWin()) {
-//                view.showWin(winner);
                     if (currentPlayer == PlayerColor.BLUE) {
                         new WinFrame(view);
                     } else {
@@ -181,6 +172,11 @@ public class GameController implements GameListener, Serializable {
         }
     }
 
+    @Override
+    public void onPlayerHoverPoint(ChessboardPoint point) {
+
+    }
+
     public void restart() {
         initMemory();
         model.initialize();
@@ -188,29 +184,11 @@ public class GameController implements GameListener, Serializable {
         view.initiateChessComponent(model);
         currentPlayer = PlayerColor.BLUE;
         selectedPoint = null;
-        winner = null;
         autoSave();
         timerEnd();
         setCurrentStatus(status());
         view.getChessGameFrame().statusUpgrading(currentStatus);
         view.repaint();
-    }
-
-    private void test() {
-        int[][] test = new int[9][7];
-        for (int i = 0; i < test.length; i++) {
-            for (int j = 0; j < test[i].length; j++) {
-                if (view.getGridComponents()[i][j].getComponents() != null) {
-                    test[i][j] = 1;
-                }
-            }
-        }
-        for (int[] ints : test) {
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
-            }
-            System.out.println();
-        }
     }
 
     public void highlightOn(ChessboardPoint point) {
@@ -271,38 +249,6 @@ public class GameController implements GameListener, Serializable {
             file = fileChooser.getSelectedFile();
             doLoad(file);
         }
-    }
-
-    private ChessComp getChessViewByPiece(ChessPiece chessPiece) {
-        //当心：动态绑定机制
-        PlayerColor color = chessPiece.getOwner();
-        switch (chessPiece.getName()) {
-            case "Elephant" -> {
-                return new ElephantComp(color, view.getCHESS_SIZE(), "象");
-            }
-            case "Lion" -> {
-                return new LionComp(color, view.getCHESS_SIZE(), "狮");
-            }
-            case "Tiger" -> {
-                return new TigerComp(color, view.getCHESS_SIZE(), "虎");
-            }
-            case "Leopard" -> {
-                return new LeopardComp(color, view.getCHESS_SIZE(), "豹");
-            }
-            case "Wolf" -> {
-                return new WolfComp(color, view.getCHESS_SIZE(), "狼");
-            }
-            case "Dog" -> {
-                return new DogComp(color, view.getCHESS_SIZE(), "狗");
-            }
-            case "Cat" -> {
-                return new CatComp(color, view.getCHESS_SIZE(), "猫");
-            }
-            case "Rat" -> {
-                return new RatComp(color, view.getCHESS_SIZE(), "鼠");
-            }
-        }
-        return null;
     }
 
     public void AIGo() {
@@ -459,18 +405,9 @@ public class GameController implements GameListener, Serializable {
         }, 1000, 1573);
     }
 
-    public void surrender() {
-        switch (this.currentPlayer) {
-            case RED -> view.showWin(PlayerColor.BLUE);
-            case BLUE -> view.showWin(PlayerColor.RED);
-        }
-    }
-
     public String status() {
         String player = currentPlayer == PlayerColor.BLUE ? "蓝方" : "红方";
         return "<html>当前玩家:   " + player + "<br/>    回合数: 0" + model.getNum() / 2 + "<br/>       剩余时间: " + runTime + "s<br/></html>";
-//        String player = currentPlayer == PlayerColor.BLUE ? "蓝方" : "红方";
-//        return "当前玩家:   " + player + "\n      回合数: 0" + model.getNum() + "\n       剩余时间: " + runTime + "s";
     }
 
     public void musicPlay() {
