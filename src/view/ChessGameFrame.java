@@ -6,9 +6,6 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.Serial;
 
-/**
- * 这个类表示游戏过程中的整个游戏界面，是一切的载体
- */
 public class ChessGameFrame extends JFrame {
     private final int HEIGHT;
     private final int ONE_CHESS_SIZE;
@@ -138,12 +135,10 @@ public class ChessGameFrame extends JFrame {
         jb5.setForeground(new Color(213, 242, 255));
         jb6.setForeground(new Color(213, 242, 255));
         jb8.setForeground(new Color(213, 242, 255));
-
         jb2.setForeground(new Color(255, 255, 255));
         jb4.setForeground(new Color(255, 255, 255));
         jb7.setForeground(new Color(255, 255, 255));
         jb9.setForeground(new Color(255, 255, 255));
-
 
         jb1.setFont(new Font("MS Song", Font.BOLD, 18));
         jb2.setFont(new Font("MS Song", Font.BOLD, 18));

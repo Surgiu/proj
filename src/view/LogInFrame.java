@@ -5,7 +5,6 @@ import controller.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -56,69 +55,64 @@ public class LogInFrame extends JFrame implements Serializable {
         jp.add(jb1);
         jp.add(jb2);
         jp.add(jb3);
-//        jp.add(jb4);
         addButtons();
     }
 
     public void addButtons() {
-        jb2.addActionListener(new ActionListener() {//register
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loadUsers();
-                boolean isntExist = true;
-                for (User user : users) {
-                    if (username.getText().equals(user.getName())) {
-                        isntExist = false;
-                        break;
-                    }
-                }
-
-                if (username.getText().length() != 0 && password.getText().length() != 0) {
-                    if (isntExist) {
-                        try {
-                            users.add(new User(username.getText(), password.getText()));
-                            File file0 = new File(position + "/" + username.getText());
-                            ObjectOutputStream info = new ObjectOutputStream(new FileOutputStream(file0));
-                            info.writeObject(users.get(users.size() - 1));
-                            info.close();
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                            JOptionPane.showMessageDialog(null, "注册失败");
-                        }
-                        JOptionPane.showMessageDialog(null, "注册成功！");
-                        LogInFrame.this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "用户已存在！");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "error: 用户名或密码为空");
+        //register
+        jb2.addActionListener(e -> {
+            loadUsers();
+            boolean isntExist = true;
+            for (User user : users) {
+                if (username.getText().equals(user.getName())) {
+                    isntExist = false;
+                    break;
                 }
             }
+
+            if (username.getText().length() != 0 && password.getText().length() != 0) {
+                if (isntExist) {
+                    try {
+                        users.add(new User(username.getText(), password.getText()));
+                        File file0 = new File(position + "/" + username.getText());
+                        ObjectOutputStream info = new ObjectOutputStream(new FileOutputStream(file0));
+                        info.writeObject(users.get(users.size() - 1));
+                        info.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "注册失败");
+                    }
+                    JOptionPane.showMessageDialog(null, "注册成功！");
+                    LogInFrame.this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "用户已存在！");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "error: 用户名或密码为空");
+            }
         });
-        jb1.addActionListener(new ActionListener() {//login
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loadUsers();
-                if (username.getText().length() != 0 && password.getText().length() != 0) {
-                    String name = username.getText();
-                    String psd = password.getText();
-                    int count = 0;
-                    for (User user : users) {
-                        if (name.equals(user.getName())) {
-                            if (psd.equals(user.getPsd())) {
-                                JOptionPane.showMessageDialog(null, "登录成功！");
-                                LogInFrame.this.dispose();
-                            } else {
-                                JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您输入的密码不正确");
-                            }
-                            return;
+        //login
+        jb1.addActionListener(e -> {
+            loadUsers();
+            if (username.getText().length() != 0 && password.getText().length() != 0) {
+                String name = username.getText();
+                String psd = password.getText();
+                int count = 0;
+                for (User user : users) {
+                    if (name.equals(user.getName())) {
+                        if (psd.equals(user.getPsd())) {
+                            JOptionPane.showMessageDialog(null, "登录成功！");
+                            LogInFrame.this.dispose();
                         } else {
-                            count++;
+                            JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您输入的密码不正确");
                         }
+                        return;
+                    } else {
+                        count++;
                     }
-                    if (count != 0) {
-                        JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您还没有注册呢~");
-                    }
+                }
+                if (count != 0) {
+                    JOptionPane.showMessageDialog(null, "亲爱的" + name + "，您还没有注册呢~");
                 }
             }
         });
@@ -158,6 +152,7 @@ public class LogInFrame extends JFrame implements Serializable {
             }
             User user = null;
             try {
+                assert read != null;
                 user = (User) read.readObject();
             } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();

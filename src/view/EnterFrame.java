@@ -7,10 +7,9 @@ import model.Chessboard;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.Serial;
 
 public class EnterFrame extends JFrame {
-    private static JLabel enter;
     JButton jb1;
     JButton jb2;
     JButton jb3;
@@ -27,7 +26,7 @@ public class EnterFrame extends JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        enter = new JLabel(new ImageIcon("image/enter.png"));
+        JLabel enter = new JLabel(new ImageIcon("image/enter.png"));
         enter.setBounds(0, 0, 727, 515);
         this.add(enter);
 
@@ -75,6 +74,9 @@ public class EnterFrame extends JFrame {
         enter.add(jb6);
 
         jb2.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = -3780203819265131050L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
@@ -89,13 +91,15 @@ public class EnterFrame extends JFrame {
             }
         });
         jb1.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = 7231678883817372043L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChessGameFrame mainFrame = new ChessGameFrame(1100, 810);
                 mainFrame.setVisible(true);
                 GameController gameController = new GameController(mainFrame.getChessboardComponent(), new Chessboard(), Mode.SINGLEPLAYER);
 //                跳转的界面
-
 //                EnterFrame enterFrame = new EnterFrame();
                 EnterFrame.this.setVisible(false);
 //                enterFrame.dispose();
@@ -104,6 +108,9 @@ public class EnterFrame extends JFrame {
         });
 
         jb3.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = 6983539001590224473L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChessGameFrame chessGameFrame = new ChessGameFrame(1100, 810);
@@ -115,16 +122,13 @@ public class EnterFrame extends JFrame {
         jb4.addActionListener(e -> System.exit(0));
 
         jb5.addActionListener(new AbstractAction() {
+            @Serial
+            private static final long serialVersionUID = 3211244547294262910L;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 LogInFrame logInFrame = new LogInFrame();
                 logInFrame.setVisible(true);
-            }
-        });
-        jb6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
 

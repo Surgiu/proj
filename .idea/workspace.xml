@@ -10,14 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="381747b6-88a9-4dd7-bfa2-e69267740b4b" name="Changes" comment="带存档文件">
-      <change afterPath="$PROJECT_DIR$/resource/gameInformation/7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listener/GameListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/GameListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessComp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ChessGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessGameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ChessboardComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ChessboardComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/EnterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/EnterFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LogInFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SettingGameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SettingGameFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +192,11 @@
       <workItem from="1689140626315" duration="28000" />
       <workItem from="1689140702229" duration="664000" />
       <workItem from="1689141522317" duration="195000" />
-      <workItem from="1689144238679" duration="317000" />
+      <workItem from="1689144238679" duration="3426000" />
+      <workItem from="1689151427601" duration="9810000" />
+      <workItem from="1689187332806" duration="60000" />
+      <workItem from="1689187415455" duration="6000" />
+      <workItem from="1689242129030" duration="959000" />
     </task>
     <task id="LOCAL-00019" summary="高亮初步">
       <created>1684756582676</created>
@@ -540,7 +541,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685507830423</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
